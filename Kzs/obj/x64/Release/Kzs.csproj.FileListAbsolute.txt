@@ -1,0 +1,8 @@
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Release\DB IF-4.mdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Release\OptionsDb.accdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Release\Kzs.exe.config
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Release\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Release\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Release\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Release\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Release\Kzs.pdb

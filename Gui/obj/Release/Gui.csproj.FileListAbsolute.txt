@@ -1,0 +1,15 @@
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\DB IF-4.mdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\OptionsDb.accdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Gui.exe.config
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Gui.exe
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Gui.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\Release\Kzs.exe.config
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.MainForm.resources
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.Properties.Resources.resources
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.csproj.GenerateResource.Cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.exe
+C:\Users\pc\Desktop\Kzs\Gui\obj\Release\Gui.pdb

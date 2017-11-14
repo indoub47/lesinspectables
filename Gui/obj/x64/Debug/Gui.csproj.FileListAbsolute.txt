@@ -1,0 +1,37 @@
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Gui.exe.config
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Gui.exe
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Gui.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\Kzs.exe.config
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.MainForm.resources
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.Properties.Resources.resources
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.csproj.GenerateResource.Cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.exe
+C:\Users\pc\Desktop\Kzs\Gui\obj\x64\Debug\Gui.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\ClosedXML.dll
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\DocumentFormat.OpenXml.dll
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\FastMember.Signed.dll
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\ClosedXML.pdb
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\ClosedXML.xml
+C:\Users\pc\Desktop\Kzs\Gui\bin\x64\Debug\DocumentFormat.OpenXml.xml
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\DB IF-4.mdb
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\OptionsDb.accdb
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\output_template.xlsx
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Gui.exe.config
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Gui.exe
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Gui.pdb
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.csprojResolveAssemblyReference.cache
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.MainForm.resources
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.Properties.Resources.resources
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.csproj.GenerateResource.Cache
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.exe
+C:\Users\root\source\repos\Kzs\Gui\obj\x64\Debug\Gui.pdb
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Controller.dll
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Controller.pdb
+C:\Users\root\source\repos\Kzs\Gui\bin\x64\Debug\Controller.dll.config

@@ -1,0 +1,14 @@
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\Debug\Kzs.exe.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\Debug\Kzs.exe.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\Debug\Kzs.pdb

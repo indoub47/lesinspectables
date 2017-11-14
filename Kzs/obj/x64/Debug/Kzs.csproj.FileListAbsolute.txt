@@ -1,0 +1,35 @@
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\x64\Debug\Kzs.exe.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\x64\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\x64\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\x64\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\x64\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\x64\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs - sustabdytas, darau su cpp Kur\Kzs\obj\x64\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\x64\Debug\Kzs.exe.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\x64\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\x64\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\x64\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\x64\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\x64\Debug\Kzs.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\obj\x64\Debug\Kzs.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\Kzs\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Kzs.exe.config
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Kzs.exe
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Kzs.pdb
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Kzs.exe
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.exe.config
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.pdb

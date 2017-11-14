@@ -1,0 +1,26 @@
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.exe.config
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Controller.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.exe
+C:\Users\pc\Desktop\Kzs\Kzs\obj\x64\Debug\Kzs.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\ClosedXML.dll
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\DocumentFormat.OpenXml.dll
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\FastMember.Signed.dll
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\System.IO.Packaging.dll
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\ClosedXML.pdb
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\ClosedXML.xml
+C:\Users\pc\Desktop\Kzs\Kzs\bin\x64\Debug\DocumentFormat.OpenXml.xml
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReference.cache
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Controller.dll.config
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Controller.dll
+C:\Users\root\source\repos\Kzs\Kzs\bin\x64\Debug\Controller.pdb
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Controller.dll
+C:\Users\root\source\repos\Kzs\Kzs\obj\x64\Debug\Controller.pdb
