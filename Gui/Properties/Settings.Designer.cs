@@ -89,9 +89,9 @@ namespace Gui.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public float CoefOverdued {
+        public int CoefOverdued {
             get {
-                return ((float)(this["CoefOverdued"]));
+                return ((int)(this["CoefOverdued"]));
             }
             set {
                 this["CoefOverdued"] = value;
@@ -101,9 +101,9 @@ namespace Gui.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public float CoefThermit {
+        public int CoefThermit {
             get {
-                return ((float)(this["CoefThermit"]));
+                return ((int)(this["CoefThermit"]));
             }
             set {
                 this["CoefThermit"] = value;
@@ -112,10 +112,10 @@ namespace Gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
-        public float CoefMain {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int CoefMain {
             get {
-                return ((float)(this["CoefMain"]));
+                return ((int)(this["CoefMain"]));
             }
             set {
                 this["CoefMain"] = value;
@@ -155,6 +155,147 @@ namespace Gui.Properties {
             }
             set {
                 this["ExcelTemplateFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Persist Security Info=False;")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DB IF-4.mdb")]
+        public string MainDbFileName {
+            get {
+                return ((string)(this["MainDbFileName"]));
+            }
+            set {
+                this["MainDbFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OptionsDb.accdb")]
+        public string OptionsDbFileName {
+            get {
+                return ((string)(this["OptionsDbFileName"]));
+            }
+            set {
+                this["OptionsDbFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.6")]
+        public float StrokePart {
+            get {
+                return ((float)(this["StrokePart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        public float UnfilteredPart {
+            get {
+                return ((float)(this["UnfilteredPart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public float MaxStrokeWidht {
+            get {
+                return ((float)(this["MaxStrokeWidht"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public float AxisHeight {
+            get {
+                return ((float)(this["AxisHeight"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-183")]
+        public int koefX0 {
+            get {
+                return ((int)(this["koefX0"]));
+            }
+            set {
+                this["koefX0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int koefY0 {
+            get {
+                return ((int)(this["koefY0"]));
+            }
+            set {
+                this["koefY0"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-14")]
+        public int koefX1 {
+            get {
+                return ((int)(this["koefX1"]));
+            }
+            set {
+                this["koefX1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int koefY1 {
+            get {
+                return ((int)(this["koefY1"]));
+            }
+            set {
+                this["koefY1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int koefX2 {
+            get {
+                return ((int)(this["koefX2"]));
+            }
+            set {
+                this["koefX2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int koefY2 {
+            get {
+                return ((int)(this["koefY2"]));
+            }
+            set {
+                this["koefY2"] = value;
             }
         }
     }

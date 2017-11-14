@@ -21,11 +21,9 @@ namespace Kzs
         private List<string> sqls;
         private int cols;
 
-        public RecordFetcher()
+        public RecordFetcher(string connectionString)
         {
-            connectionString = string.Format(
-                Settings.Default.ConnectionString,
-                Settings.Default.DbFileName);
+            this.connectionString = connectionString;
             cols = Settings.Default.Cols;
             sqls = new List<string>
             {

@@ -61,24 +61,6 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Persist Security Info=False;")]
-        public string ConnectionString {
-            get {
-                return ((string)(this["ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DB IF-4.mdb")]
-        public string DbFileName {
-            get {
-                return ((string)(this["DbFileName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("([saliginis kodas] IN (\"06.3\", \"06.4\")) AND ({1} IS NULL)")]
         public string Where {
             get {
@@ -199,15 +181,6 @@ namespace Kzs.Properties {
         public string[] Mapping {
             get {
                 return ((string[])(this["Mapping"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("OptionsDb.accdb")]
-        public string OptionsDbFileName {
-            get {
-                return ((string)(this["OptionsDbFileName"]));
             }
         }
         

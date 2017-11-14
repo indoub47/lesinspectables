@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kzs.Properties;
 
 namespace Kzs
 {
     public class DangerCalculator:IDangerCalculator
     {
-        private float x0, y0, x1, y1, x2, y2, overdued, thermit, main;
-        private float a0, b0, a1, b1;
+        private decimal overdued, thermit, main;
+        private decimal x0, x1, x2;
+        private decimal a0, b0, a1, b1;
+
+        private const decimal DEFAULT_X0 = -183;
+        private const decimal DEFAULT_X1 = -14;
+        private const decimal DEFAULT_X2 = 0;
+
 
         public DangerCalculator()
         {
@@ -18,13 +20,16 @@ namespace Kzs
             overdued = 1;
             thermit = 1;
 
-            x0 = UserSettings.Default.X0;
-            y0 = UserSettings.Default.Y0;
-            x1 = UserSettings.Default.X1;
-            y1 = UserSettings.Default.Y1;
-            x2 = UserSettings.Default.X2;
-            y2 = UserSettings.Default.Y2;
+            this.x0 = DEFAULT_X0;
+            this.x1 = DEFAULT_X1;
+            this.x2 = DEFAULT_X2;
 
+            recalculateCoefs(x0, 0, x1, 1, x2, 1);
+        }
+
+        private void recalculateCoefs(
+            decimal x0, decimal y0, decimal x1, decimal y1, decimal x2, decimal y2)
+        {
             a0 = getA(x0, y0, x1, y1);
             b0 = getB(x0, y0, x1, y1);
 
@@ -32,19 +37,19 @@ namespace Kzs
             b1 = getB(x1, y1, x2, y2);
         }
 
-        private float getA(float x, float y, float xx, float yy)
+        private decimal getA(decimal x, decimal y, decimal xx, decimal yy)
         {
             return (yy - y) / (xx - x);
         }
 
-        private float getB(float x, float y, float xx, float yy)
+        private decimal getB(decimal x, decimal y, decimal xx, decimal yy)
         {
             return y - x * getA(x, y, xx, yy);
         }
 
         private void calculate(Inspectable insp)
         {
-            float res = calc(insp.Liko);
+            decimal res = calc(insp.Liko);
 
             if (insp.Skodas == "06.4")
                 res *= thermit;
@@ -55,8 +60,10 @@ namespace Kzs
             insp.Danger = Convert.ToInt32(Math.Round(res));
         }
 
-        float calc(int liko)
+        decimal calc(int liko)
         {
+            if (-liko < x0)
+                return 0;
             if (-liko < x1)
                 return a0 * (-liko) + b0;
             if (-liko < x2)
@@ -73,11 +80,19 @@ namespace Kzs
             }
         }
 
-        public void SetParams(float pMain, float pOverdued, float pThermit)
+        public void SetParams(
+            decimal x0, decimal y0, decimal x1, decimal y1, decimal x2, decimal y2,
+            decimal pMain, decimal pOverdued, decimal pThermit)
         {
             main = pMain;
             overdued = pOverdued;
             thermit = pThermit;
+            this.x0 = x0;
+            this.x1 = x1;
+            this.x2 = x2;
+
+            recalculateCoefs(x0, y0, x1, y1, x2, y2);
+
         }
     }
 }

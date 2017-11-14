@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblKoefOverdue = new System.Windows.Forms.Label();
             this.lblKoefMain = new System.Windows.Forms.Label();
             this.lblKoef064 = new System.Windows.Forms.Label();
@@ -43,15 +44,41 @@
             this.nudLiko = new System.Windows.Forms.NumericUpDown();
             this.chlbSkodai = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnExportCollected = new System.Windows.Forms.Button();
             this.btnRepaint = new System.Windows.Forms.Button();
             this.grbFiltrai = new System.Windows.Forms.GroupBox();
             this.chbNepagr = new System.Windows.Forms.CheckBox();
             this.grbKoeficientai = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabChart = new System.Windows.Forms.TabPage();
             this.pb = new System.Windows.Forms.PictureBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tabOptions = new System.Windows.Forms.TabPage();
+            this.btnChangeOutputFolder = new System.Windows.Forms.Button();
+            this.txbOutputFolder = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnChangeHelpDb = new System.Windows.Forms.Button();
+            this.txbHelperDbPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnChangeMainDb = new System.Windows.Forms.Button();
+            this.txbMainDbPath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnExportCollected = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nudX0 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nudY0 = new System.Windows.Forms.NumericUpDown();
+            this.nudX1 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.nudY1 = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nudX2 = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.nudY2 = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -62,8 +89,19 @@
             this.splitContainer1.SuspendLayout();
             this.grbFiltrai.SuspendLayout();
             this.grbKoeficientai.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
+            this.tabOptions.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblKoefOverdue
@@ -223,8 +261,9 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -237,17 +276,30 @@
             this.splitContainer1.Panel1.Controls.Add(this.grbKoeficientai);
             this.splitContainer1.Panel1.Controls.Add(this.dtpDatai);
             this.splitContainer1.Panel1.Controls.Add(this.lblDatai);
+            this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pb);
-            this.splitContainer1.Size = new System.Drawing.Size(1362, 590);
-            this.splitContainer1.SplitterDistance = 122;
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel2MinSize = 800;
+            this.splitContainer1.Size = new System.Drawing.Size(979, 614);
+            this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // btnExportCollected
+            // 
+            this.btnExportCollected.Enabled = false;
+            this.btnExportCollected.Location = new System.Drawing.Point(6, 518);
+            this.btnExportCollected.Name = "btnExportCollected";
+            this.btnExportCollected.Size = new System.Drawing.Size(106, 23);
+            this.btnExportCollected.TabIndex = 22;
+            this.btnExportCollected.Text = "Eksportuoti";
+            this.btnExportCollected.UseVisualStyleBackColor = true;
+            this.btnExportCollected.Click += new System.EventHandler(this.btnExportCollected_Click);
             // 
             // btnRepaint
             // 
-            this.btnRepaint.Location = new System.Drawing.Point(6, 8);
+            this.btnRepaint.Location = new System.Drawing.Point(4, 10);
             this.btnRepaint.Name = "btnRepaint";
             this.btnRepaint.Size = new System.Drawing.Size(105, 25);
             this.btnRepaint.TabIndex = 21;
@@ -298,30 +350,138 @@
             this.grbKoeficientai.TabStop = false;
             this.grbKoeficientai.Text = "Koeficientai";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabChart);
+            this.tabControl1.Controls.Add(this.tabOptions);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(855, 614);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabChart
+            // 
+            this.tabChart.Controls.Add(this.pb);
+            this.tabChart.Location = new System.Drawing.Point(4, 22);
+            this.tabChart.Name = "tabChart";
+            this.tabChart.Padding = new System.Windows.Forms.Padding(3);
+            this.tabChart.Size = new System.Drawing.Size(847, 588);
+            this.tabChart.TabIndex = 0;
+            this.tabChart.Text = "Suvirinimų tikrinimai";
+            this.tabChart.UseVisualStyleBackColor = true;
+            // 
             // pb
             // 
             this.pb.BackColor = System.Drawing.Color.Transparent;
             this.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb.Location = new System.Drawing.Point(0, 0);
+            this.pb.Location = new System.Drawing.Point(3, 3);
             this.pb.Name = "pb";
             this.pb.Padding = new System.Windows.Forms.Padding(5);
-            this.pb.Size = new System.Drawing.Size(1236, 590);
-            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pb.TabIndex = 0;
+            this.pb.Size = new System.Drawing.Size(841, 582);
+            this.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb.TabIndex = 1;
             this.pb.TabStop = false;
-            this.pb.Paint += new System.Windows.Forms.PaintEventHandler(this.pb_Paint);
-            this.pb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb_MouseDown);
-            //this.pb.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_MouseMove);
-            this.pb.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pb_MouseUp);
             // 
-            // menuStrip1
+            // tabOptions
             // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1362, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.tabOptions.Controls.Add(this.groupBox1);
+            this.tabOptions.Controls.Add(this.btnChangeOutputFolder);
+            this.tabOptions.Controls.Add(this.txbOutputFolder);
+            this.tabOptions.Controls.Add(this.label3);
+            this.tabOptions.Controls.Add(this.btnChangeHelpDb);
+            this.tabOptions.Controls.Add(this.txbHelperDbPath);
+            this.tabOptions.Controls.Add(this.label2);
+            this.tabOptions.Controls.Add(this.btnChangeMainDb);
+            this.tabOptions.Controls.Add(this.txbMainDbPath);
+            this.tabOptions.Controls.Add(this.label1);
+            this.tabOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabOptions.Name = "tabOptions";
+            this.tabOptions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOptions.Size = new System.Drawing.Size(847, 588);
+            this.tabOptions.TabIndex = 1;
+            this.tabOptions.Text = "Nustatymai";
+            this.tabOptions.UseVisualStyleBackColor = true;
+            // 
+            // btnChangeOutputFolder
+            // 
+            this.btnChangeOutputFolder.Location = new System.Drawing.Point(701, 92);
+            this.btnChangeOutputFolder.Name = "btnChangeOutputFolder";
+            this.btnChangeOutputFolder.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeOutputFolder.TabIndex = 8;
+            this.btnChangeOutputFolder.Text = "Keisti";
+            this.btnChangeOutputFolder.UseVisualStyleBackColor = true;
+            this.btnChangeOutputFolder.Click += new System.EventHandler(this.btnChangeOutputFolder_Click);
+            // 
+            // txbOutputFolder
+            // 
+            this.txbOutputFolder.Location = new System.Drawing.Point(98, 94);
+            this.txbOutputFolder.Name = "txbOutputFolder";
+            this.txbOutputFolder.Size = new System.Drawing.Size(597, 20);
+            this.txbOutputFolder.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Output Folder";
+            // 
+            // btnChangeHelpDb
+            // 
+            this.btnChangeHelpDb.Location = new System.Drawing.Point(701, 50);
+            this.btnChangeHelpDb.Name = "btnChangeHelpDb";
+            this.btnChangeHelpDb.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeHelpDb.TabIndex = 5;
+            this.btnChangeHelpDb.Text = "Keisti";
+            this.btnChangeHelpDb.UseVisualStyleBackColor = true;
+            this.btnChangeHelpDb.Click += new System.EventHandler(this.btnChangeHelpDb_Click);
+            // 
+            // txbHelperDbPath
+            // 
+            this.txbHelperDbPath.Location = new System.Drawing.Point(98, 52);
+            this.txbHelperDbPath.Name = "txbHelperDbPath";
+            this.txbHelperDbPath.Size = new System.Drawing.Size(597, 20);
+            this.txbHelperDbPath.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Pagalbinė DB";
+            // 
+            // btnChangeMainDb
+            // 
+            this.btnChangeMainDb.Location = new System.Drawing.Point(701, 11);
+            this.btnChangeMainDb.Name = "btnChangeMainDb";
+            this.btnChangeMainDb.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeMainDb.TabIndex = 2;
+            this.btnChangeMainDb.Text = "Keisti";
+            this.btnChangeMainDb.UseVisualStyleBackColor = true;
+            this.btnChangeMainDb.Click += new System.EventHandler(this.btnChangeMainDb_Click);
+            // 
+            // txbMainDbPath
+            // 
+            this.txbMainDbPath.Location = new System.Drawing.Point(98, 13);
+            this.txbMainDbPath.Name = "txbMainDbPath";
+            this.txbMainDbPath.Size = new System.Drawing.Size(597, 20);
+            this.txbMainDbPath.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Pagrindinė DB";
             // 
             // statusStrip1
             // 
@@ -329,7 +489,7 @@
             this.slblCollected});
             this.statusStrip1.Location = new System.Drawing.Point(0, 614);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1362, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(979, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -339,24 +499,174 @@
             this.slblCollected.Size = new System.Drawing.Size(0, 17);
             this.slblCollected.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnExportCollected
+            // openFileDialog1
             // 
-            this.btnExportCollected.Location = new System.Drawing.Point(6, 518);
-            this.btnExportCollected.Name = "btnExportCollected";
-            this.btnExportCollected.Size = new System.Drawing.Size(106, 23);
-            this.btnExportCollected.TabIndex = 22;
-            this.btnExportCollected.Text = "Eksportuoti";
-            this.btnExportCollected.UseVisualStyleBackColor = true;
-            this.btnExportCollected.Click += new System.EventHandler(this.btnExportCollected_Click);
+            this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.nudY2);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.nudX2);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.nudY1);
+            this.groupBox1.Controls.Add(this.nudX1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.nudY0);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.nudX0);
+            this.groupBox1.Location = new System.Drawing.Point(23, 136);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(753, 123);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Koeficientai";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "X0";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudX0
+            // 
+            this.nudX0.Location = new System.Drawing.Point(47, 19);
+            this.nudX0.Minimum = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            this.nudX0.Name = "nudX0";
+            this.nudX0.ReadOnly = true;
+            this.nudX0.Size = new System.Drawing.Size(51, 20);
+            this.nudX0.TabIndex = 2;
+            this.nudX0.Value = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Y0";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY0
+            // 
+            this.nudY0.Location = new System.Drawing.Point(47, 46);
+            this.nudY0.Name = "nudY0";
+            this.nudY0.ReadOnly = true;
+            this.nudY0.Size = new System.Drawing.Size(51, 20);
+            this.nudY0.TabIndex = 4;
+            // 
+            // nudX1
+            // 
+            this.nudX1.Location = new System.Drawing.Point(157, 19);
+            this.nudX1.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudX1.Minimum = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            this.nudX1.Name = "nudX1";
+            this.nudX1.Size = new System.Drawing.Size(51, 20);
+            this.nudX1.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(131, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Y1";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY1
+            // 
+            this.nudY1.Location = new System.Drawing.Point(157, 46);
+            this.nudY1.Name = "nudY1";
+            this.nudY1.Size = new System.Drawing.Size(51, 20);
+            this.nudY1.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(239, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(20, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "X2";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudX2
+            // 
+            this.nudX2.Location = new System.Drawing.Point(265, 19);
+            this.nudX2.Name = "nudX2";
+            this.nudX2.ReadOnly = true;
+            this.nudX2.Size = new System.Drawing.Size(51, 20);
+            this.nudX2.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(133, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(20, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "X1";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY2
+            // 
+            this.nudY2.Location = new System.Drawing.Point(265, 45);
+            this.nudY2.Name = "nudY2";
+            this.nudY2.Size = new System.Drawing.Size(51, 20);
+            this.nudY2.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(239, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Y2";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(333, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(414, 103);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 636);
+            this.ClientSize = new System.Drawing.Size(979, 636);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Name = "MainForm";
             this.Text = "Les Inspectables";
@@ -374,9 +684,23 @@
             this.grbFiltrai.PerformLayout();
             this.grbKoeficientai.ResumeLayout(false);
             this.grbKoeficientai.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabChart.ResumeLayout(false);
+            this.tabChart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
+            this.tabOptions.ResumeLayout(false);
+            this.tabOptions.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,8 +722,6 @@
         private System.Windows.Forms.Label lblKoefMain;
         private System.Windows.Forms.Label lblKoef064;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox pb;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button btnRepaint;
         private System.Windows.Forms.GroupBox grbFiltrai;
@@ -407,6 +729,34 @@
         private System.Windows.Forms.CheckBox chbNepagr;
         private System.Windows.Forms.ToolStripStatusLabel slblCollected;
         private System.Windows.Forms.Button btnExportCollected;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabChart;
+        private System.Windows.Forms.PictureBox pb;
+        private System.Windows.Forms.TabPage tabOptions;
+        private System.Windows.Forms.Button btnChangeOutputFolder;
+        private System.Windows.Forms.TextBox txbOutputFolder;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnChangeHelpDb;
+        private System.Windows.Forms.TextBox txbHelperDbPath;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnChangeMainDb;
+        private System.Windows.Forms.TextBox txbMainDbPath;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown nudY2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown nudX2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown nudY1;
+        private System.Windows.Forms.NumericUpDown nudX1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nudY0;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown nudX0;
     }
 }
 

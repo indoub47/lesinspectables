@@ -41,9 +41,11 @@ namespace Kzs
         private List<Stotis> stotys;
         private List<Iesmas> iesmai;
 
-        public AccessDbKoordCalculator()
+        private string connectionString;
+
+        public AccessDbKoordCalculator(string connectionString)
         {
-            // nothing for now
+            this.connectionString = connectionString;
         }
 
         public void Charge()
@@ -54,11 +56,8 @@ namespace Kzs
             // connect to db;
             // fill containers;
             // close db;
-            string connStr = string.Format(
-                Properties.Settings.Default.ConnectionString,
-                Properties.Settings.Default.OptionsDbFileName
-                );
-            using (OleDbConnection conn = new OleDbConnection(connStr))
+
+            using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
                 string stmStotys = Properties.Settings.Default.StmStotys;
                 string stmIesmai = Properties.Settings.Default.StmIesmai;
