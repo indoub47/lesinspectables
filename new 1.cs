@@ -9,6 +9,11 @@ using InteropExcel = Microsoft.Office.Interop.Excel;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
+i DONT NEED THIS ANYMORE
+
+I'm going to delete this
+
+
 
 private static void writeExcel(BackgroundWorker worker, DoWorkEventArgs e, ref int progressCounter, DateTime from, DateTime to)
         {
