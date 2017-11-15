@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblKoefOverdue = new System.Windows.Forms.Label();
             this.lblKoefMain = new System.Windows.Forms.Label();
             this.lblKoef064 = new System.Windows.Forms.Label();
@@ -53,6 +52,20 @@
             this.tabChart = new System.Windows.Forms.TabPage();
             this.pb = new System.Windows.Forms.PictureBox();
             this.tabOptions = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbxDangerParameters = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.nudY2 = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nudX2 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.nudY1 = new System.Windows.Forms.NumericUpDown();
+            this.nudX1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nudY0 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nudX0 = new System.Windows.Forms.NumericUpDown();
             this.btnChangeOutputFolder = new System.Windows.Forms.Button();
             this.txbOutputFolder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,20 +78,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.nudX0 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nudY0 = new System.Windows.Forms.NumericUpDown();
-            this.nudX1 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.nudY1 = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nudX2 = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.nudY2 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -93,15 +92,15 @@
             this.tabChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.tabOptions.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDangerParameters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblKoefOverdue
@@ -405,6 +404,164 @@
             this.tabOptions.Text = "Nustatymai";
             this.tabOptions.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pbxDangerParameters);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.nudY2);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.nudX2);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.nudY1);
+            this.groupBox1.Controls.Add(this.nudX1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.nudY0);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.nudX0);
+            this.groupBox1.Location = new System.Drawing.Point(23, 136);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(753, 123);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Koeficientai";
+            // 
+            // pbxDangerParameters
+            // 
+            this.pbxDangerParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbxDangerParameters.InitialImage = null;
+            this.pbxDangerParameters.Location = new System.Drawing.Point(333, 14);
+            this.pbxDangerParameters.Name = "pbxDangerParameters";
+            this.pbxDangerParameters.Size = new System.Drawing.Size(414, 103);
+            this.pbxDangerParameters.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxDangerParameters.TabIndex = 15;
+            this.pbxDangerParameters.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(239, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Y2";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(133, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(20, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "X1";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY2
+            // 
+            this.nudY2.Location = new System.Drawing.Point(265, 45);
+            this.nudY2.Name = "nudY2";
+            this.nudY2.Size = new System.Drawing.Size(51, 20);
+            this.nudY2.TabIndex = 12;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(239, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(20, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "X2";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudX2
+            // 
+            this.nudX2.Location = new System.Drawing.Point(265, 19);
+            this.nudX2.Name = "nudX2";
+            this.nudX2.ReadOnly = true;
+            this.nudX2.Size = new System.Drawing.Size(51, 20);
+            this.nudX2.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(131, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Y1";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY1
+            // 
+            this.nudY1.Location = new System.Drawing.Point(157, 46);
+            this.nudY1.Name = "nudY1";
+            this.nudY1.Size = new System.Drawing.Size(51, 20);
+            this.nudY1.TabIndex = 8;
+            // 
+            // nudX1
+            // 
+            this.nudX1.Location = new System.Drawing.Point(157, 19);
+            this.nudX1.Maximum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudX1.Minimum = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            this.nudX1.Name = "nudX1";
+            this.nudX1.Size = new System.Drawing.Size(51, 20);
+            this.nudX1.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Y0";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudY0
+            // 
+            this.nudY0.Location = new System.Drawing.Point(47, 46);
+            this.nudY0.Name = "nudY0";
+            this.nudY0.ReadOnly = true;
+            this.nudY0.Size = new System.Drawing.Size(51, 20);
+            this.nudY0.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "X0";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // nudX0
+            // 
+            this.nudX0.Location = new System.Drawing.Point(47, 19);
+            this.nudX0.Minimum = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            this.nudX0.Name = "nudX0";
+            this.nudX0.ReadOnly = true;
+            this.nudX0.Size = new System.Drawing.Size(51, 20);
+            this.nudX0.TabIndex = 2;
+            this.nudX0.Value = new decimal(new int[] {
+            183,
+            0,
+            0,
+            -2147483648});
+            // 
             // btnChangeOutputFolder
             // 
             this.btnChangeOutputFolder.Location = new System.Drawing.Point(701, 92);
@@ -503,163 +660,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.nudY2);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.nudX2);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.nudY1);
-            this.groupBox1.Controls.Add(this.nudX1);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.nudY0);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.nudX0);
-            this.groupBox1.Location = new System.Drawing.Point(23, 136);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(753, 123);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Koeficientai";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "X0";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // nudX0
-            // 
-            this.nudX0.Location = new System.Drawing.Point(47, 19);
-            this.nudX0.Minimum = new decimal(new int[] {
-            183,
-            0,
-            0,
-            -2147483648});
-            this.nudX0.Name = "nudX0";
-            this.nudX0.ReadOnly = true;
-            this.nudX0.Size = new System.Drawing.Size(51, 20);
-            this.nudX0.TabIndex = 2;
-            this.nudX0.Value = new decimal(new int[] {
-            183,
-            0,
-            0,
-            -2147483648});
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Y0";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // nudY0
-            // 
-            this.nudY0.Location = new System.Drawing.Point(47, 46);
-            this.nudY0.Name = "nudY0";
-            this.nudY0.ReadOnly = true;
-            this.nudY0.Size = new System.Drawing.Size(51, 20);
-            this.nudY0.TabIndex = 4;
-            // 
-            // nudX1
-            // 
-            this.nudX1.Location = new System.Drawing.Point(157, 19);
-            this.nudX1.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudX1.Minimum = new decimal(new int[] {
-            183,
-            0,
-            0,
-            -2147483648});
-            this.nudX1.Name = "nudX1";
-            this.nudX1.Size = new System.Drawing.Size(51, 20);
-            this.nudX1.TabIndex = 6;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(131, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Y1";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // nudY1
-            // 
-            this.nudY1.Location = new System.Drawing.Point(157, 46);
-            this.nudY1.Name = "nudY1";
-            this.nudY1.Size = new System.Drawing.Size(51, 20);
-            this.nudY1.TabIndex = 8;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(239, 23);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "X2";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // nudX2
-            // 
-            this.nudX2.Location = new System.Drawing.Point(265, 19);
-            this.nudX2.Name = "nudX2";
-            this.nudX2.ReadOnly = true;
-            this.nudX2.Size = new System.Drawing.Size(51, 20);
-            this.nudX2.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(133, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(20, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "X1";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // nudY2
-            // 
-            this.nudY2.Location = new System.Drawing.Point(265, 45);
-            this.nudY2.Name = "nudY2";
-            this.nudY2.Size = new System.Drawing.Size(51, 20);
-            this.nudY2.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(239, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Y2";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(333, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(414, 103);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -690,17 +690,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.tabOptions.ResumeLayout(false);
             this.tabOptions.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDangerParameters)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudY0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudX0)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -744,7 +744,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxDangerParameters;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nudY2;

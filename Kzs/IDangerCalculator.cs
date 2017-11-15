@@ -4,7 +4,7 @@ namespace Kzs
     public interface IDangerCalculator
     {
         void BatchCalculate(IEnumerable<Inspectable> insps);
-        void SetParams(decimal x0, decimal y0, decimal x1, decimal y1, decimal x2, decimal y2,
-            decimal paramMain, decimal paramOverdued, decimal paramThermit);
+        void SetParams(int x0, int y0, int x1, int y1, int x2, int y2,
+            int paramMain, int paramOverdued, int paramThermit);
     }
 }

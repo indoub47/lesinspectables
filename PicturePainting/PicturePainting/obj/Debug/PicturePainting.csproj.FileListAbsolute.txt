@@ -1,0 +1,10 @@
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\bin\Debug\PicturePainting.exe.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\bin\Debug\PicturePainting.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\bin\Debug\PicturePainting.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.Form1.resources
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.Properties.Resources.resources
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.csproj.GenerateResource.Cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.exe
+C:\Users\pc\Documents\Visual Studio 2017\Projects\PicturePainting\PicturePainting\obj\Debug\PicturePainting.pdb

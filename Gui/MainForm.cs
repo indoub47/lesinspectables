@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Kzs;
 using Kzs.OutputClasses;
 using System.Drawing.Drawing2D;
+using Gui.Properties;
 
 namespace Gui
 {
@@ -29,6 +30,8 @@ namespace Gui
         InspectableFactory inspFactory;
         IDangerCalculator dangerCalculator;
         Grouper grouper;
+        IInspectableOutputter outputter;
+        PicturePainter paramPainter;
 
         List<Inspectable> insps = new List<Inspectable>();
         List<Grouper.Grouped> unfilteredRecs;
@@ -41,10 +44,7 @@ namespace Gui
         int maxUnfiltered;
         int countUnfiltered;
         int maxFiltered;
-        int countFiltered;
-
-
-        IInspectableOutputter outputter;
+        int countFiltered;        
 
         float strokePart;
         float gapPart;
@@ -52,6 +52,7 @@ namespace Gui
         float unfilteredChartPart;
         float maxStrokeWidth;
         float xAxisHeight;
+        
 
         public MainForm()
         {
@@ -64,31 +65,103 @@ namespace Gui
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            populateSettings();
+            // Settings - to controls
+            txbHelperDbPath.Text = Settings.Default.OptionsDbFileName;
+            txbMainDbPath.Text = Settings.Default.MainDbFileName;
+            txbOutputFolder.Text = Settings.Default.OutputDir;
 
-            strokePart = Properties.Settings.Default.StrokePart;
-            gapPart = 1 - strokePart;
-            unfilteredChartPart = Properties.Settings.Default.UnfilteredPart;
-            filteredChartPart = 1 - unfilteredChartPart;
-            maxStrokeWidth = Properties.Settings.Default.MaxStrokeWidht;
-            xAxisHeight = Properties.Settings.Default.AxisHeight;
+            nudX0.Value = koefX0 = Settings.Default.koefX0;
+            nudY0.Value = koefY0 = Settings.Default.koefY0;
+            nudX1.Value = koefX1 = Settings.Default.koefX1;
+            nudY1.Value = koefY1 = Settings.Default.koefY1;
+            nudX2.Value = koefX2 = Settings.Default.koefX2;
+            nudY2.Value = koefY2 = Settings.Default.koefY2;
+            nudKoefMain.Value = koefMain = Settings.Default.CoefMain;
+            nudKoefOverdue.Value = koefOverdue = Settings.Default.CoefOverdued;
+            nudKoef064.Value = koef064 = Settings.Default.CoefThermit;
+
+            dtpDatai.Value = date = DateTime.Now;
+            skodaiFilters = Properties.Settings.Default.Skodai.ToList();
+            skodaiFilters.ForEach(x => chlbSkodai.Items.Add(x));
+            for (int i = 0; i < chlbSkodai.Items.Count; i++)
+            {
+                chlbSkodai.SetItemChecked(i, true);
+            }
+
+            linijosFilters = Properties.Settings.Default.Linijos.ToList();
+            linijosFilters.ForEach(x => chlbLinijos.Items.Add(x));
+            for (int i = 0; i < chlbLinijos.Items.Count; i++)
+            {
+                chlbLinijos.SetItemChecked(i, true);
+            }
+
+            chbNepagr.Checked = true;
+
+            nudLiko.Value = nudLiko.Maximum;
+            // end of Settings to controls
 
 
-            chargeInspManager();
-            getInspectables(date);
+            // setup Inspectables Factory
+            mapping = Settings.Default.Mapping;
+
+            recordFetcher = new RecordFetcher(
+                string.Format(
+                    Settings.Default.ConnectionString,
+                    Settings.Default.MainDbFileName));
+
+            dangerCalculator = new DangerCalculator();
             dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+
+            IVkodasFactory vkodasFactory = new VkodasFactory(mapping);
+
+            IKoordCalculator koordCalculator = new AccessDbKoordCalculator(
+                string.Format(
+                    Settings.Default.ConnectionString,
+                    Settings.Default.OptionsDbFileName));
+            koordCalculator.Charge();
+
+            grouper = new Grouper();
+
+            inspFactory = new InspectableFactory(date, vkodasFactory, koordCalculator, mapping);
+            // end of Setup Inspectable Factory
+
+
+            // Parameters for main chart painting
+            strokePart = Settings.Default.StrokePart;            
+            unfilteredChartPart = Settings.Default.UnfilteredPart;
+            filteredChartPart = 1 - unfilteredChartPart;
+            maxStrokeWidth = Settings.Default.MaxStrokeWidht;
+            xAxisHeight = Settings.Default.AxisHeight;
+            // end of Parameters for main chart painting
+
+            // Liko-picture painter
+            paramPainter = new PicturePainter(
+                new PointF(koefX0, koefY0), 
+                new PointF(koefX1, koefY1), 
+                new PointF(koefX2, koefY2));
+            // end of Liko-picture painter            
+
+            // Load groupped Inspectable lists
+            getInspectables(date);
             dangerCalculator.BatchCalculate(insps);
             grouper.ClearFilterMethods();
             unfilteredRecs = grouper.Group(insps).ToList();
             setFilters();
             filteredRecs = grouper.Group(insps).ToList();
             findMaxCount();
+            // end of Load groupped Inspectable lists
 
+
+            nudX1.ValueChanged += new EventHandler(this.nudX1_ValueChanged);
+            nudY1.ValueChanged += new EventHandler(this.nudY1_ValueChanged);
+            nudY2.ValueChanged += new EventHandler(this.nudY2_ValueChanged);
             pb.MouseDown += pb_MouseDown;
             pb.MouseMove += pb_MouseMove;
             pb.MouseUp += pb_MouseUp;
-
             pb.Paint += pb_Paint;
+            pbxDangerParameters.Paint += paramPainter.picBox_Paint;
+
+            // paint
             pb.Invalidate();
         }
 
@@ -149,63 +222,15 @@ namespace Gui
             }
         }
 
-        private void chargeInspManager()
-        {
-            //date = Convert.ToDateTime(Properties.Settings.Default.Date);
-            mapping = Properties.Settings.Default.Mapping;
-            string mainDbConnString = string.Format(
-                Properties.Settings.Default.ConnectionString,
-                Properties.Settings.Default.MainDbFileName);
-            recordFetcher = new RecordFetcher(mainDbConnString);
-            dangerCalculator = new DangerCalculator();
-            IVkodasFactory vkodasFactory = new VkodasFactory(mapping);
-            string optionsDbConnString = string.Format(
-                Properties.Settings.Default.ConnectionString,
-                Properties.Settings.Default.OptionsDbFileName
-                );
-            IKoordCalculator koordCalculator = new AccessDbKoordCalculator(optionsDbConnString);
-            koordCalculator.Charge();
-            grouper = new Grouper();
-            inspFactory = new InspectableFactory(date, vkodasFactory, koordCalculator, mapping);
-        }
-
-        private void nudKoef064_ValueChanged(object sender, EventArgs e)
-        {
-            coefHasChanged = true;
-        }
-
-        private void nudKoefMain_ValueChanged(object sender, EventArgs e)
-        {
-            coefHasChanged = true;
-        }
-
-        private void nudKoefOverdue_ValueChanged(object sender, EventArgs e)
-        {
-            coefHasChanged = true;
-        }
-
         private void pb_Paint(object sender, PaintEventArgs e)
         {
+            float pbWidth = pb.Width;
             base.OnPaint(e);
-            float imageWidth = pb.Size.Width * 1.0f;
-            float imageHeight = pb.Size.Height * 1.0f;
+            float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
+            float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;
 
-
-            float fChartHeight = imageHeight * filteredChartPart - xAxisHeight;
-            float unfChartHeight = imageHeight * unfilteredChartPart - xAxisHeight;
-            float fY0 = fChartHeight;
-            float unfY0 = imageHeight - xAxisHeight;
-
-            float fKmWidth = imageWidth / countFiltered;
-            float fStrokeW = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
-
-            float unfKmWidth = imageWidth * 1.0f / countUnfiltered;
-            float unfStrokeW = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
-
-
-            Bitmap DrawArea = new Bitmap(pb.Size.Width, pb.Size.Height);
-            pb.Image = DrawArea;
-            Graphics g = Graphics.FromImage(DrawArea);
+            float fKmWidth = pbWidth / countFiltered;
+            float unfKmWidth = pbWidth / countUnfiltered;
 
             Pen greenPen = new Pen(Brushes.Green);
             Pen redPen = new Pen(Brushes.Red);
@@ -226,23 +251,21 @@ namespace Gui
             linijaFormat.Alignment = StringAlignment.Near;
 
 
-            redPen.Width = greenPen.Width = fStrokeW;
-            drawChart(g, filteredRecs, redPen, greenPen, axisPen, fKmWidth,
-                fY0,
-                fChartHeight / maxFiltered, imageWidth, 
+            redPen.Width = greenPen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
+            drawChart(filteredRecs,
+                pbWidth / countFiltered,
+                fChartHeight,
+                fChartHeight / maxFiltered,
                 fChartHeight, 
-                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2,
-                kmFont, kmBrush, kmFormat,
-                linijaFont, linijaBrush, linijaFormat);
+                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
 
-            redPen.Width = greenPen.Width = unfStrokeW;
-            drawChart(g, unfilteredRecs, redPen, greenPen, axisPen, unfKmWidth,
-                unfY0,
-                unfChartHeight / maxUnfiltered, imageWidth, 
+            redPen.Width = greenPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
+            drawChart(unfilteredRecs,
+                pbWidth / countUnfiltered,
+                e.ClipRectangle.Height - xAxisHeight,
+                unfChartHeight / maxUnfiltered,
                 unfChartHeight,
-                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2,
-                kmFont, kmBrush, kmFormat,
-                linijaFont, linijaBrush, linijaFormat);
+                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
 
             axisPen.Dispose();
             greenPen.Dispose();
@@ -254,85 +277,55 @@ namespace Gui
             linijaFont.Dispose();
             linijaBrush.Dispose();
             linijaFormat.Dispose();
-            g.Dispose();
-        }
 
-        private void drawChart(
-            Graphics g, IEnumerable<Grouper.Grouped> grouped,
-            Pen redPen, Pen greenPen, Pen axisPen, float kmWidth,
-            float chartY0, float scale, float imgWidth, float chartHeight,
-            float smallestTickLength, float smallTickLength, float bigTickLength,
-            Font kmFont, SolidBrush kmBrush, StringFormat kmFormat,
-            Font linijaFont, SolidBrush linijaBrush, StringFormat linijaFormat)
-        {
-
-            g.DrawLine(axisPen, 0, chartY0, imgWidth, chartY0);
-            Pen currentPen;
-            float x = 0;
-            foreach (var lin in grouped)
+            void drawChart(
+            IEnumerable<Grouper.Grouped> grouped, 
+            float kmWidth,
+            float chartY0, 
+            float scale, 
+            float chartHeight,
+            float smallestTickLength, float smallTickLength, float bigTickLength)
             {
-                g.DrawLine(axisPen, x, chartY0, x, chartY0 - chartHeight + 20);
-                g.DrawString(lin.Linija, linijaFont, linijaBrush, x, chartY0 - chartHeight + 30, linijaFormat);
-                foreach (var km in lin.Kms)
+                e.Graphics.DrawLine(axisPen, 0, chartY0, pbWidth, chartY0);
+                Pen currentPen;
+                float x = 0;
+                foreach (var lin in grouped)
                 {
-                    currentPen = km.ContainsOverdued ? redPen : greenPen;
-                    km.Y1 = chartY0 - km.KmDanger * scale;
-                    km.X = x;
-                    km.Y0 = chartY0;                   
+                    e.Graphics.DrawLine(axisPen, x, chartY0, x, chartY0 - chartHeight + 20);
+                    e.Graphics.DrawString(lin.Linija, linijaFont, linijaBrush, x, chartY0 - chartHeight + 30, linijaFormat);
+                    foreach (var km in lin.Kms)
+                    {
+                        currentPen = km.ContainsOverdued ? redPen : greenPen;
+                        km.Y1 = chartY0 - km.KmDanger * scale;
+                        km.X = x;
+                        km.Y0 = chartY0;
 
-                    g.DrawLine(currentPen, x, km.Y0, x, km.Y1);
+                        e.Graphics.DrawLine(currentPen, x, km.Y0, x, km.Y1);
 
-                    if (km.Km % 10 == 0)
-                    {
-                        g.DrawLine(axisPen, x, chartY0, x, chartY0 + bigTickLength);
-                    }
-                    else if (km.Km % 5 == 0)
-                    {
-                        g.DrawLine(axisPen, x, chartY0, x, chartY0 + smallTickLength);
-                    }
-                    else
-                    {
-                        g.DrawLine(axisPen, x, chartY0, x, chartY0 + smallestTickLength);
+                        if (km.Km % 10 == 0)
+                        {
+                            e.Graphics.DrawLine(axisPen, x, chartY0, x, chartY0 + bigTickLength);
+                        }
+                        else if (km.Km % 5 == 0)
+                        {
+                            e.Graphics.DrawLine(axisPen, x, chartY0, x, chartY0 + smallTickLength);
+                        }
+                        else
+                        {
+                            e.Graphics.DrawLine(axisPen, x, chartY0, x, chartY0 + smallestTickLength);
+                        }
+
+                        if (km.Km % 20 == 0)
+                        {
+                            e.Graphics.DrawString(km.Km.ToString(), kmFont, kmBrush, x, chartY0 + smallTickLength, kmFormat);
+                        }
+                        x = x + kmWidth;
                     }
 
-                    if (km.Km % 20 == 0)
-                    {
-                        g.DrawString(km.Km.ToString(), kmFont, kmBrush, x, chartY0 + smallTickLength, kmFormat);
-                    }
-                    x = x + kmWidth;
                 }
-
-            }
-        }
-
-        private void btnRepaint_Click(object sender, EventArgs e)
-        {
-            if (dtpDatai.Value.Date != date.Date)
-            {
-                coefHasChanged = true; // meluojama, kad priversti perskaičiuoti danger
-                // perkonstruoti viską iš naujo
-                date = dtpDatai.Value;
-                inspFactory.ChangeDate(date);
-                getInspectables(date);
             }
 
-            if (coefHasChanged)
-            {
-                dangerCalculator.SetParams(
-                    nudX0.Value, nudY0.Value,
-                    nudX1.Value, nudY1.Value,
-                    nudX2.Value, nudY2.Value,
-                    nudKoef064.Value, nudKoefMain.Value, nudKoefOverdue.Value);
-                dangerCalculator.BatchCalculate(insps);
-                coefHasChanged = false;
-                unfilteredRecs = grouper.Group(insps).ToList();
-            }
-            
-            setFilters();
-            filteredRecs = grouper.Group(insps).ToList();
-            findMaxCount();
-            pb.Invalidate();
-        }
+        }        
 
         private void writeCollectedStatus()
         {
@@ -342,7 +335,7 @@ namespace Gui
             statusStrip1.Refresh();
         }
 
-        private bool LinesIntersect(PointF mDown, float upX, float upY, float x, float y0, float y1)
+        private bool linesIntersect(PointF mDown, float upX, float upY, float x, float y0, float y1)
         {
             PointF CmP = new PointF(x - mDown.X, y0 - mDown.Y);
             PointF r = new PointF(upX - mDown.X, upY - mDown.Y);
@@ -376,7 +369,7 @@ namespace Gui
             {
                 foreach (var km in lin.Kms)
                 {
-                    if (LinesIntersect(mouseDown, upX, upY, km.X, km.Y0, km.Y1))
+                    if (linesIntersect(mouseDown, upX, upY, km.X, km.Y0, km.Y1))
                     {
                         if (onlyOverdued)
                         {
@@ -394,7 +387,6 @@ namespace Gui
             collected = collected.Distinct().ToList();
         }
 
-
         private void paintLine(object sender, PaintEventArgs e)
         {
             using (Pen pen = new Pen(Brushes.Black))
@@ -404,62 +396,6 @@ namespace Gui
             }
         }
 
-        private void pb_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseDown = mouseCurrent = e.Location;
-            pb.Paint += paintLine;
-            pb.MouseMove += pb_MouseMove;
-        }
         
-
-        private void pb_MouseMove(object sender, MouseEventArgs e)
-        {
-            mouseCurrent = e.Location;
-            pb.Invalidate();
-        }
-
-        private void pb_MouseUp(object sender, MouseEventArgs e)
-        {
-            pb.Paint -= paintLine;
-            pb.MouseMove -= pb_MouseMove;
-
-            pb.Invalidate();
-            if (!ModifierKeys.HasFlag(Keys.Control))
-            {
-                collected.Clear();
-            }
-
-            if (mouseDown.X > e.X)
-            {
-                collectIntersected(e.X, e.Y, true);
-            }
-            else
-            {
-                collectIntersected(e.X, e.Y, false);
-            }
-            writeCollectedStatus();
-
-            btnExportCollected.Enabled = collected.Count != 0;
-        }
-
-        private void btnExportCollected_Click(object sender, EventArgs e)
-        {
-            pb.Paint -= pb_Paint;
-            try
-            {
-                outputter.Output(collected, date);
-                MessageBox.Show($"Išsaugota {outputter.GetFileName()}");
-                collected.Clear();
-                btnExportCollected.Enabled = false;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                pb.Paint += pb_Paint;
-            }
-        }
     }
 }

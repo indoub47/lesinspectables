@@ -75,7 +75,7 @@
       <Value Profile="(Default)">SELECT nr, stotis, linija, km, pk, m FROM Iesmai ORDER BY nr, stotis</Value>
     </Setting>
     <Setting Name="LineKms" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">01;231;377;;17;55;148;;22;1;15;;23;1;86;;24;1;11</Value>
+      <Value Profile="(Default)">01;231;377;;17;53;148;;22;1;15;;23;1;86;;24;1;11</Value>
     </Setting>
   </Settings>
 </SettingsFile>

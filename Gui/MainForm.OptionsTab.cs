@@ -6,48 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gui.Properties;
 using System.IO;
+using System.Drawing;
 
 namespace Gui
 {
-    // Options
+    // Options tab
     partial class MainForm
     {
-        private void populateSettings()
-        {
-            txbHelperDbPath.Text = Settings.Default.OptionsDbFileName;
-            txbMainDbPath.Text = Settings.Default.MainDbFileName;
-            txbOutputFolder.Text = Settings.Default.OutputDir;
-
-            nudX0.Value = koefX0 = Settings.Default.koefX0;
-            nudY0.Value = koefY0 = Settings.Default.koefY0;
-            nudX1.Value = koefX1 = Settings.Default.koefX1;
-            nudY1.Value = koefY1 = Settings.Default.koefY1;
-            nudX2.Value = koefX2 = Settings.Default.koefX2;
-            nudY2.Value = koefY2 = Settings.Default.koefY2;
-            nudKoefMain.Value = koefMain = Settings.Default.CoefMain;
-            nudKoefOverdue.Value = koefOverdue = Settings.Default.CoefOverdued;
-            nudKoef064.Value = koef064 = Settings.Default.CoefThermit;
-
-            dtpDatai.Value = date = DateTime.Now;
-            skodaiFilters = Properties.Settings.Default.Skodai.ToList();
-            skodaiFilters.ForEach(x => chlbSkodai.Items.Add(x));
-            for (int i = 0; i < chlbSkodai.Items.Count; i++)
-            {
-                chlbSkodai.SetItemChecked(i, true);
-            }
-
-            linijosFilters = Properties.Settings.Default.Linijos.ToList();
-            linijosFilters.ForEach(x => chlbLinijos.Items.Add(x));
-            for (int i = 0; i < chlbLinijos.Items.Count; i++)
-            {
-                chlbLinijos.SetItemChecked(i, true);
-            }
-
-            chbNepagr.Checked = true;
-
-            nudLiko.Value = nudLiko.Maximum;            
-        }
-
         private void btnChangeMainDb_Click(object sender, EventArgs e)
         {
             setFile("MainDbFileName",
@@ -70,7 +35,48 @@ namespace Gui
             setFolder("OutputDir", txbOutputFolder);
         }
 
+        private void nudX1_ValueChanged(object sender, EventArgs e)
+        {
+            koefX1 = (int)nudX1.Value;
+            paramPainter.SetPoints(
+                new PointF(koefX0, koefY0),
+                new PointF(koefX1, koefY1),
+                new PointF(koefX2, koefY2));
+            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            dangerCalculator.BatchCalculate(insps);
+            Properties.Settings.Default.koefX1 = koefX1;
+            Properties.Settings.Default.Save();
+            pbxDangerParameters.Invalidate();
+        }
 
+        private void nudY1_ValueChanged(object sender, EventArgs e)
+        {
+            koefY1 = (int)nudY1.Value;
+            paramPainter.SetPoints(
+                new PointF(koefX0, koefY0),
+                new PointF(koefX1, koefY1),
+                new PointF(koefX2, koefY2));
+            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            dangerCalculator.BatchCalculate(insps);
+            Properties.Settings.Default.koefY1 = koefY1;
+            Properties.Settings.Default.Save();
+            pbxDangerParameters.Invalidate();
+        }
+
+        private void nudY2_ValueChanged(object sender, EventArgs e)
+        {
+            koefY2 = (int)nudY2.Value;
+            paramPainter.SetPoints(
+                new PointF(koefX0, koefY0),
+                new PointF(koefX1, koefY1),
+                new PointF(koefX2, koefY2));
+            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            dangerCalculator.BatchCalculate(insps);
+            Properties.Settings.Default.koefY2 = koefY2;
+            Properties.Settings.Default.Save();
+            pbxDangerParameters.Invalidate();
+        }
+        
         private void setFolder(string ofSetting, TextBox txb)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -92,8 +98,7 @@ namespace Gui
 
             fbd.Dispose();
         }
-
-
+        
         private void setFile(string pathSetting, TextBox txb, string title, string filter)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -118,6 +123,5 @@ namespace Gui
             }
             ofd.Dispose();
         }
-
     }
 }
