@@ -34,3 +34,12 @@ C:\Users\root\source\repos\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.R
 C:\Users\root\source\repos\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
 C:\Users\root\source\repos\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 C:\Users\root\source\repos\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
+C:\Users\pc\Desktop\lesinspectables\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\lesinspectables\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\lesinspectables\Kzs\bin\x64\Debug\Controller.dll.config
+C:\Users\pc\Desktop\lesinspectables\Kzs\bin\x64\Debug\Controller.dll
+C:\Users\pc\Desktop\lesinspectables\Kzs\bin\x64\Debug\Controller.pdb
+C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReference.cache
+C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
+C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb

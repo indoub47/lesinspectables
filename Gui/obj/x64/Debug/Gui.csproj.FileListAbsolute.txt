@@ -51,3 +51,18 @@ C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.Generate
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Gui.exe.config
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Gui.exe
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Gui.pdb
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Controller.dll
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Controller.pdb
+C:\Users\pc\Desktop\lesinspectables\Gui\bin\x64\Debug\Controller.dll.config
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.csprojResolveAssemblyReference.cache
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.MainForm.resources
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.Properties.Resources.resources
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.GenerateResource.Cache
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.exe
+C:\Users\pc\Desktop\lesinspectables\Gui\obj\x64\Debug\Gui.pdb

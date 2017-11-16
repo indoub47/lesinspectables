@@ -37,14 +37,21 @@ namespace Gui
                 collected.Clear();
             }
 
-            if (mouseDown.X > e.X)
-            {
-                collectIntersected(e.X, e.Y, true);
-            }
-            else
-            {
-                collectIntersected(e.X, e.Y, false);
-            }
+            // // Jeigu atkomentuoti, tai braukiant pele į priekį
+            // // parinktų visus, o braukiant atgal - tik pradelstus.
+            // // Bet atsisakiau to, nes tokiu atveju nepavyksta parinkti 
+            // // tų, kurie yra pirmajame arba paskutiniajame kilometre.
+            //if (mouseDown.X > e.X)
+            //{
+            //    collectIntersected(e.X, e.Y, true);
+            //}
+            //else
+            //{
+            //    collectIntersected(e.X, e.Y, false);
+            //}
+
+            collectIntersected(e.X, e.Y, false);
+
             writeCollectedStatus();
 
             btnExportCollected.Enabled = collected.Count != 0;

@@ -101,7 +101,7 @@ namespace Kzs
             return new Iesmas
             {
                 nr = Convert.ToInt32(reader["nr"]),
-                stotis = reader["stotis"].ToString(),
+                stotis = reader["stotis"] == null ? string.Empty : reader["stotis"].ToString(),
                 linija = reader["linija"].ToString(),
                 km = Convert.ToInt32(reader["km"]),
                 pk = Convert.ToInt32(reader["pk"]),
@@ -180,7 +180,16 @@ namespace Kzs
 
         private Tuple<string, int> lookupIesmai(ulong id, Vk vk)
         {
+            // ieško didelėje stotyje, kur nurodytas stoties kodas
             Iesmas iesm = iesmai.Find(x => x.nr == vk.Iesmas && x.stotis == vk.Linija);
+
+            // jeigu didelėje stotyje nerasta,
+            if (iesm == null)
+            {
+                // iesko mazoje stotyje, kur nurodyta linija ir km
+                iesm = iesmai.Find(x => x.stotis == string.Empty && x.nr == vk.Iesmas && x.linija == vk.Linija && x.km == vk.Km);
+            }
+
             if (iesm == null)
             {
                 return new Tuple<string, int>("", -1);

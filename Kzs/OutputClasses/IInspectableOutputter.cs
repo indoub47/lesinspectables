@@ -10,5 +10,6 @@ namespace Kzs.OutputClasses
     {
         void Output(IEnumerable<Inspectable>insps, DateTime forDate);
         string GetFileName();
+        void SetOutputDir(string outputDir);
     }
 }

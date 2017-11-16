@@ -93,6 +93,7 @@ namespace Gui
             {
                 Settings.Default[ofSetting] = fbd.SelectedPath;
                 txb.Text = fbd.SelectedPath;
+                outputter.SetOutputDir(fbd.SelectedPath);
                 Settings.Default.Save();
             }
 
@@ -120,6 +121,7 @@ namespace Gui
                 Settings.Default[pathSetting] = ofd.FileName;
                 txb.Text = ofd.FileName;
                 Settings.Default.Save();
+                MessageBox.Show("Kad DB pakeitimai įsigaliotų, reikia paleisti programą iš naujo.");
             }
             ofd.Dispose();
         }

@@ -47,7 +47,6 @@ namespace Gui
         int countFiltered;        
 
         float strokePart;
-        float gapPart;
         float filteredChartPart;
         float unfilteredChartPart;
         float maxStrokeWidth;
@@ -59,8 +58,8 @@ namespace Gui
             InitializeComponent();
             coefHasChanged = false;
             outputter = new CsvWriter(
-                Properties.Settings.Default.OutputDir, 
-                Properties.Settings.Default.OutputExelFName);
+                Settings.Default.OutputDir, 
+                Settings.Default.OutputExelFName);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -81,14 +80,14 @@ namespace Gui
             nudKoef064.Value = koef064 = Settings.Default.CoefThermit;
 
             dtpDatai.Value = date = DateTime.Now;
-            skodaiFilters = Properties.Settings.Default.Skodai.ToList();
+            skodaiFilters = Settings.Default.Skodai.ToList();
             skodaiFilters.ForEach(x => chlbSkodai.Items.Add(x));
             for (int i = 0; i < chlbSkodai.Items.Count; i++)
             {
                 chlbSkodai.SetItemChecked(i, true);
             }
 
-            linijosFilters = Properties.Settings.Default.Linijos.ToList();
+            linijosFilters = Settings.Default.Linijos.ToList();
             linijosFilters.ForEach(x => chlbLinijos.Items.Add(x));
             for (int i = 0; i < chlbLinijos.Items.Count; i++)
             {
@@ -391,11 +390,9 @@ namespace Gui
         {
             using (Pen pen = new Pen(Brushes.Black))
             {
-                pen.DashStyle = DashStyle.Dot;
+                pen.DashStyle = DashStyle.Dash;
                 e.Graphics.DrawLine(pen, mouseDown, mouseCurrent);
             }
-        }
-
-        
+        }        
     }
 }

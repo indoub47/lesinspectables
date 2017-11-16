@@ -94,7 +94,7 @@ namespace Kzs
             var grouped = insps.Where(And(filterMethods)).OrderBy(x => x.Linija).GroupBy(x1 => x1.Linija, (key, group) => new Grouped
             {
                 Linija = key,
-                Kms = group.GroupBy(x2 => x2.Vkodas.Km, (key1, group1) => new Grouped.KmInsps
+                Kms = group.GroupBy(x2 => (int)x2.Koord/1000, (key1, group1) => new Grouped.KmInsps
                 {
                     Km = key1,
                     Insps = group1.OrderBy(x3 => x3.Koord),

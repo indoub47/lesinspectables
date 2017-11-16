@@ -66,7 +66,7 @@ namespace Kzs.OutputClasses
             }
             catch (Exception ex)
             {
-                throw new Exception("new", ex);
+                throw ex;
             }            
         }
 
