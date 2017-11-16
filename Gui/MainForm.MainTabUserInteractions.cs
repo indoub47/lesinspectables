@@ -39,7 +39,7 @@ namespace Gui
                 {
                     foreach (var km in lin.Kms)
                     {
-                        km.Selected = false;
+                        km.POptions.Selected = false;
                     }
                 }
             }
@@ -65,7 +65,7 @@ namespace Gui
                 {
                     foreach(var km in lin.Kms)
                     {
-                        km.Selected = false;
+                        km.POptions.Selected = false;
                     }
                 }
             }

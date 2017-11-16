@@ -13,14 +13,18 @@ namespace Kzs
         {
             public class KmInsps
             {
+                public class PaintOptions
+                {
+                    public bool ContainsOverdued { get; set; } // reikalingas, kad pakeisti spalvą, kai pieš
+                    public float X { get; set; } // stulpelio koordinatė ekrane, suteiks; kai pieš
+                    public float Y0 { get; set; } // stulpelio apačios koordinatė ekrane, suteiks kai pieš
+                    public float Y1 { get; set; } // stulpelio viršaus koordinatė ekrane; suteiks, kai pieš
+                    public bool Selected { get; set; } // ar stulpelis yra parinktas; suteiks, kai parinks
+                }
                 public int Km { get; set; }
                 public IEnumerable<Inspectable> Insps { get; set; }
                 public int KmDanger { get; set; }
-                public bool ContainsOverdued { get; set; } // reikalingas, kad pakeisti spalvą, kai pieš
-                public float X { get; set; } // stulpelio koordinatė ekrane, suteiks; kai pieš
-                public float Y0 { get; set; } // stulpelio apačios koordinatė ekrane, suteiks kai pieš
-                public float Y1 { get; set; } // stulpelio viršaus koordinatė ekrane; suteiks, kai pieš
-                public bool Selected { get; set; } // ar stulpelis yra parinktas; suteiks, kai parinks
+                public PaintOptions POptions { get; set; }
 
                 // grąžina tuščia kilometrą 
                 public static KmInsps getEmpty(int km)
@@ -30,8 +34,7 @@ namespace Kzs
                         Km = km,
                         Insps = new List<Inspectable>(),
                         KmDanger = 0,
-                        ContainsOverdued = false,
-                        Selected = false
+                        POptions = new PaintOptions()
                     };
                 }
             }
@@ -94,12 +97,19 @@ namespace Kzs
             var grouped = insps.Where(And(filterMethods)).OrderBy(x => x.Linija).GroupBy(x1 => x1.Linija, (key, group) => new Grouped
             {
                 Linija = key,
-                Kms = group.GroupBy(x2 => (int)x2.Koord/1000, (key1, group1) => new Grouped.KmInsps
+                Kms = group.GroupBy(x2 => (int)x2.Koord / 1000, (key1, group1) => new Grouped.KmInsps
                 {
                     Km = key1,
                     Insps = group1.OrderBy(x3 => x3.Koord),
                     KmDanger = group1.Sum(x4 => x4.Danger),
-                    ContainsOverdued = group1.Any(x5 => x5.Liko < 0)
+                    POptions = new Grouped.KmInsps.PaintOptions
+                    {
+                        X = 0,
+                        Y0 = 0,
+                        Y1 = 0,
+                        Selected = false,
+                        ContainsOverdued = group1.Any(x5 => x5.Liko < 0)
+                    }
                 }).OrderBy(x6 => x6.Km)
             });
 

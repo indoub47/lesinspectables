@@ -294,11 +294,11 @@ namespace Gui
                     e.Graphics.DrawString(lin.Linija, linijaFont, linijaBrush, x, chartY0 - chartHeight + 30, linijaFormat);
                     foreach (var km in lin.Kms)
                     {
-                        if (km.Selected)
+                        if (km.POptions.Selected)
                         {
                             currentPen = orangePen;
                         }
-                        else if (km.ContainsOverdued)
+                        else if (km.POptions.ContainsOverdued)
                         {
                             currentPen = redPen;
                         }
@@ -307,11 +307,11 @@ namespace Gui
                             currentPen = greenPen;
                         }
                         
-                        km.Y1 = chartY0 - km.KmDanger * scale;
-                        km.X = x;
-                        km.Y0 = chartY0;
+                        km.POptions.Y1 = chartY0 - km.KmDanger * scale;
+                        km.POptions.X = x;
+                        km.POptions.Y0 = chartY0;
 
-                        e.Graphics.DrawLine(currentPen, x, km.Y0, x, km.Y1);
+                        e.Graphics.DrawLine(currentPen, x, km.POptions.Y0, x, km.POptions.Y1);
 
                         if (km.Km % 10 == 0)
                         {
@@ -380,10 +380,10 @@ namespace Gui
             {
                 foreach (var km in lin.Kms)
                 {
-                    if (linesIntersect(mouseDown, upX, upY, km.X, km.Y0, km.Y1))
+                    if (linesIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
                     {
                         collected.AddRange(km.Insps);
-                        km.Selected = true;
+                        km.POptions.Selected = true;
                     }
                 }
             }
