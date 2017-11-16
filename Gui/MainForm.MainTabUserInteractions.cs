@@ -35,22 +35,16 @@ namespace Gui
             if (!ModifierKeys.HasFlag(Keys.Control))
             {
                 collected.Clear();
+                foreach (var lin in filteredRecs)
+                {
+                    foreach (var km in lin.Kms)
+                    {
+                        km.Selected = false;
+                    }
+                }
             }
 
-            // // Jeigu atkomentuoti, tai braukiant pele į priekį
-            // // parinktų visus, o braukiant atgal - tik pradelstus.
-            // // Bet atsisakiau to, nes tokiu atveju nepavyksta parinkti 
-            // // tų, kurie yra pirmajame arba paskutiniajame kilometre.
-            //if (mouseDown.X > e.X)
-            //{
-            //    collectIntersected(e.X, e.Y, true);
-            //}
-            //else
-            //{
-            //    collectIntersected(e.X, e.Y, false);
-            //}
-
-            collectIntersected(e.X, e.Y, false);
+            collectIntersected(e.X, e.Y);
 
             writeCollectedStatus();
 
@@ -67,7 +61,15 @@ namespace Gui
                 collected.Clear();
                 btnExportCollected.Enabled = false;
                 slblCollected.Text += $". Išsaugota {outputter.GetFileName()}";
+                foreach(var lin in filteredRecs)
+                {
+                    foreach(var km in lin.Kms)
+                    {
+                        km.Selected = false;
+                    }
+                }
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -75,6 +77,7 @@ namespace Gui
             finally
             {
                 pb.Paint += pb_Paint;
+                pb.Invalidate();
             }
         }
         

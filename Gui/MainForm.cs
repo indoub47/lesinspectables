@@ -250,7 +250,7 @@ namespace Gui
             linijaFormat.Alignment = StringAlignment.Near;
 
 
-            redPen.Width = greenPen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
+            redPen.Width = greenPen.Width = orangePen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
             drawChart(filteredRecs,
                 pbWidth / countFiltered,
                 fChartHeight,
@@ -294,7 +294,19 @@ namespace Gui
                     e.Graphics.DrawString(lin.Linija, linijaFont, linijaBrush, x, chartY0 - chartHeight + 30, linijaFormat);
                     foreach (var km in lin.Kms)
                     {
-                        currentPen = km.ContainsOverdued ? redPen : greenPen;
+                        if (km.Selected)
+                        {
+                            currentPen = orangePen;
+                        }
+                        else if (km.ContainsOverdued)
+                        {
+                            currentPen = redPen;
+                        }
+                        else
+                        {
+                            currentPen = greenPen;
+                        }
+                        
                         km.Y1 = chartY0 - km.KmDanger * scale;
                         km.X = x;
                         km.Y0 = chartY0;
@@ -360,9 +372,9 @@ namespace Gui
             float u = CmPxr * rxsr;
 
             return (t >= 0f) && (t <= 1f) && (u >= 0f) && (u <= 1f);
-        }
+        }        
 
-        public void collectIntersected(float upX, float upY, bool onlyOverdued)
+        public void collectIntersected(float upX, float upY)
         {
             foreach (var lin in filteredRecs)
             {
@@ -370,14 +382,7 @@ namespace Gui
                 {
                     if (linesIntersect(mouseDown, upX, upY, km.X, km.Y0, km.Y1))
                     {
-                        if (onlyOverdued)
-                        {
-                            collected.AddRange(km.Insps.Where(x => x.Liko < 0));
-                        }
-                        else
-                        {
-                            collected.AddRange(km.Insps);
-                        }
+                        collected.AddRange(km.Insps);
                         km.Selected = true;
                     }
                 }
