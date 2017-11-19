@@ -42,10 +42,11 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefX1 = koefX1;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefX1 = koefX1;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
         }
 
@@ -56,10 +57,11 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefY1 = koefY1;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefY1 = koefY1;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
         }
 
@@ -70,10 +72,11 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefY2 = koefY2;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefY2 = koefY2;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
         }
         

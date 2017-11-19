@@ -43,3 +43,22 @@ C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.ResolveC
 C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
 C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 C:\Users\pc\Desktop\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\bin\x64\Debug\Controller.dll.config
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\bin\x64\Debug\Controller.dll
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\bin\x64\Debug\Controller.pdb
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReference.cache
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\obj\x64\Debug\Controller.dll
+C:\Users\pc\Desktop\lesinspectables-master\Kzs\obj\x64\Debug\Controller.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\bin\x64\Debug\DB IF-4.mdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\bin\x64\Debug\OptionsDb.accdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\bin\x64\Debug\Controller.dll.config
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\bin\x64\Debug\Controller.dll
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\bin\x64\Debug\Controller.pdb
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojResolveAssemblyReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReference.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
+C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb

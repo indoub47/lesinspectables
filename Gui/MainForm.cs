@@ -6,11 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using Kzs;
 using Kzs.OutputClasses;
 using System.Drawing.Drawing2D;
 using Gui.Properties;
+using System.IO;
 
 namespace Gui
 {
@@ -22,7 +24,7 @@ namespace Gui
         int koefX0, koefY0, koefX1, koefY1, koefX2, koefY2;
         int koefMain, koefOverdue, koef064;
 
-        bool coefHasChanged;
+        bool recalculateDanger;
         DateTime date;
         string[] mapping;
 
@@ -50,20 +52,15 @@ namespace Gui
         float filteredChartPart;
         float unfilteredChartPart;
         float maxStrokeWidth;
-        float xAxisHeight;
-        
+        float xAxisHeight;        
 
         public MainForm()
         {
             InitializeComponent();
-            coefHasChanged = false;
-            outputter = new CsvWriter(
-                Settings.Default.OutputDir, 
-                Settings.Default.OutputExelFName);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
+        {            
             // Settings - to controls
             txbHelperDbPath.Text = Settings.Default.OptionsDbFileName;
             txbMainDbPath.Text = Settings.Default.MainDbFileName;
@@ -99,6 +96,25 @@ namespace Gui
             nudLiko.Value = nudLiko.Maximum;
             // end of Settings to controls
 
+            if (!File.Exists(Properties.Settings.Default.MainDbFileName))
+            {
+                MessageBox.Show($"Suvirinimų duomenų bazės failas \"{Settings.Default.MainDbFileName}\" neegzistuoja.\nNurodykite suvirinimų duomenų bazės failą ir paleiskite programą iš naujo.",
+                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (!File.Exists(Properties.Settings.Default.OptionsDbFileName))
+            {
+                MessageBox.Show($"Pagalbinės duomenų bazės failas \"{Settings.Default.OptionsDbFileName}\" neegzistuoja.\nNurodykite pagalbinės duomenų bazės failą ir paleiskite programą iš naujo.",
+                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (!Directory.Exists(Settings.Default.OutputDir))
+            {
+                MessageBox.Show($"Nurodytas rezultatų išsaugojimo aplankas \"{Settings.Default.OptionsDbFileName}\" neegzistuoja.\nPrieš pradėdami dirbti, nustatykite egzistuojantį output aplanką.",
+                    "Essential folder not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             // setup Inspectables Factory
             mapping = Settings.Default.Mapping;
@@ -124,6 +140,20 @@ namespace Gui
             inspFactory = new InspectableFactory(date, vkodasFactory, koordCalculator, mapping);
             // end of Setup Inspectable Factory
 
+            // Create other components
+            outputter = new CsvWriter(
+                Settings.Default.OutputDir,
+                Settings.Default.OutputExelFName);
+
+            paramPainter = new PicturePainter(
+                new PointF(koefX0, koefY0), 
+                new PointF(koefX1, koefY1), 
+                new PointF(koefX2, koefY2));
+            // end of Create other components
+
+            // Form private fields
+            recalculateDanger = false;
+            // end of Form private fields
 
             // Parameters for main chart painting
             strokePart = Settings.Default.StrokePart;            
@@ -131,37 +161,19 @@ namespace Gui
             filteredChartPart = 1 - unfilteredChartPart;
             maxStrokeWidth = Settings.Default.MaxStrokeWidht;
             xAxisHeight = Settings.Default.AxisHeight;
-            // end of Parameters for main chart painting
+            // end of Parameters for main chart painting            
 
-            // Liko-picture painter
-            paramPainter = new PicturePainter(
-                new PointF(koefX0, koefY0), 
-                new PointF(koefX1, koefY1), 
-                new PointF(koefX2, koefY2));
-            // end of Liko-picture painter            
-
+            // backgroundwork
             // Load groupped Inspectable lists
-            getInspectables(date);
-            dangerCalculator.BatchCalculate(insps);
-            grouper.ClearFilterMethods();
-            unfilteredRecs = grouper.Group(insps).ToList();
-            setFilters();
-            filteredRecs = grouper.Group(insps).ToList();
-            findMaxCount();
-            // end of Load groupped Inspectable lists
+            // Attach event handlers to controls
+            // backgroundwork
+        }
 
-
-            nudX1.ValueChanged += new EventHandler(this.nudX1_ValueChanged);
-            nudY1.ValueChanged += new EventHandler(this.nudY1_ValueChanged);
-            nudY2.ValueChanged += new EventHandler(this.nudY2_ValueChanged);
-            pb.MouseDown += pb_MouseDown;
-            pb.MouseMove += pb_MouseMove;
-            pb.MouseUp += pb_MouseUp;
-            pb.Paint += pb_Paint;
-            pbxDangerParameters.Paint += paramPainter.picBox_Paint;
-
-            // paint
-            pb.Invalidate();
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            Application.UseWaitCursor = true;
+            splitContainer1.Panel1.Enabled = false;
+            bgWorker.RunWorkerAsync();
         }
 
         private void findMaxCount()
@@ -172,9 +184,103 @@ namespace Gui
             countFiltered = filteredRecs.Sum(x => x.Kms.Count());
         }
 
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // initial progress
+            bgWorker.ReportProgress(5);
+
+            getInspectables(date); //Thread.Sleep(1000);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                bgWorker.ReportProgress(Settings.Default.BgWRecordsFetchedValue);
+                return;
+            }
+
+            dangerCalculator.BatchCalculate(insps);// Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgWDangerCalculatedValue);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }  
+            
+            grouper.ClearFilterMethods(); //Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgwFilterMethodsCleared);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            unfilteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgwUnfilteredRecsGrouped);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            setFilters(); //Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgwFiltersSet);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            filteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgwFilteredRecsGrouped);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            findMaxCount();// Thread.Sleep(1000);
+            bgWorker.ReportProgress(Settings.Default.BgwMaxCountFound);
+            if (bgWorker.CancellationPending)
+            {
+                e.Cancel = false;
+            }
+        }
+
+        private void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+            progressBar.Update();
+        }
+
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show("Užkraunant resursus, įvyko klaida, tolesnis programos darbas negalimas.\nPrograma baigia darbą", "Thread aborted",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
+
+            // Completed normally
+            bgWorker.Dispose();
+            progressBar.Value = 0;
+            progressBar.Dispose();
+
+            nudX1.ValueChanged += new EventHandler(this.nudX1_ValueChanged);
+            nudY1.ValueChanged += new EventHandler(this.nudY1_ValueChanged);
+            nudY2.ValueChanged += new EventHandler(this.nudY2_ValueChanged);
+            pb.MouseDown += pb_MouseDown;
+            pb.MouseMove += pb_MouseMove;
+            pb.MouseUp += pb_MouseUp;
+            pb.Paint += pb_Paint;
+            pbxDangerParameters.Paint += paramPainter.picBox_Paint;
+            pb.Invalidate();
+            splitContainer1.Panel1.Enabled = true;
+            Application.UseWaitCursor = false;
+        }
+
         private void setFilters()
         {
-            grouper.ClearFilterMethods();
+            grouper.ClearFilterMethods();            
 
             for (int i = 0; i < linijosFilters.Count; i++)
             {
@@ -223,8 +329,8 @@ namespace Gui
 
         private void pb_Paint(object sender, PaintEventArgs e)
         {
-            float pbWidth = pb.Width;
             base.OnPaint(e);
+            float pbWidth = pb.Width;
             float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
             float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;
 

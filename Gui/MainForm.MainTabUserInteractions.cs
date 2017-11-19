@@ -83,16 +83,22 @@ namespace Gui
         
         private void btnRepaint_Click(object sender, EventArgs e)
         {
+            // Čia reikėtų padaryti atskirą metodą, paduoti jam backgroundworker
+            // ir nukelti viską į bgWorker
+            // Bet dabar tingiu, ir kol duomenų bazė lokali, užteks wait coursor
+
+            Application.UseWaitCursor = true;
+            splitContainer1.Panel1.Enabled = false;
+
             if (dtpDatai.Value.Date != date.Date)
             {
-                coefHasChanged = true; // meluojama, kad priversti perskaičiuoti danger
-                // perkonstruoti viską iš naujo
                 date = dtpDatai.Value;
                 inspFactory.ChangeDate(date);
                 getInspectables(date);
+                recalculateDanger = true;
             }
 
-            if (coefHasChanged)
+            if (recalculateDanger)
             {
                 dangerCalculator.SetParams(
                     (int)nudX0.Value, (int)nudY0.Value,
@@ -100,29 +106,33 @@ namespace Gui
                     (int)nudX2.Value, (int)nudY2.Value,
                     (int)nudKoef064.Value, (int)nudKoefMain.Value, (int)nudKoefOverdue.Value);
                 dangerCalculator.BatchCalculate(insps);
-                coefHasChanged = false;
+                recalculateDanger = false;
                 unfilteredRecs = grouper.Group(insps).ToList();
             }
 
             setFilters();
             filteredRecs = grouper.Group(insps).ToList();
             findMaxCount();
+
+            Application.UseWaitCursor = false;
+            splitContainer1.Panel1.Enabled = true;
+
             pb.Invalidate();
         }
                 
         private void nudKoef064_ValueChanged(object sender, EventArgs e)
         {
-            coefHasChanged = true;
+            recalculateDanger = true;
         }
 
         private void nudKoefMain_ValueChanged(object sender, EventArgs e)
         {
-            coefHasChanged = true;
+            recalculateDanger = true;
         }
 
         private void nudKoefOverdue_ValueChanged(object sender, EventArgs e)
         {
-            coefHasChanged = true;
+            recalculateDanger = true;
         }
     }
 }
