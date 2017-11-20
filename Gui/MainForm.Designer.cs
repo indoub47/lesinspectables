@@ -76,7 +76,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.bgWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -639,14 +638,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog";
             // 
-            // bgWorker
-            // 
-            this.bgWorker.WorkerReportsProgress = true;
-            this.bgWorker.WorkerSupportsCancellation = true;
-            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
-            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
-            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,7 +733,6 @@
         private System.Windows.Forms.NumericUpDown nudY0;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudX0;
-        private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.ProgressBar progressBar;
     }
 }

@@ -152,109 +152,23 @@ namespace Gui
             filteredChartPart = 1 - unfilteredChartPart;
             maxStrokeWidth = Settings.Default.MaxStrokeWidht;
             xAxisHeight = Settings.Default.AxisHeight;
-            // end of Parameters for main chart painting            
-
-            // backgroundwork
-            // Load groupped Inspectable lists
-            // Attach event handlers to controls
-            // backgroundwork
+            // end of Parameters for main chart painting  
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
             Application.UseWaitCursor = true;
             splitContainer1.Panel1.Enabled = false;
-            bgWorker.RunWorkerAsync();
-        }
 
-        private void findMaxCount()
-        {
-            maxUnfiltered = unfilteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
-            countUnfiltered = unfilteredRecs.Sum(x => x.Kms.Count());
-            maxFiltered = filteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
-            countFiltered = filteredRecs.Sum(x => x.Kms.Count());
-        }
-
-        private void bgWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // initial progress
-            bgWorker.ReportProgress(5);
-
+            // Load data
             getInspectables(date); //Thread.Sleep(1000);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                bgWorker.ReportProgress(Settings.Default.BgWRecordsFetchedValue);
-                return;
-            }
-
-            dangerCalculator.BatchCalculate(insps);// Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgWDangerCalculatedValue);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }  
-            
+            dangerCalculator.BatchCalculate(insps);// Thread.Sleep(1000);            
             grouper.ClearFilterMethods(); //Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgwFilterMethodsCleared);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }
-
             unfilteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgwUnfilteredRecsGrouped);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }
-
             setFilters(); //Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgwFiltersSet);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }
-
             filteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgwFilteredRecsGrouped);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }
-
             findMaxCount();// Thread.Sleep(1000);
-            bgWorker.ReportProgress(Settings.Default.BgwMaxCountFound);
-            if (bgWorker.CancellationPending)
-            {
-                e.Cancel = false;
-            }
-        }
-
-        private void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            progressBar.Value = e.ProgressPercentage;
-            progressBar.Update();
-        }
-
-        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                MessageBox.Show("Užkraunant resursus, įvyko klaida, tolesnis programos darbas negalimas.\nPrograma baigia darbą", "Thread aborted",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
-            }
-
-            // Completed normally
-            bgWorker.Dispose();
-            progressBar.Value = 0;
-            progressBar.Dispose();
+            // end of Load data
 
             nudY0.ValueChanged += new EventHandler(nudY0_ValueChanged);
             nudX1.ValueChanged += new EventHandler(nudX1_ValueChanged);
@@ -266,8 +180,17 @@ namespace Gui
             pb.Paint += pb_Paint;
             pbxDangerParameters.Paint += paramPainter.picBox_Paint;
             pb.Invalidate();
+
             splitContainer1.Panel1.Enabled = true;
             Application.UseWaitCursor = false;
+        }
+
+        private void findMaxCount()
+        {
+            maxUnfiltered = unfilteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
+            countUnfiltered = unfilteredRecs.Sum(x => x.Kms.Count());
+            maxFiltered = filteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
+            countFiltered = filteredRecs.Sum(x => x.Kms.Count());
         }
 
         private void setFilters()
