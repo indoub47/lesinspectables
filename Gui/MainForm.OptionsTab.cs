@@ -30,9 +30,21 @@ namespace Gui
 
         }
 
-        private void btnChangeOutputFolder_Click(object sender, EventArgs e)
+
+
+        private void nudY0_ValueChanged(object sender, EventArgs e)
         {
-            setFolder("OutputDir", txbOutputFolder);
+            koefY0 = (int)nudY0.Value;
+            paramPainter.SetPoints(
+                new PointF(koefX0, koefY0),
+                new PointF(koefX1, koefY1),
+                new PointF(koefX2, koefY2));
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefY0 = koefY0;
+            Settings.Default.Save();
+            recalculateDanger = true;
+            pbxDangerParameters.Invalidate();
         }
 
         private void nudX1_ValueChanged(object sender, EventArgs e)
@@ -42,10 +54,11 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefX1 = koefX1;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefX1 = koefX1;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
         }
 
@@ -56,10 +69,11 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefY1 = koefY1;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefY1 = koefY1;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
         }
 
@@ -70,34 +84,12 @@ namespace Gui
                 new PointF(koefX0, koefY0),
                 new PointF(koefX1, koefY1),
                 new PointF(koefX2, koefY2));
-            dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
-            dangerCalculator.BatchCalculate(insps);
-            Properties.Settings.Default.koefY2 = koefY2;
-            Properties.Settings.Default.Save();
+            //dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
+            //dangerCalculator.BatchCalculate(insps);
+            Settings.Default.koefY2 = koefY2;
+            Settings.Default.Save();
+            recalculateDanger = true;
             pbxDangerParameters.Invalidate();
-        }
-        
-        private void setFolder(string ofSetting, TextBox txb)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.ShowNewFolderButton = true;
-            if (Settings.Default[ofSetting] == null || !Directory.Exists((string)(Settings.Default[ofSetting])))
-            {
-                fbd.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else
-            {
-                fbd.SelectedPath = (string)(Settings.Default[ofSetting]);
-            }
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                Settings.Default[ofSetting] = fbd.SelectedPath;
-                txb.Text = fbd.SelectedPath;
-                outputter.SetOutputDir(fbd.SelectedPath);
-                Settings.Default.Save();
-            }
-
-            fbd.Dispose();
         }
         
         private void setFile(string pathSetting, TextBox txb, string title, string filter)

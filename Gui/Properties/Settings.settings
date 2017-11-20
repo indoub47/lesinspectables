@@ -5,41 +5,6 @@
     <Setting Name="Date" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2017-11-07</Value>
     </Setting>
-    <Setting Name="Mapping" Type="System.String[]" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;id&lt;/string&gt;
-  &lt;string&gt;linija&lt;/string&gt;
-  &lt;string&gt;kelias&lt;/string&gt;
-  &lt;string&gt;km&lt;/string&gt;
-  &lt;string&gt;pk&lt;/string&gt;
-  &lt;string&gt;m&lt;/string&gt;
-  &lt;string&gt;siule&lt;/string&gt;
-  &lt;string&gt;skodas&lt;/string&gt;
-  &lt;string&gt;suvdata&lt;/string&gt;
-  &lt;string&gt;data1&lt;/string&gt;
-  &lt;string&gt;data2&lt;/string&gt;
-  &lt;string&gt;data3&lt;/string&gt;
-  &lt;string&gt;data4&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="Linijos" Type="System.String[]" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;01&lt;/string&gt;
-  &lt;string&gt;17&lt;/string&gt;
-  &lt;string&gt;22&lt;/string&gt;
-  &lt;string&gt;23&lt;/string&gt;
-  &lt;string&gt;24&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="Skodai" Type="System.String[]" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;06.3&lt;/string&gt;
-  &lt;string&gt;06.4&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
     <Setting Name="CoefOverdued" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
@@ -96,6 +61,62 @@
     </Setting>
     <Setting Name="koefY2" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="Mapping" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;id&lt;/string&gt;
+  &lt;string&gt;linija&lt;/string&gt;
+  &lt;string&gt;kelias&lt;/string&gt;
+  &lt;string&gt;km&lt;/string&gt;
+  &lt;string&gt;pk&lt;/string&gt;
+  &lt;string&gt;m&lt;/string&gt;
+  &lt;string&gt;siule&lt;/string&gt;
+  &lt;string&gt;skodas&lt;/string&gt;
+  &lt;string&gt;suvdata&lt;/string&gt;
+  &lt;string&gt;data1&lt;/string&gt;
+  &lt;string&gt;data2&lt;/string&gt;
+  &lt;string&gt;data3&lt;/string&gt;
+  &lt;string&gt;data4&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Linijos" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;01&lt;/string&gt;
+  &lt;string&gt;17&lt;/string&gt;
+  &lt;string&gt;22&lt;/string&gt;
+  &lt;string&gt;23&lt;/string&gt;
+  &lt;string&gt;24&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Skodai" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;06.3&lt;/string&gt;
+  &lt;string&gt;06.4&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="BgWRecordsFetchedValue" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="BgWDangerCalculatedValue" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="BgwFilterMethodsCleared" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">55</Value>
+    </Setting>
+    <Setting Name="BgwUnfilteredRecsGrouped" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">75</Value>
+    </Setting>
+    <Setting Name="BgwFiltersSet" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">80</Value>
+    </Setting>
+    <Setting Name="BgwFilteredRecsGrouped" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">95</Value>
+    </Setting>
+    <Setting Name="BgwMaxCountFound" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
     </Setting>
   </Settings>
 </SettingsFile>

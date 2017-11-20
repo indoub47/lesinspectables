@@ -10,26 +10,8 @@ namespace Kzs.OutputClasses
 {
     public class CsvWriter : IInspectableOutputter
     {
-        private string outputDir;
-        private string outputFileNameFormat;
 
-        public CsvWriter(string outputDir, string outputFileNameFormat)
-        {
-            this.outputDir = outputDir;
-            this.outputFileNameFormat = outputFileNameFormat;
-        }
-
-        public void SetOutputDir(string outputDir)
-        {
-            this.outputDir = outputDir;
-        }
-
-        public void SetFnFormat(string fnFormat)
-        {
-            this.outputFileNameFormat = fnFormat;
-        }
-
-        public void Output(IEnumerable<Inspectable> insps, DateTime forDate)
+        public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string fileName)
         {
 
             StringBuilder sb = new StringBuilder();
@@ -62,17 +44,12 @@ namespace Kzs.OutputClasses
 
             try
             {
-                File.WriteAllText(GetFileName(), sb.ToString());
+                File.WriteAllText(fileName, sb.ToString());
             }
             catch (Exception ex)
             {
                 throw ex;
             }            
-        }
-
-        public string GetFileName()
-        {
-            return Path.Combine(outputDir, string.Format(outputFileNameFormat, DateTime.Now));
         }
     }
 }

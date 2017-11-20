@@ -43,6 +43,7 @@
             this.nudLiko = new System.Windows.Forms.NumericUpDown();
             this.chlbSkodai = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnExportCollected = new System.Windows.Forms.Button();
             this.btnRepaint = new System.Windows.Forms.Button();
             this.grbFiltrai = new System.Windows.Forms.GroupBox();
@@ -66,9 +67,6 @@
             this.nudY0 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.nudX0 = new System.Windows.Forms.NumericUpDown();
-            this.btnChangeOutputFolder = new System.Windows.Forms.Button();
-            this.txbOutputFolder = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnChangeHelpDb = new System.Windows.Forms.Button();
             this.txbHelperDbPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -78,6 +76,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -196,7 +195,7 @@
             // lblDatai
             // 
             this.lblDatai.AutoSize = true;
-            this.lblDatai.Location = new System.Drawing.Point(3, 38);
+            this.lblDatai.Location = new System.Drawing.Point(3, 59);
             this.lblDatai.Name = "lblDatai";
             this.lblDatai.Size = new System.Drawing.Size(32, 13);
             this.lblDatai.TabIndex = 6;
@@ -205,9 +204,9 @@
             // dtpDatai
             // 
             this.dtpDatai.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatai.Location = new System.Drawing.Point(6, 54);
+            this.dtpDatai.Location = new System.Drawing.Point(8, 75);
             this.dtpDatai.Name = "dtpDatai";
-            this.dtpDatai.Size = new System.Drawing.Size(83, 20);
+            this.dtpDatai.Size = new System.Drawing.Size(109, 20);
             this.dtpDatai.TabIndex = 5;
             // 
             // lblSkodai
@@ -269,6 +268,7 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.Controls.Add(this.progressBar);
             this.splitContainer1.Panel1.Controls.Add(this.btnExportCollected);
             this.splitContainer1.Panel1.Controls.Add(this.btnRepaint);
             this.splitContainer1.Panel1.Controls.Add(this.grbFiltrai);
@@ -285,12 +285,19 @@
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.TabIndex = 2;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(4, 3);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(113, 12);
+            this.progressBar.TabIndex = 5;
+            // 
             // btnExportCollected
             // 
             this.btnExportCollected.Enabled = false;
-            this.btnExportCollected.Location = new System.Drawing.Point(6, 518);
+            this.btnExportCollected.Location = new System.Drawing.Point(6, 539);
             this.btnExportCollected.Name = "btnExportCollected";
-            this.btnExportCollected.Size = new System.Drawing.Size(106, 23);
+            this.btnExportCollected.Size = new System.Drawing.Size(111, 23);
             this.btnExportCollected.TabIndex = 22;
             this.btnExportCollected.Text = "Eksportuoti";
             this.btnExportCollected.UseVisualStyleBackColor = true;
@@ -298,9 +305,9 @@
             // 
             // btnRepaint
             // 
-            this.btnRepaint.Location = new System.Drawing.Point(4, 10);
+            this.btnRepaint.Location = new System.Drawing.Point(4, 21);
             this.btnRepaint.Name = "btnRepaint";
-            this.btnRepaint.Size = new System.Drawing.Size(105, 25);
+            this.btnRepaint.Size = new System.Drawing.Size(113, 25);
             this.btnRepaint.TabIndex = 21;
             this.btnRepaint.Text = "Perbraižyti";
             this.btnRepaint.UseVisualStyleBackColor = true;
@@ -316,9 +323,9 @@
             this.grbFiltrai.Controls.Add(this.lblSkodai);
             this.grbFiltrai.Controls.Add(this.lblLiko);
             this.grbFiltrai.Controls.Add(this.chlbLinijos);
-            this.grbFiltrai.Location = new System.Drawing.Point(6, 84);
+            this.grbFiltrai.Location = new System.Drawing.Point(6, 105);
             this.grbFiltrai.Name = "grbFiltrai";
-            this.grbFiltrai.Size = new System.Drawing.Size(106, 272);
+            this.grbFiltrai.Size = new System.Drawing.Size(111, 272);
             this.grbFiltrai.TabIndex = 20;
             this.grbFiltrai.TabStop = false;
             this.grbFiltrai.Text = "Filtrai";
@@ -342,9 +349,9 @@
             this.grbKoeficientai.Controls.Add(this.lblKoefOverdue);
             this.grbKoeficientai.Controls.Add(this.lblKoefMain);
             this.grbKoeficientai.Controls.Add(this.lblKoef064);
-            this.grbKoeficientai.Location = new System.Drawing.Point(6, 368);
+            this.grbKoeficientai.Location = new System.Drawing.Point(6, 389);
             this.grbKoeficientai.Name = "grbKoeficientai";
-            this.grbKoeficientai.Size = new System.Drawing.Size(106, 144);
+            this.grbKoeficientai.Size = new System.Drawing.Size(111, 144);
             this.grbKoeficientai.TabIndex = 19;
             this.grbKoeficientai.TabStop = false;
             this.grbKoeficientai.Text = "Koeficientai";
@@ -387,9 +394,6 @@
             // tabOptions
             // 
             this.tabOptions.Controls.Add(this.groupBox1);
-            this.tabOptions.Controls.Add(this.btnChangeOutputFolder);
-            this.tabOptions.Controls.Add(this.txbOutputFolder);
-            this.tabOptions.Controls.Add(this.label3);
             this.tabOptions.Controls.Add(this.btnChangeHelpDb);
             this.tabOptions.Controls.Add(this.txbHelperDbPath);
             this.tabOptions.Controls.Add(this.label2);
@@ -419,7 +423,7 @@
             this.groupBox1.Controls.Add(this.nudY0);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.nudX0);
-            this.groupBox1.Location = new System.Drawing.Point(23, 136);
+            this.groupBox1.Location = new System.Drawing.Point(23, 98);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(753, 123);
             this.groupBox1.TabIndex = 10;
@@ -528,6 +532,7 @@
             // 
             // nudY0
             // 
+            this.nudY0.BackColor = System.Drawing.SystemColors.Window;
             this.nudY0.Location = new System.Drawing.Point(47, 46);
             this.nudY0.Name = "nudY0";
             this.nudY0.ReadOnly = true;
@@ -561,32 +566,6 @@
             0,
             0,
             -2147483648});
-            // 
-            // btnChangeOutputFolder
-            // 
-            this.btnChangeOutputFolder.Location = new System.Drawing.Point(701, 92);
-            this.btnChangeOutputFolder.Name = "btnChangeOutputFolder";
-            this.btnChangeOutputFolder.Size = new System.Drawing.Size(75, 23);
-            this.btnChangeOutputFolder.TabIndex = 8;
-            this.btnChangeOutputFolder.Text = "Keisti";
-            this.btnChangeOutputFolder.UseVisualStyleBackColor = true;
-            this.btnChangeOutputFolder.Click += new System.EventHandler(this.btnChangeOutputFolder_Click);
-            // 
-            // txbOutputFolder
-            // 
-            this.txbOutputFolder.Location = new System.Drawing.Point(98, 94);
-            this.txbOutputFolder.Name = "txbOutputFolder";
-            this.txbOutputFolder.Size = new System.Drawing.Size(597, 20);
-            this.txbOutputFolder.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Output Folder";
             // 
             // btnChangeHelpDb
             // 
@@ -660,6 +639,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog";
             // 
+            // bgWorker
+            // 
+            this.bgWorker.WorkerReportsProgress = true;
+            this.bgWorker.WorkerSupportsCancellation = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -671,6 +658,7 @@
             this.Name = "MainForm";
             this.Text = "Les Inspectables";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).EndInit();
@@ -733,9 +721,6 @@
         private System.Windows.Forms.TabPage tabChart;
         private System.Windows.Forms.PictureBox pb;
         private System.Windows.Forms.TabPage tabOptions;
-        private System.Windows.Forms.Button btnChangeOutputFolder;
-        private System.Windows.Forms.TextBox txbOutputFolder;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnChangeHelpDb;
         private System.Windows.Forms.TextBox txbHelperDbPath;
         private System.Windows.Forms.Label label2;
@@ -757,6 +742,8 @@
         private System.Windows.Forms.NumericUpDown nudY0;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudX0;
+        private System.ComponentModel.BackgroundWorker bgWorker;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

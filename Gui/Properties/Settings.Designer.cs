@@ -35,57 +35,6 @@ namespace Gui.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>id</string>
-  <string>linija</string>
-  <string>kelias</string>
-  <string>km</string>
-  <string>pk</string>
-  <string>m</string>
-  <string>siule</string>
-  <string>skodas</string>
-  <string>suvdata</string>
-  <string>data1</string>
-  <string>data2</string>
-  <string>data3</string>
-  <string>data4</string>
-</ArrayOfString>")]
-        public string[] Mapping {
-            get {
-                return ((string[])(this["Mapping"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>01</string>
-  <string>17</string>
-  <string>22</string>
-  <string>23</string>
-  <string>24</string>
-</ArrayOfString>")]
-        public string[] Linijos {
-            get {
-                return ((string[])(this["Linijos"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
-            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
-            "tring>06.3</string>\r\n  <string>06.4</string>\r\n</ArrayOfString>")]
-        public string[] Skodai {
-            get {
-                return ((string[])(this["Skodai"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
@@ -296,6 +245,120 @@ namespace Gui.Properties {
             }
             set {
                 this["koefY2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>id</string>
+  <string>linija</string>
+  <string>kelias</string>
+  <string>km</string>
+  <string>pk</string>
+  <string>m</string>
+  <string>siule</string>
+  <string>skodas</string>
+  <string>suvdata</string>
+  <string>data1</string>
+  <string>data2</string>
+  <string>data3</string>
+  <string>data4</string>
+</ArrayOfString>")]
+        public string[] Mapping {
+            get {
+                return ((string[])(this["Mapping"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>01</string>
+  <string>17</string>
+  <string>22</string>
+  <string>23</string>
+  <string>24</string>
+</ArrayOfString>")]
+        public string[] Linijos {
+            get {
+                return ((string[])(this["Linijos"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>06.3</string>\r\n  <string>06.4</string>\r\n</ArrayOfString>")]
+        public string[] Skodai {
+            get {
+                return ((string[])(this["Skodai"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int BgWRecordsFetchedValue {
+            get {
+                return ((int)(this["BgWRecordsFetchedValue"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int BgWDangerCalculatedValue {
+            get {
+                return ((int)(this["BgWDangerCalculatedValue"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55")]
+        public int BgwFilterMethodsCleared {
+            get {
+                return ((int)(this["BgwFilterMethodsCleared"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("75")]
+        public int BgwUnfilteredRecsGrouped {
+            get {
+                return ((int)(this["BgwUnfilteredRecsGrouped"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80")]
+        public int BgwFiltersSet {
+            get {
+                return ((int)(this["BgwFiltersSet"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("95")]
+        public int BgwFilteredRecsGrouped {
+            get {
+                return ((int)(this["BgwFilteredRecsGrouped"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int BgwMaxCountFound {
+            get {
+                return ((int)(this["BgwMaxCountFound"]));
             }
         }
     }

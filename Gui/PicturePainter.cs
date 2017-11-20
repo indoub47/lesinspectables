@@ -42,7 +42,17 @@ namespace Gui
         {
             //base.OnPaint(e);
             float xScale = e.ClipRectangle.Size.Width / (points.Last().X - minX);
-            float yScale = e.ClipRectangle.Size.Height / (points.Max(p => p.Y) - minY);
+            float deltaY = points.Max(p => p.Y) - minY;
+            float yShift = 0; // reikalingas tam, kad jeigu visų y vienodi, rodytų liniją per vidurį, o ne pačioje apačioje
+            float yScale = 0;
+            if (deltaY < 0.5f)
+            {
+                yShift = e.ClipRectangle.Size.Height / 2;
+            }
+            else
+            {
+                yScale = e.ClipRectangle.Size.Height / deltaY;
+            }
 
             Pen axisPen = new Pen(Color.Black, 1);
             Pen thePen = new Pen(Color.DarkBlue, 2);
@@ -52,10 +62,10 @@ namespace Gui
                 e.Graphics.DrawLine(axisPen, translate(new PointF(0, minY)), translate(new PointF(0, maxY)));
             }
 
-            PointF firstPt = translate(points.First());
+            PointF firstPt = translate(points.First(), yShift);
             for (int i = 0; i < points.Length-1; i++)
             {
-                PointF nextPt = translate(points[i + 1]);
+                PointF nextPt = translate(points[i + 1], yShift);
                 e.Graphics.DrawLine(thePen, firstPt, nextPt);
                 firstPt = nextPt;
             }
@@ -63,11 +73,11 @@ namespace Gui
             thePen.Dispose();
             axisPen.Dispose();
 
-            PointF translate(PointF point)
+            PointF translate(PointF point, float yshift = 0)
             {
                 return new PointF(
                     xScale * (point.X - minX),
-                    e.ClipRectangle.Size.Height - (point.Y - minY) * yScale);
+                    e.ClipRectangle.Size.Height - (point.Y - minY) * yScale - yshift);
             }
         }
     }
