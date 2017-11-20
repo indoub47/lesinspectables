@@ -118,7 +118,7 @@ namespace Gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DB IF-4.mdb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/root/Desktop/DB IF-4.mdb")]
         public string MainDbFileName {
             get {
                 return ((string)(this["MainDbFileName"]));

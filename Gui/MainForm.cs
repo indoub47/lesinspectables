@@ -164,9 +164,17 @@ namespace Gui
             getInspectables(date); //Thread.Sleep(1000);
             dangerCalculator.BatchCalculate(insps);// Thread.Sleep(1000);            
             grouper.ClearFilterMethods(); //Thread.Sleep(1000);
-            unfilteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
+            try
+            {
+                unfilteredRecs = grouper.Group(insps);// Thread.Sleep(1000);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Data processing error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             setFilters(); //Thread.Sleep(1000);
-            filteredRecs = grouper.Group(insps).ToList();// Thread.Sleep(1000);
+            filteredRecs = grouper.Group(insps);// Thread.Sleep(1000);
             findMaxCount();// Thread.Sleep(1000);
             // end of Load data
 

@@ -90,7 +90,7 @@ namespace Kzs
             }
         }
 
-        public IEnumerable<Grouped> Group(IEnumerable<Inspectable> insps)
+        public List<Grouped> Group(IEnumerable<Inspectable> insps)
         {
             // sugrupuoja inspectables į kilometrus
             // sugrupuoja kilometrus į linijas
@@ -113,10 +113,17 @@ namespace Kzs
                 }).OrderBy(x6 => x6.Km)
             });
 
-            // kiekvieną liniją papildo trūkstamais tuščiais kilometrais
             List<Grouped>groupedx = grouped.ToList();
+
+            // kiekvieną liniją papildo trūkstamais tuščiais kilometrais
             foreach (var lin in groupedx)
             {
+                if (!lineKms.ContainsKey(lin.Linija))
+                {
+                    // TODO: kažką daryti, jeigu nėra tokios linijos linijų sąraše
+                    throw new Exception($"Yra suvirinimų su nesuprantama linija {lin.Linija}");
+                }
+
                 lin.Complement(lineKms[lin.Linija].Item1, lineKms[lin.Linija].Item2);
             }
 
