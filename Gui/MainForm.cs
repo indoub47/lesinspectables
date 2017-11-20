@@ -24,6 +24,8 @@ namespace Gui
         int koefX0, koefY0, koefX1, koefY1, koefX2, koefY2;
         int koefMain, koefOverdue, koef064;
 
+        bool dbFileExists = true;
+
         bool recalculateDanger;
         DateTime date;
         string[] mapping;
@@ -65,6 +67,22 @@ namespace Gui
             txbHelperDbPath.Text = Settings.Default.OptionsDbFileName;
             txbMainDbPath.Text = Settings.Default.MainDbFileName;
 
+            if (!File.Exists(Properties.Settings.Default.MainDbFileName))
+            {
+                MessageBox.Show($"Suvirinimų duomenų bazės failas \"{Settings.Default.MainDbFileName}\" neegzistuoja.\nNurodykite suvirinimų duomenų bazės failą ir paleiskite programą iš naujo.",
+                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dbFileExists = false;
+                return;
+            }
+
+            if (!File.Exists(Properties.Settings.Default.OptionsDbFileName))
+            {
+                MessageBox.Show($"Pagalbinės duomenų bazės failas \"{Settings.Default.OptionsDbFileName}\" neegzistuoja.\nNurodykite pagalbinės duomenų bazės failą ir paleiskite programą iš naujo.",
+                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dbFileExists = false;
+                return;
+            }
+
             nudX0.Value = koefX0 = Settings.Default.koefX0;
             nudY0.Value = koefY0 = Settings.Default.koefY0;
             nudX1.Value = koefX1 = Settings.Default.koefX1;
@@ -94,20 +112,6 @@ namespace Gui
 
             nudLiko.Value = nudLiko.Maximum;
             // end of Settings to controls
-
-            if (!File.Exists(Properties.Settings.Default.MainDbFileName))
-            {
-                MessageBox.Show($"Suvirinimų duomenų bazės failas \"{Settings.Default.MainDbFileName}\" neegzistuoja.\nNurodykite suvirinimų duomenų bazės failą ir paleiskite programą iš naujo.",
-                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (!File.Exists(Properties.Settings.Default.OptionsDbFileName))
-            {
-                MessageBox.Show($"Pagalbinės duomenų bazės failas \"{Settings.Default.OptionsDbFileName}\" neegzistuoja.\nNurodykite pagalbinės duomenų bazės failą ir paleiskite programą iš naujo.",
-                    "Crucial file not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
 
             // setup Inspectables Factory
             mapping = Settings.Default.Mapping;
@@ -157,6 +161,8 @@ namespace Gui
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            if (!dbFileExists) return; // very clumsy solution
+
             Application.UseWaitCursor = true;
             splitContainer1.Panel1.Enabled = false;
 

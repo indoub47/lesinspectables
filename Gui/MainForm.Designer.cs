@@ -43,7 +43,6 @@
             this.nudLiko = new System.Windows.Forms.NumericUpDown();
             this.chlbSkodai = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnExportCollected = new System.Windows.Forms.Button();
             this.btnRepaint = new System.Windows.Forms.Button();
             this.grbFiltrai = new System.Windows.Forms.GroupBox();
@@ -194,7 +193,7 @@
             // lblDatai
             // 
             this.lblDatai.AutoSize = true;
-            this.lblDatai.Location = new System.Drawing.Point(3, 59);
+            this.lblDatai.Location = new System.Drawing.Point(3, 51);
             this.lblDatai.Name = "lblDatai";
             this.lblDatai.Size = new System.Drawing.Size(32, 13);
             this.lblDatai.TabIndex = 6;
@@ -203,7 +202,7 @@
             // dtpDatai
             // 
             this.dtpDatai.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatai.Location = new System.Drawing.Point(8, 75);
+            this.dtpDatai.Location = new System.Drawing.Point(8, 67);
             this.dtpDatai.Name = "dtpDatai";
             this.dtpDatai.Size = new System.Drawing.Size(109, 20);
             this.dtpDatai.TabIndex = 5;
@@ -267,7 +266,6 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel1.Controls.Add(this.progressBar);
             this.splitContainer1.Panel1.Controls.Add(this.btnExportCollected);
             this.splitContainer1.Panel1.Controls.Add(this.btnRepaint);
             this.splitContainer1.Panel1.Controls.Add(this.grbFiltrai);
@@ -284,17 +282,10 @@
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.TabIndex = 2;
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(4, 3);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(113, 12);
-            this.progressBar.TabIndex = 5;
-            // 
             // btnExportCollected
             // 
             this.btnExportCollected.Enabled = false;
-            this.btnExportCollected.Location = new System.Drawing.Point(6, 539);
+            this.btnExportCollected.Location = new System.Drawing.Point(6, 531);
             this.btnExportCollected.Name = "btnExportCollected";
             this.btnExportCollected.Size = new System.Drawing.Size(111, 23);
             this.btnExportCollected.TabIndex = 22;
@@ -304,7 +295,7 @@
             // 
             // btnRepaint
             // 
-            this.btnRepaint.Location = new System.Drawing.Point(4, 21);
+            this.btnRepaint.Location = new System.Drawing.Point(4, 13);
             this.btnRepaint.Name = "btnRepaint";
             this.btnRepaint.Size = new System.Drawing.Size(113, 25);
             this.btnRepaint.TabIndex = 21;
@@ -322,7 +313,7 @@
             this.grbFiltrai.Controls.Add(this.lblSkodai);
             this.grbFiltrai.Controls.Add(this.lblLiko);
             this.grbFiltrai.Controls.Add(this.chlbLinijos);
-            this.grbFiltrai.Location = new System.Drawing.Point(6, 105);
+            this.grbFiltrai.Location = new System.Drawing.Point(6, 97);
             this.grbFiltrai.Name = "grbFiltrai";
             this.grbFiltrai.Size = new System.Drawing.Size(111, 272);
             this.grbFiltrai.TabIndex = 20;
@@ -348,7 +339,7 @@
             this.grbKoeficientai.Controls.Add(this.lblKoefOverdue);
             this.grbKoeficientai.Controls.Add(this.lblKoefMain);
             this.grbKoeficientai.Controls.Add(this.lblKoef064);
-            this.grbKoeficientai.Location = new System.Drawing.Point(6, 389);
+            this.grbKoeficientai.Location = new System.Drawing.Point(6, 381);
             this.grbKoeficientai.Name = "grbKoeficientai";
             this.grbKoeficientai.Size = new System.Drawing.Size(111, 144);
             this.grbKoeficientai.TabIndex = 19;
@@ -733,7 +724,6 @@
         private System.Windows.Forms.NumericUpDown nudY0;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudX0;
-        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
