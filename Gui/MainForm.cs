@@ -151,9 +151,9 @@ namespace Gui
             // end of Load groupped Inspectable lists
 
 
-            nudX1.ValueChanged += new EventHandler(this.nudX1_ValueChanged);
-            nudY1.ValueChanged += new EventHandler(this.nudY1_ValueChanged);
-            nudY2.ValueChanged += new EventHandler(this.nudY2_ValueChanged);
+            nudX1.ValueChanged += new EventHandler(nudX1_ValueChanged);
+            nudY1.ValueChanged += new EventHandler(nudY1_ValueChanged);
+            nudY2.ValueChanged += new EventHandler(nudY2_ValueChanged);
             pb.MouseDown += pb_MouseDown;
             pb.MouseMove += pb_MouseMove;
             pb.MouseUp += pb_MouseUp;
