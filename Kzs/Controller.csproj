@@ -97,7 +97,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB IF-4.mdb">
+    <Content Include="DBx IF-4.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="OptionsDb.accdb">
