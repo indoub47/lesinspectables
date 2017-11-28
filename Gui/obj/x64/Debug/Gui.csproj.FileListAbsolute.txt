@@ -80,7 +80,6 @@ C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\De
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
-C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\DB IF-4.mdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\OptionsDb.accdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Gui.exe.config
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Gui.exe
@@ -110,3 +109,4 @@ D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
 D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\DBx IF-4.mdb
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\DBx IF-4.mdb

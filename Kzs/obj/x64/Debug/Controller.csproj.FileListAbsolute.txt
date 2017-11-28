@@ -52,7 +52,6 @@ C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\De
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
-C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\DB IF-4.mdb
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\OptionsDb.accdb
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\Controller.dll.config
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\Controller.dll
@@ -71,3 +70,4 @@ D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
 D:\dev\csh\lesinspectables\Kzs\bin\x64\Debug\DBx IF-4.mdb
+C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\DBx IF-4.mdb

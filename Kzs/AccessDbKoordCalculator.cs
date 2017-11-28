@@ -149,13 +149,20 @@ namespace Kzs
                 result = lookupIesmai(id, vk);
                 if (result.Item2 >= 0) return result;
             }
+            
+            if (vk.Pagrindinis)
+            {
+                result = lookupStotys(id, vk, true);
+            }
+            else
+            {
+                result = lookupStotys(id, vk, false);
+            }
 
-            // lookup stotys
-            result = lookupStotys(id, vk);
-                if (result.Item2 >= 0) return result;
+            if (result.Item2 >= 0) return result;
 
-            result = getPagrindinisKoord(id, vk);
-            return result;
+            // jeigu stoties nerado
+            return getPagrindinisKoord(id, vk);
         }
 
         private Tuple<string, int> getPagrindinisKoord(ulong id, Vk vk)
@@ -165,7 +172,7 @@ namespace Kzs
                 coord(vk.Km, vk.Pk, vk.M));
         }
 
-        private Tuple<string, int> lookupStotys(ulong id, Vk vk)
+        private Tuple<string, int> lookupStotys(ulong id, Vk vk, bool pagrindinis)
         {
             Stotis stotis = stotys.Find(x => x.stotis == vk.Linija);
             if (stotis == null)
@@ -173,9 +180,20 @@ namespace Kzs
                 return new Tuple<string, int>("", -1);
             }
 
-            return new Tuple<string, int>(
-                stotis.linija, 
-                coord(stotis.km, stotis.pk, stotis.m));
+            // pagrindinis - pagal vietos kodo km-pk-m
+            // nepagrindinis - pagal stoties km-pk-m
+            if (pagrindinis)
+            {
+                return new Tuple<string, int>(
+                    stotis.linija,
+                    coord(vk.Km, vk.Pk, vk.M));
+            }
+            else
+            {
+                return new Tuple<string, int>(
+                    stotis.linija,
+                    coord(stotis.km, stotis.pk, stotis.m));
+            }
         }
 
         private Tuple<string, int> lookupIesmai(ulong id, Vk vk)
