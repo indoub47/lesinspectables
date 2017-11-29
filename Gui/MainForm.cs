@@ -205,10 +205,26 @@ namespace Gui
 
         private void findMaxCount()
         {
-            maxUnfiltered = unfilteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
             countUnfiltered = unfilteredRecs.Sum(x => x.Kms.Count());
-            maxFiltered = filteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
+            if (countUnfiltered > 0)
+            {
+                maxUnfiltered = unfilteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
+            }
+            else
+            {
+                maxUnfiltered = -1;
+            }
+
             countFiltered = filteredRecs.Sum(x => x.Kms.Count());
+            if (countFiltered > 0)
+            {
+                maxFiltered = filteredRecs.Max(x => x.Kms.Max(y => y.KmDanger));
+            }
+            else
+            {
+                maxFiltered = -1;
+            }
+            
         }
 
         private void setFilters()
@@ -265,10 +281,7 @@ namespace Gui
             base.OnPaint(e);
             float pbWidth = pb.Width;
             float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
-            float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;
-
-            float fKmWidth = pbWidth / countFiltered;
-            float unfKmWidth = pbWidth / countUnfiltered;
+            float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;            
 
             Pen greenPen = new Pen(Brushes.Green);
             Pen redPen = new Pen(Brushes.Red);
@@ -287,23 +300,30 @@ namespace Gui
             StringFormat linijaFormat = new StringFormat();
             linijaFormat.LineAlignment = StringAlignment.Near;
             linijaFormat.Alignment = StringAlignment.Near;
-
-
-            redPen.Width = greenPen.Width = orangePen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
-            drawChart(filteredRecs,
-                pbWidth / countFiltered,
-                fChartHeight,
-                fChartHeight / maxFiltered,
-                fChartHeight, 
-                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
-
-            redPen.Width = greenPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
-            drawChart(unfilteredRecs,
-                pbWidth / countUnfiltered,
-                e.ClipRectangle.Height - xAxisHeight,
-                unfChartHeight / maxUnfiltered,
-                unfChartHeight,
-                xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
+            
+            if (maxFiltered != -1)
+            {
+                float fKmWidth = pbWidth / countFiltered;
+                redPen.Width = greenPen.Width = orangePen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
+                drawChart(filteredRecs,
+                    pbWidth / countFiltered,
+                    fChartHeight,
+                    fChartHeight / maxFiltered,
+                    fChartHeight,
+                    xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
+            }
+            
+            if (maxUnfiltered != -1)
+            {
+                float unfKmWidth = pbWidth / countUnfiltered;
+                redPen.Width = greenPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
+                drawChart(unfilteredRecs,
+                    pbWidth / countUnfiltered,
+                    e.ClipRectangle.Height - xAxisHeight,
+                    unfChartHeight / maxUnfiltered,
+                    unfChartHeight,
+                    xAxisHeight / 5, xAxisHeight / 3, xAxisHeight / 2);
+            }
 
             axisPen.Dispose();
             greenPen.Dispose();
