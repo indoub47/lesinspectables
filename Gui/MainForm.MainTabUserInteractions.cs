@@ -16,7 +16,7 @@ namespace Gui
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = mouseCurrent = e.Location;
-            pb.Paint += paintLine;
+            pb.Paint += paintRect;
             pb.MouseMove += pb_MouseMove;
         }
         
@@ -28,23 +28,31 @@ namespace Gui
 
         private void pb_MouseUp(object sender, MouseEventArgs e)
         {
-            pb.Paint -= paintLine;
+            pb.Paint -= paintRect;
             pb.MouseMove -= pb_MouseMove;
 
             pb.Invalidate();
-            if (!ModifierKeys.HasFlag(Keys.Control))
+
+            if (ModifierKeys.HasFlag(Keys.Shift))
             {
-                collected.Clear();
-                foreach (var lin in filteredRecs)
+                uncollectIntersected(e.X, e.Y);
+            }
+            else
+            {
+                if (!ModifierKeys.HasFlag(Keys.Control))
                 {
-                    foreach (var km in lin.Kms)
+                    collected.Clear();
+                    foreach (var lin in filteredRecs)
                     {
-                        km.POptions.Selected = false;
+                        foreach (var km in lin.Kms)
+                        {
+                            km.POptions.Selected = false;
+                        }
                     }
                 }
-            }
 
-            collectIntersected(e.X, e.Y);
+                collectIntersected(e.X, e.Y);
+            }
 
             writeCollectedStatus();
 

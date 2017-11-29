@@ -349,7 +349,7 @@ namespace Gui
                 float x = 0;
                 foreach (var lin in grouped)
                 {
-                    e.Graphics.DrawLine(axisPen, x, chartY0, x, chartY0 - chartHeight + 20);
+                    e.Graphics.DrawLine(axisPen, x, chartY0 + bigTickLength, x, chartY0 - chartHeight + 20);
                     e.Graphics.DrawString(lin.Linija, linijaFont, linijaBrush, x, chartY0 - chartHeight + 30, linijaFormat);
                     foreach (var km in lin.Kms)
                     {
@@ -405,33 +405,33 @@ namespace Gui
             statusStrip1.Refresh();
         }
 
-        private bool linesIntersect(PointF mDown, float upX, float upY, float x, float y0, float y1)
+        private bool rectIntersect(PointF mDown, float mUpX, float mUpY, float x, float y0, float y1)
         {
-            PointF CmP = new PointF(x - mDown.X, y0 - mDown.Y);
-            PointF r = new PointF(upX - mDown.X, upY - mDown.Y);
-            PointF s = new PointF(0, y1 - y0);
-
-            float CmPxr = CmP.X * r.Y - CmP.Y * r.X;
-            float CmPxs = CmP.X * s.Y;
-            float rxs = r.X * s.Y;
-
-            if (CmPxr == 0f)
+            float mLeftX, mRightX, mTopY, mBottomY;
+            if (mUpX > mDown.X)
             {
-                // Lines are collinear, and so intersect if they have any overlap
-
-                return ((x - mDown.X < 0f) != (x - upX < 0f))
-                    || ((y0 - mDown.Y < 0f) != (y0 - upY < 0f));
+                mLeftX = mDown.X;
+                mRightX = mUpX;
+            }
+            else
+            {
+                mLeftX = mUpX;
+                mRightX = mDown.X;
             }
 
-            if (rxs == 0f)
-                return false; // Lines are parallel.
+            if (mUpY > mDown.Y)
+            {
+                mBottomY = mUpY;
+                mTopY = mDown.Y;
+            }
+            else
+            {
+                mBottomY = mDown.Y;
+                mTopY = mUpY;
+            }
 
-            float rxsr = 1f / rxs;
-            float t = CmPxs * rxsr;
-            float u = CmPxr * rxsr;
-
-            return (t >= 0f) && (t <= 1f) && (u >= 0f) && (u <= 1f);
-        }        
+            return (mLeftX <= x && mRightX >= x) && (mTopY <= y0 && mBottomY >= y1);
+        }
 
         public void collectIntersected(float upX, float upY)
         {
@@ -439,7 +439,7 @@ namespace Gui
             {
                 foreach (var km in lin.Kms)
                 {
-                    if (linesIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
+                    if (!km.POptions.Selected && rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
                     {
                         collected.AddRange(km.Insps);
                         km.POptions.Selected = true;
@@ -447,16 +447,58 @@ namespace Gui
                 }
             }
 
-            collected = collected.Distinct().ToList();
+            //collected = collected.Distinct().ToList();
         }
 
-        private void paintLine(object sender, PaintEventArgs e)
+        public void uncollectIntersected(float upX, float upY)
+        {
+            foreach (var lin in filteredRecs)
+            {
+                foreach (var km in lin.Kms)
+                {
+                    if (km.POptions.Selected && rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
+                    {
+                        foreach (var insp in km.Insps)
+                        {
+                            collected.RemoveAll(x => x.Id == insp.Id);
+                        }
+                        km.POptions.Selected = false;
+                    }
+                }
+            }
+        }
+
+
+        private void paintRect(object sender, PaintEventArgs e)
         {
             using (Pen pen = new Pen(Brushes.Black))
             {
                 pen.DashStyle = DashStyle.Dash;
-                e.Graphics.DrawLine(pen, mouseDown, mouseCurrent);
+                float x, y, rectWidth, rectHeight;
+                if (mouseCurrent.X >= mouseDown.X)
+                {
+                    x = mouseDown.X;
+                    rectWidth = mouseCurrent.X - mouseDown.X;
+                }
+                else
+                {
+                    x = mouseCurrent.X;
+                    rectWidth = mouseDown.X - mouseCurrent.X;
+                }
+
+                if (mouseCurrent.Y >= mouseDown.Y)
+                {
+                    y = mouseDown.Y;
+                    rectHeight = mouseCurrent.Y - mouseDown.Y;
+                }
+                else
+                {
+                    y = mouseCurrent.Y;
+                    rectHeight = mouseDown.Y - mouseCurrent.Y;
+                }
+
+                e.Graphics.DrawRectangle(pen, x, y, rectWidth, rectHeight);
             }
-        }        
+        }
     }
 }
