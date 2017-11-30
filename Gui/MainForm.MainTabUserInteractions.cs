@@ -15,6 +15,17 @@ namespace Gui
     {
         private void pb_MouseDown(object sender, MouseEventArgs e)
         {
+            if (!ModifierKeys.HasFlag(Keys.Control) && !ModifierKeys.HasFlag(Keys.Shift))
+            {
+                collected.Clear();
+                foreach (var lin in filteredRecs)
+                {
+                    foreach (var km in lin.Kms)
+                    {
+                        km.POptions.Selected = false;
+                    }
+                }
+            }
             mouseDown = mouseCurrent = e.Location;
             pb.Paint += paintRect;
             pb.MouseMove += pb_MouseMove;
@@ -23,6 +34,17 @@ namespace Gui
         private void pb_MouseMove(object sender, MouseEventArgs e)
         {
             mouseCurrent = e.Location;
+
+            if (ModifierKeys.HasFlag(Keys.Shift))
+            {
+                uncollectIntersected(e.X, e.Y);
+            }
+            else
+            {
+                collectIntersected(e.X, e.Y);
+            }
+
+            writeCollectedStatus();
             pb.Invalidate();
         }
 
@@ -32,29 +54,6 @@ namespace Gui
             pb.MouseMove -= pb_MouseMove;
 
             pb.Invalidate();
-
-            if (ModifierKeys.HasFlag(Keys.Shift))
-            {
-                uncollectIntersected(e.X, e.Y);
-            }
-            else
-            {
-                if (!ModifierKeys.HasFlag(Keys.Control))
-                {
-                    collected.Clear();
-                    foreach (var lin in filteredRecs)
-                    {
-                        foreach (var km in lin.Kms)
-                        {
-                            km.POptions.Selected = false;
-                        }
-                    }
-                }
-
-                collectIntersected(e.X, e.Y);
-            }
-
-            writeCollectedStatus();
 
             btnExportCollected.Enabled = collected.Count != 0;
         }

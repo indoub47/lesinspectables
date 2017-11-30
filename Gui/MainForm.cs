@@ -193,7 +193,6 @@ namespace Gui
             nudY1.ValueChanged += new EventHandler(nudY1_ValueChanged);
             nudY2.ValueChanged += new EventHandler(nudY2_ValueChanged);
             pb.MouseDown += pb_MouseDown;
-            pb.MouseMove += pb_MouseMove;
             pb.MouseUp += pb_MouseUp;
             pb.Paint += pb_Paint;
             pbxDangerParameters.Paint += paramPainter.picBox_Paint;
@@ -437,9 +436,9 @@ namespace Gui
         {
             foreach (var lin in filteredRecs)
             {
-                foreach (var km in lin.Kms)
+                foreach (var km in lin.Kms.Where(x => !x.POptions.Selected))
                 {
-                    if (!km.POptions.Selected && rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
+                    if (rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
                     {
                         collected.AddRange(km.Insps);
                         km.POptions.Selected = true;
@@ -454,9 +453,9 @@ namespace Gui
         {
             foreach (var lin in filteredRecs)
             {
-                foreach (var km in lin.Kms)
+                foreach (var km in lin.Kms.Where(x => x.POptions.Selected))
                 {
-                    if (km.POptions.Selected && rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
+                    if (rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
                     {
                         foreach (var insp in km.Insps)
                         {
