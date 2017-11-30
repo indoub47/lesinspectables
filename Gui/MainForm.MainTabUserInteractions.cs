@@ -26,6 +26,9 @@ namespace Gui
                     }
                 }
             }
+
+            freshCollected = new List<Kzs.Grouper.Grouped.KmInsps>();
+
             mouseDown = mouseCurrent = e.Location;
             pb.Paint += paintRect;
             pb.MouseMove += pb_MouseMove;
@@ -37,13 +40,81 @@ namespace Gui
 
             if (ModifierKeys.HasFlag(Keys.Shift))
             {
-                uncollectIntersected(e.X, e.Y);
+                foreach (var lin in filteredRecs)
+                {
+                    foreach (var km in lin.Kms)
+                    {
+                        bool intersect = rectIntersect(mouseDown, e.X, e.Y, km.POptions.X, km.POptions.Y0, km.POptions.Y1);
+                        if (km.POptions.Selected && intersect)
+                        {
+                            //unselect
+                            freshCollected.Add(km);
+                            km.POptions.Selected = false;
+                            foreach (var insp in km.Insps)
+                            {
+                                collected.RemoveAll(x => x.Id == insp.Id);
+                            }
+                        }
+                        else if (!km.POptions.Selected && !intersect && freshCollected.Contains(km))
+                        {
+                            // select
+                            freshCollected.Remove(km);
+                            collected.AddRange(km.Insps);
+                            km.POptions.Selected = true;
+                        }
+                    }
+                }
+            }
+            else if (ModifierKeys.HasFlag(Keys.Control))
+            {
+                foreach (var lin in filteredRecs)
+                {
+                    foreach (var km in lin.Kms)
+                    {
+                        bool intersect = rectIntersect(mouseDown, e.X, e.Y, km.POptions.X, km.POptions.Y0, km.POptions.Y1);
+                        if (!km.POptions.Selected && intersect)
+                        {
+                            collected.AddRange(km.Insps);
+                            km.POptions.Selected = true;
+                            freshCollected.Add(km);                            
+                        }
+                        else if (km.POptions.Selected && !intersect && freshCollected.Contains(km))
+                        {
+                            // unselect
+                            freshCollected.Remove(km);
+                            foreach (var insp in km.Insps)
+                            {
+                                collected.RemoveAll(x => x.Id == insp.Id);
+                            }
+                            km.POptions.Selected = false;
+                        }
+                    }
+                }
             }
             else
             {
-                collectIntersected(e.X, e.Y);
+                foreach (var lin in filteredRecs)
+                {
+                    foreach (var km in lin.Kms)
+                    {
+                        bool intersect = rectIntersect(mouseDown, e.X, e.Y, km.POptions.X, km.POptions.Y0, km.POptions.Y1);
+                        if (!km.POptions.Selected && intersect)
+                        {
+                            collected.AddRange(km.Insps);
+                            km.POptions.Selected = true;
+                        }
+                        else if(km.POptions.Selected && !intersect)
+                        {
+                            // unselect
+                            foreach (var insp in km.Insps)
+                            {
+                                collected.RemoveAll(x => x.Id == insp.Id);
+                            }
+                            km.POptions.Selected = false;
+                        }
+                    }
+                }
             }
-
             writeCollectedStatus();
             pb.Invalidate();
         }
@@ -52,6 +123,7 @@ namespace Gui
         {
             pb.Paint -= paintRect;
             pb.MouseMove -= pb_MouseMove;
+            freshCollected = null;
 
             pb.Invalidate();
 

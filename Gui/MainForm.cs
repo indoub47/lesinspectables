@@ -42,6 +42,7 @@ namespace Gui
         List<string> skodaiFilters;
 
         List<Inspectable> collected = new List<Inspectable>();
+        List<Grouper.Grouped.KmInsps> freshCollected;
 
         int maxUnfiltered;
         int countUnfiltered;
@@ -431,42 +432,6 @@ namespace Gui
 
             return (mLeftX <= x && mRightX >= x) && (mTopY <= y0 && mBottomY >= y1);
         }
-
-        public void collectIntersected(float upX, float upY)
-        {
-            foreach (var lin in filteredRecs)
-            {
-                foreach (var km in lin.Kms.Where(x => !x.POptions.Selected))
-                {
-                    if (rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
-                    {
-                        collected.AddRange(km.Insps);
-                        km.POptions.Selected = true;
-                    }
-                }
-            }
-
-            //collected = collected.Distinct().ToList();
-        }
-
-        public void uncollectIntersected(float upX, float upY)
-        {
-            foreach (var lin in filteredRecs)
-            {
-                foreach (var km in lin.Kms.Where(x => x.POptions.Selected))
-                {
-                    if (rectIntersect(mouseDown, upX, upY, km.POptions.X, km.POptions.Y0, km.POptions.Y1))
-                    {
-                        foreach (var insp in km.Insps)
-                        {
-                            collected.RemoveAll(x => x.Id == insp.Id);
-                        }
-                        km.POptions.Selected = false;
-                    }
-                }
-            }
-        }
-
 
         private void paintRect(object sender, PaintEventArgs e)
         {
