@@ -361,5 +361,14 @@ namespace Gui.Properties {
                 return ((int)(this["BgwMaxCountFound"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OutputClasses/template.xlsx")]
+        public string XlsxTemplate {
+            get {
+                return ((string)(this["XlsxTemplate"]));
+            }
+        }
     }
 }

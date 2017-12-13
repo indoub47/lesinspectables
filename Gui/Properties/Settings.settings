@@ -118,5 +118,8 @@
     <Setting Name="BgwMaxCountFound" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">100</Value>
     </Setting>
+    <Setting Name="XlsxTemplate" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OutputClasses/template.xlsx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

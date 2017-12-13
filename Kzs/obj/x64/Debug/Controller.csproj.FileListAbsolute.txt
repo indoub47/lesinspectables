@@ -70,3 +70,5 @@ D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
 D:\dev\csh\lesinspectables\Kzs\bin\x64\Debug\DBx IF-4.mdb
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\DBx IF-4.mdb
+D:\dev\csh\lesinspectables\Kzs\bin\x64\Debug\OutputClasses\template.xlsx
+D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojResolveAssemblyReference.cache

@@ -121,7 +121,8 @@ namespace Gui
             // end of Setup Inspectable Factory
 
             // Create other components
-            outputter = new CsvWriter();
+            //outputter = new CsvWriter();
+            outputter = new XlsxWriter(Settings.Default.XlsxTemplate);
 
             paramPainter = new PicturePainter(
                 new PointF(koefX0, koefY0), 

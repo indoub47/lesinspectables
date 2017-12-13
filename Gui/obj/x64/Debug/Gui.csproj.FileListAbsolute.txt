@@ -110,3 +110,4 @@ D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
 D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\DBx IF-4.mdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\DBx IF-4.mdb
+D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\OutputClasses\template.xlsx

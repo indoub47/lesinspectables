@@ -162,30 +162,6 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>id</string>
-  <string>linija</string>
-  <string>kelias</string>
-  <string>km</string>
-  <string>pk</string>
-  <string>m</string>
-  <string>siule</string>
-  <string>skodas</string>
-  <string>suvdata</string>
-  <string>data1</string>
-  <string>data2</string>
-  <string>data3</string>
-  <string>data4</string>
-</ArrayOfString>")]
-        public string[] Mapping {
-            get {
-                return ((string[])(this["Mapping"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SELECT id, linija, km, pk, m FROM Insps ORDER BY id")]
         public string StmInsps {
             get {
@@ -217,6 +193,48 @@ namespace Kzs.Properties {
         public string LineKms {
             get {
                 return ((string)(this["LineKms"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>id</string>
+  <string>linija</string>
+  <string>kelias</string>
+  <string>km</string>
+  <string>pk</string>
+  <string>m</string>
+  <string>siule</string>
+  <string>skodas</string>
+  <string>suvdata</string>
+  <string>data1</string>
+  <string>data2</string>
+  <string>data3</string>
+  <string>data4</string>
+</ArrayOfString>")]
+        public string[] Mapping {
+            get {
+                return ((string[])(this["Mapping"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("suvirinimai")]
+        public string WorksheetName {
+            get {
+                return ((string)(this["WorksheetName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A5")]
+        public string TopLeftCell {
+            get {
+                return ((string)(this["TopLeftCell"]));
             }
         }
     }

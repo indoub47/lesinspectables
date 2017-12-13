@@ -143,7 +143,8 @@ namespace Gui
             {
                 sfd.InitialDirectory = Path.GetDirectoryName(Settings.Default.OutputDir);
             }
-            sfd.Filter = "Comma Separated Values (*.csv;*.tsv)|*.csv;*.tsv|All files (*.*)|*.*";
+            //sfd.Filter = "Comma Separated Values (*.csv)|*.csv";
+            sfd.Filter = "MS Excel (*.xlsx)|*.xlsx";
             sfd.FilterIndex = 1;
 
             if (sfd.ShowDialog() == DialogResult.OK)
