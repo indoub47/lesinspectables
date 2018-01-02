@@ -259,6 +259,7 @@ namespace Gui
 
         private void getInspectables(DateTime date)
         {
+            insps.Clear();
             List<object[]> rawRecords = recordFetcher.Fetch(date);
             // check if records != null
             foreach (var obj in rawRecords)
