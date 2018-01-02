@@ -21,7 +21,7 @@ namespace Kzs
 
             int pk;
             object objPk = rec[Array.IndexOf(mapping, "pk")];
-            if (objPk == null)
+            if (objPk == null || objPk.ToString() == string.Empty)
             {
                 pk = 0;
             }
@@ -34,7 +34,7 @@ namespace Kzs
 
             int? siule;
             object objSiule = rec[Array.IndexOf(mapping, "siule")];
-            if (objSiule == null)
+            if (objSiule == null || objSiule.ToString() == string.Empty)
             {
                 siule = null;
             }

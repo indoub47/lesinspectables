@@ -269,9 +269,10 @@ namespace Gui
                     insp = inspFactory.Make(obj);
                     insps.Add(insp);
                 }
-                catch
+                catch (Exception ex)
                 {
                     // inform somehow and skip
+                    Console.WriteLine(ex.Message);
                     continue;
                 }
             }
