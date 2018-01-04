@@ -27,7 +27,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DaysFrom3" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">365</Value>
+      <Value Profile="(Default)">243</Value>
     </Setting>
     <Setting Name="DaysFrom4" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">730</Value>
