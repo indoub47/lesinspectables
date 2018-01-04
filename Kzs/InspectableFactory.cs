@@ -11,23 +11,17 @@ namespace Kzs
         private string[] mapping;
         private IVkodasFactory vkodasFactory;
         private IKoordCalculator koordCalculator;
-        private Dictionary<Kelintas, int> maxDays;
         private DateTime toDate;
+        private DateCalculator dateCalc;
 
         public InspectableFactory(DateTime toDate, IVkodasFactory vkodasFactory, IKoordCalculator koordCalculator, string[] mapping)
         {
             this.mapping = mapping;
             this.vkodasFactory = vkodasFactory;
             this.koordCalculator = koordCalculator;
+            this.dateCalc = new DateCalculator();
 
             this.toDate = toDate;
-            maxDays = new Dictionary<Kelintas, int>
-            {
-                [Kelintas.I] = Properties.Settings.Default.DaysTo1,
-                [Kelintas.II] = Properties.Settings.Default.DaysTo2,
-                [Kelintas.III] = Properties.Settings.Default.DaysTo3,
-                [Kelintas.IV] = Properties.Settings.Default.DaysTo4
-            };
         }
 
         public Inspectable Make(object[] rec)
@@ -54,7 +48,19 @@ namespace Kzs
 
         private int getLikoDienu(DateTime suvirData, Kelintas neatliktas)
         {
-            return (suvirData.AddDays(maxDays[neatliktas]) - toDate).Days;
+            switch(neatliktas)
+            {
+                case Kelintas.II:
+                    return (dateCalc.LastDateII(suvirData) - toDate).Days;
+                case Kelintas.III:
+                    return (dateCalc.LastDateIII(suvirData) - toDate).Days;
+                case Kelintas.IV:
+                    return (dateCalc.LastDateIV(suvirData) - toDate).Days;
+                case Kelintas.I:
+                    return (dateCalc.LastDateI(suvirData) - toDate).Days;
+                default:
+                    return 0;
+            }
         }
     }
 }

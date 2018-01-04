@@ -34,7 +34,7 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("424")]
+        [global::System.Configuration.DefaultSettingValueAttribute("426")]
         public int DaysTo3 {
             get {
                 return ((int)(this["DaysTo3"]));

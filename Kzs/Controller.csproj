@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DangerCalculator.cs" />
+    <Compile Include="DateCalculator.cs" />
     <Compile Include="IDangerCalculator.cs" />
     <Compile Include="Grouper.cs" />
     <Compile Include="IKoordCalculator.cs" />

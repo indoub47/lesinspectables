@@ -20,6 +20,7 @@ namespace Kzs
         private string connectionString;
         private List<string> sqls;
         private int cols;
+        private DateCalculator dateCalc;
 
         public RecordFetcher(string connectionString)
         {
@@ -32,14 +33,15 @@ namespace Kzs
                 Settings.Default.Stm3,
                 Settings.Default.Stm4,
             };
+            dateCalc = new DateCalculator();
         }
 
         public List<object[]> Fetch(DateTime forDate)
         {
-            sqls[0] = String.Format(sqls[0], forDate.AddDays(-Settings.Default.DaysFrom1));
-            sqls[1] = String.Format(sqls[1], forDate.AddDays(-Settings.Default.DaysFrom2));
-            sqls[2] = String.Format(sqls[2], forDate.AddDays(-Settings.Default.DaysFrom3));
-            sqls[3] = String.Format(sqls[3], forDate.AddDays(-Settings.Default.DaysFrom4));
+            sqls[0] = String.Format(sqls[0], dateCalc.DateMinusMinI(forDate));
+            sqls[1] = String.Format(sqls[1], dateCalc.DateMinusMinII(forDate));
+            sqls[2] = String.Format(sqls[2], dateCalc.DateMinusMinIII(forDate));
+            sqls[3] = String.Format(sqls[3], dateCalc.DateMinusMinIV(forDate));
 
             List<object[]> recAccum = new List<object[]>();
             OleDbCommand cmd = new OleDbCommand();
