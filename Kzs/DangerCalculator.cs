@@ -69,7 +69,7 @@ namespace Kzs
             if (-liko < x2)
                 return a1 * (-liko) + b1;
             else
-                return overdued;
+                return b1 * overdued; // jeigu overdued, tai nebesikeicia
         }
 
         public void BatchCalculate(IEnumerable<Inspectable> insps)

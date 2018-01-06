@@ -15,7 +15,7 @@ namespace Kzs
             {
                 public class PaintOptions
                 {
-                    public bool ContainsOverdued { get; set; } // reikalingas, kad pakeisti spalvą, kai pieš
+                    public int Overdued { get; set; } // reikalingas, kad pakeisti spalvą, kai pieš
                     public float X { get; set; } // stulpelio koordinatė ekrane, suteiks; kai pieš
                     public float Y0 { get; set; } // stulpelio apačios koordinatė ekrane, suteiks kai pieš
                     public float Y1 { get; set; } // stulpelio viršaus koordinatė ekrane; suteiks, kai pieš
@@ -108,7 +108,7 @@ namespace Kzs
                         Y0 = 0,
                         Y1 = 0,
                         Selected = false,
-                        ContainsOverdued = group1.Any(x5 => x5.Liko < 0)
+                        Overdued = group1.All(x5 => x5.Liko < 0) ? 1 : (group1.Any(x5 => x5.Liko < 0) ? 0 : -1)
                     }
                 }).OrderBy(x6 => x6.Km)
             });

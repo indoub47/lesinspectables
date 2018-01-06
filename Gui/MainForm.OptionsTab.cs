@@ -30,8 +30,6 @@ namespace Gui
 
         }
 
-
-
         private void nudY0_ValueChanged(object sender, EventArgs e)
         {
             koefY0 = (int)nudY0.Value;
@@ -113,9 +111,38 @@ namespace Gui
                 Settings.Default[pathSetting] = ofd.FileName;
                 txb.Text = ofd.FileName;
                 Settings.Default.Save();
-                MessageBox.Show("Kad DB pakeitimai įsigaliotų, reikia paleisti programą iš naujo.");
+                informReload();
             }
             ofd.Dispose();
+        }
+
+        private void rbExportXlsx_CheckedChanged(object sender, EventArgs e)
+        {
+            exportFormatChanged();
+        }
+
+        private void rbExportCsv_CheckedChanged(object sender, EventArgs e)
+        {
+            exportFormatChanged();
+        }
+
+        private void exportFormatChanged()
+        {
+            if (rbExportXlsx.Checked)
+            {
+                Settings.Default.ExportFormat = "xlsx";
+            }
+            // other formats go here: else if {...}
+            else
+            {
+                Settings.Default.ExportFormat = "csv";
+            }
+            Settings.Default.Save();
+        }
+
+        private void informReload()
+        {
+            MessageBox.Show("Kad pakeitimai įsigaliotų, reikia paleisti programą iš naujo.");
         }
     }
 }

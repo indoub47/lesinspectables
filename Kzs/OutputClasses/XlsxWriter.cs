@@ -95,5 +95,10 @@ namespace Kzs.OutputClasses
             }
             return sarr;
         }
+
+        public string GetExtensionFilter()
+        {
+            return "MS Excel (*.xlsx)|*.xlsx";
+        }
     }
 }

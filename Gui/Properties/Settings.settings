@@ -121,5 +121,8 @@
     <Setting Name="XlsxTemplate" Type="System.String" Scope="Application">
       <Value Profile="(Default)">OutputClasses/template.xlsx</Value>
     </Setting>
+    <Setting Name="ExportFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xlsx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

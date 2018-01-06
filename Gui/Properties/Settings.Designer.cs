@@ -370,5 +370,17 @@ namespace Gui.Properties {
                 return ((string)(this["XlsxTemplate"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xlsx")]
+        public string ExportFormat {
+            get {
+                return ((string)(this["ExportFormat"]));
+            }
+            set {
+                this["ExportFormat"] = value;
+            }
+        }
     }
 }

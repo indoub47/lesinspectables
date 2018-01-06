@@ -52,6 +52,9 @@
             this.tabChart = new System.Windows.Forms.TabPage();
             this.pb = new System.Windows.Forms.PictureBox();
             this.tabOptions = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbExportCsv = new System.Windows.Forms.RadioButton();
+            this.rbExportXlsx = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pbxDangerParameters = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -89,6 +92,7 @@
             this.tabChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.tabOptions.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDangerParameters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY2)).BeginInit();
@@ -383,6 +387,7 @@
             // 
             // tabOptions
             // 
+            this.tabOptions.Controls.Add(this.groupBox2);
             this.tabOptions.Controls.Add(this.groupBox1);
             this.tabOptions.Controls.Add(this.btnChangeHelpDb);
             this.tabOptions.Controls.Add(this.txbHelperDbPath);
@@ -397,6 +402,39 @@
             this.tabOptions.TabIndex = 1;
             this.tabOptions.Text = "Nustatymai";
             this.tabOptions.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbExportCsv);
+            this.groupBox2.Controls.Add(this.rbExportXlsx);
+            this.groupBox2.Location = new System.Drawing.Point(23, 227);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 80);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Eksportas";
+            // 
+            // rbExportCsv
+            // 
+            this.rbExportCsv.AutoSize = true;
+            this.rbExportCsv.Location = new System.Drawing.Point(7, 47);
+            this.rbExportCsv.Name = "rbExportCsv";
+            this.rbExportCsv.Size = new System.Drawing.Size(182, 17);
+            this.rbExportCsv.TabIndex = 1;
+            this.rbExportCsv.TabStop = true;
+            this.rbExportCsv.Text = "csv (semicolon separated values)";
+            this.rbExportCsv.UseVisualStyleBackColor = true;
+            // 
+            // rbExportXlsx
+            // 
+            this.rbExportXlsx.AutoSize = true;
+            this.rbExportXlsx.Location = new System.Drawing.Point(7, 20);
+            this.rbExportXlsx.Name = "rbExportXlsx";
+            this.rbExportXlsx.Size = new System.Drawing.Size(96, 17);
+            this.rbExportXlsx.TabIndex = 0;
+            this.rbExportXlsx.TabStop = true;
+            this.rbExportXlsx.Text = "xlsx (MS Excel)";
+            this.rbExportXlsx.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -660,6 +698,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.tabOptions.ResumeLayout(false);
             this.tabOptions.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDangerParameters)).EndInit();
@@ -724,6 +764,9 @@
         private System.Windows.Forms.NumericUpDown nudY0;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown nudX0;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rbExportCsv;
+        private System.Windows.Forms.RadioButton rbExportXlsx;
     }
 }
 

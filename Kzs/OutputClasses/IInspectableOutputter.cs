@@ -9,5 +9,7 @@ namespace Kzs.OutputClasses
     public interface IInspectableOutputter
     {
         void Output(IEnumerable<Inspectable>insps, DateTime forDate, string fileName);
+        string GetExtensionFilter();
     }
+
 }

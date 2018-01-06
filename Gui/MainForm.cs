@@ -32,7 +32,7 @@ namespace Gui
         InspectableFactory inspFactory;
         IDangerCalculator dangerCalculator;
         Grouper grouper;
-        IInspectableOutputter outputter;
+        //IInspectableOutputter outputter;
         PicturePainter paramPainter;
 
         List<Inspectable> insps = new List<Inspectable>();
@@ -75,6 +75,16 @@ namespace Gui
             nudKoefMain.Value = koefMain = Settings.Default.CoefMain;
             nudKoefOverdue.Value = koefOverdue = Settings.Default.CoefOverdued;
             nudKoef064.Value = koef064 = Settings.Default.CoefThermit;
+
+            if (Settings.Default.ExportFormat == "xlsx")
+            {
+                rbExportXlsx.Checked = true;
+            }
+            // other formats go here: else if (Settings.Default.ExportFormat == "other") {rbExportOther.Checked = true;}
+            else
+            {
+                rbExportCsv.Checked = true;
+            }
 
             dtpDatai.Value = date = DateTime.Now;
             skodaiFilters = Settings.Default.Skodai.ToList();
@@ -121,8 +131,6 @@ namespace Gui
             // end of Setup Inspectable Factory
 
             // Create other components
-            //outputter = new CsvWriter();
-            outputter = new XlsxWriter(Settings.Default.XlsxTemplate);
 
             paramPainter = new PicturePainter(
                 new PointF(koefX0, koefY0), 
@@ -194,6 +202,10 @@ namespace Gui
             nudX1.ValueChanged += new EventHandler(nudX1_ValueChanged);
             nudY1.ValueChanged += new EventHandler(nudY1_ValueChanged);
             nudY2.ValueChanged += new EventHandler(nudY2_ValueChanged);
+
+            rbExportCsv.CheckedChanged += new EventHandler(rbExportCsv_CheckedChanged);
+            rbExportXlsx.CheckedChanged += new EventHandler(rbExportXlsx_CheckedChanged);
+
             pb.MouseDown += pb_MouseDown;
             pb.MouseUp += pb_MouseUp;
             pb.Paint += pb_Paint;
@@ -286,9 +298,10 @@ namespace Gui
             float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
             float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;            
 
-            Pen greenPen = new Pen(Brushes.Green);
-            Pen redPen = new Pen(Brushes.Red);
-            Pen orangePen = new Pen(Brushes.Orange);
+            Pen noOverduedPen = new Pen(Brushes.Green);
+            Pen allOverduedPen = new Pen(Brushes.Red);
+            Pen someOverduedPen = new Pen(Brushes.Orange);
+            Pen selectedPen = new Pen(Brushes.Gray);
 
             Pen axisPen = new Pen(Brushes.Gray, 1.0f);
 
@@ -307,7 +320,7 @@ namespace Gui
             if (maxFiltered != -1)
             {
                 float fKmWidth = pbWidth / countFiltered;
-                redPen.Width = greenPen.Width = orangePen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
+                allOverduedPen.Width = noOverduedPen.Width = someOverduedPen.Width = selectedPen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
                 drawChart(filteredRecs,
                     pbWidth / countFiltered,
                     fChartHeight,
@@ -319,7 +332,7 @@ namespace Gui
             if (maxUnfiltered != -1)
             {
                 float unfKmWidth = pbWidth / countUnfiltered;
-                redPen.Width = greenPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
+                allOverduedPen.Width = noOverduedPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
                 drawChart(unfilteredRecs,
                     pbWidth / countUnfiltered,
                     e.ClipRectangle.Height - xAxisHeight,
@@ -329,9 +342,10 @@ namespace Gui
             }
 
             axisPen.Dispose();
-            greenPen.Dispose();
-            redPen.Dispose();
-            orangePen.Dispose();
+            noOverduedPen.Dispose();
+            allOverduedPen.Dispose();
+            selectedPen.Dispose();
+            someOverduedPen.Dispose();
             kmFont.Dispose();
             kmBrush.Dispose();
             kmFormat.Dispose();
@@ -358,15 +372,19 @@ namespace Gui
                     {
                         if (km.POptions.Selected)
                         {
-                            currentPen = orangePen;
+                            currentPen = selectedPen;
                         }
-                        else if (km.POptions.ContainsOverdued)
+                        else if (km.POptions.Overdued == 1)
                         {
-                            currentPen = redPen;
+                            currentPen = allOverduedPen;
+                        }
+                        else if (km.POptions.Overdued == 0)
+                        {
+                            currentPen = someOverduedPen;
                         }
                         else
                         {
-                            currentPen = greenPen;
+                            currentPen = noOverduedPen;
                         }
                         
                         km.POptions.Y1 = chartY0 - km.KmDanger * scale;
@@ -403,8 +421,10 @@ namespace Gui
         private void writeCollectedStatus()
         {
             int count063 = collected.Where(x => x.Skodas == "06.3").Count();
+            int count063over = collected.Where(x => x.Skodas == "06.3" && x.Liko < 0).Count();
             int count064 = collected.Where(x => x.Skodas == "06.4").Count();
-            slblCollected.Text = $"Pririnkta {collected.Count} vnt.: 06.3 - {count063}, 06.4 - {count064}";
+            int count064over = collected.Where(x => x.Skodas == "06.4" && x.Liko < 0).Count();
+            slblCollected.Text = $"Pririnkta {collected.Count} vnt.: 06.3 - {count063} ({count063over}), 06.4 - {count064} ({count064over})";
             statusStrip1.Refresh();
         }
 

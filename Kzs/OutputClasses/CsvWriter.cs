@@ -10,6 +10,10 @@ namespace Kzs.OutputClasses
 {
     public class CsvWriter : IInspectableOutputter
     {
+        public string GetExtensionFilter()
+        {
+            return "Comma Separated Values (*.csv)|*.csv";
+        }
 
         public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string fileName)
         {

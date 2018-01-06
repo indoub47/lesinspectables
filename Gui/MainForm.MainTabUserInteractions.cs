@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Gui.Properties;
 using System.IO;
 using System.Drawing;
+using Kzs.OutputClasses;
+using Kzs;
 
 namespace Gui
 {
@@ -25,6 +27,7 @@ namespace Gui
                         km.POptions.Selected = false;
                     }
                 }
+                writeCollectedStatus();
             }
 
             freshCollected = new List<Kzs.Grouper.Grouped.KmInsps>();
@@ -130,7 +133,7 @@ namespace Gui
             btnExportCollected.Enabled = collected.Count != 0;
         }
 
-        private string selectFileName()
+        private string selectFileName(string extensionFilter)
         {
             SaveFileDialog sfd = new SaveFileDialog();
 
@@ -143,8 +146,7 @@ namespace Gui
             {
                 sfd.InitialDirectory = Path.GetDirectoryName(Settings.Default.OutputDir);
             }
-            //sfd.Filter = "Comma Separated Values (*.csv)|*.csv";
-            sfd.Filter = "MS Excel (*.xlsx)|*.xlsx";
+            sfd.Filter = extensionFilter;
             sfd.FilterIndex = 1;
 
             if (sfd.ShowDialog() == DialogResult.OK)
@@ -160,9 +162,21 @@ namespace Gui
         private void btnExportCollected_Click(object sender, EventArgs e)
         {
             pb.Paint -= pb_Paint;
+            IInspectableOutputter outputter;
+            string outputformat = Settings.Default.ExportFormat;
+            switch (outputformat)
+            {
+                case "xlsx":
+                    outputter = new XlsxWriter(Settings.Default.XlsxTemplate);
+                    break;
+                default:
+                    outputter = new CsvWriter();
+                    break;
+            }
+
             try
             {
-                string fileName = selectFileName();
+                string fileName = selectFileName(outputter.GetExtensionFilter());
                 if (fileName == null)
                 {
                     return;
@@ -216,8 +230,8 @@ namespace Gui
                 dangerCalculator.SetParams(
                     (int)nudX0.Value, (int)nudY0.Value,
                     (int)nudX1.Value, (int)nudY1.Value,
-                    (int)nudX2.Value, (int)nudY2.Value,
-                    (int)nudKoef064.Value, (int)nudKoefMain.Value, (int)nudKoefOverdue.Value);
+                    (int)nudX2.Value, (int)nudY2.Value, 
+                    (int)nudKoefMain.Value, (int)nudKoefOverdue.Value, (int)nudKoef064.Value);
                 dangerCalculator.BatchCalculate(insps);
                 recalculateDanger = false;
                 unfilteredRecs = grouper.Group(insps).ToList();
