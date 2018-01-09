@@ -261,5 +261,53 @@ namespace Gui
         {
             recalculateDanger = true;
         }
+
+
+
+        private void btnNoOverduedColor_Click(object sender, EventArgs e)
+        {
+            Color color = selectColor(Settings.Default.ColorNoOverdued);
+            Settings.Default.ColorNoOverdued = btnNoOverduedColor.BackColor = color;
+            brushNoOverdued = new SolidBrush(color);
+            Settings.Default.Save();
+        }
+
+        private void btnSomeOverduedColor_Click(object sender, EventArgs e)
+        {
+            Color color = selectColor(Settings.Default.ColorSomeOverdued);
+            Settings.Default.ColorSomeOverdued = btnSomeOverduedColor.BackColor = color;
+            brushSomeOverdued = new SolidBrush(color);
+            Settings.Default.Save();
+        }
+
+        private void btnAllOverduedColor_Click(object sender, EventArgs e)
+        {
+            Color color = selectColor(Settings.Default.ColorAllOverdued);
+            Settings.Default.ColorAllOverdued = btnAllOverduedColor.BackColor = color;
+            brushAllOverdued = new SolidBrush(color);
+            Settings.Default.Save();
+        }
+
+        private void btnSelectedColor_Click(object sender, EventArgs e)
+        {
+            Color color = selectColor(Settings.Default.ColorSelected);
+            Settings.Default.ColorSelected = btnSelectedColor.BackColor = color;
+            brushSelected = new SolidBrush(color);
+            Settings.Default.Save();
+        }
+
+        private Color selectColor(Color currentColor)
+        {
+            // Keeps the user from selecting a custom color.
+            colorDialog1.AllowFullOpen = true;
+            // Sets the initial color select to the current color.
+            colorDialog1.Color = currentColor;
+
+            // Update color if the user clicks OK 
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+                return colorDialog1.Color;
+            else
+                return currentColor;
+        }
     }
 }

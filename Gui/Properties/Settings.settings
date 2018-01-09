@@ -124,5 +124,17 @@
     <Setting Name="ExportFormat" Type="System.String" Scope="User">
       <Value Profile="(Default)">xlsx</Value>
     </Setting>
+    <Setting Name="ColorAllOverdued" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="ColorSomeOverdued" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 128, 0</Value>
+    </Setting>
+    <Setting Name="ColorNoOverdued" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 192, 0</Value>
+    </Setting>
+    <Setting Name="ColorSelected" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Silver</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

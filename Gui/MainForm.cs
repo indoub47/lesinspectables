@@ -23,7 +23,12 @@ namespace Gui
 
         int koefX0, koefY0, koefX1, koefY1, koefX2, koefY2;
         int koefMain, koefOverdue, koef064;
-        
+
+        Brush brushNoOverdued = new SolidBrush(Properties.Settings.Default.ColorNoOverdued);
+        Brush brushSomeOverdued = new SolidBrush(Properties.Settings.Default.ColorSomeOverdued);
+        Brush brushAllOverdued = new SolidBrush(Properties.Settings.Default.ColorAllOverdued);
+        Brush brushSelected = new SolidBrush(Properties.Settings.Default.ColorSelected);
+
         bool recalculateDanger;
         DateTime date;
         string[] mapping;
@@ -206,6 +211,11 @@ namespace Gui
             rbExportCsv.CheckedChanged += new EventHandler(rbExportCsv_CheckedChanged);
             rbExportXlsx.CheckedChanged += new EventHandler(rbExportXlsx_CheckedChanged);
 
+            btnAllOverduedColor.BackColor = Settings.Default.ColorAllOverdued;
+            btnNoOverduedColor.BackColor = Settings.Default.ColorNoOverdued;
+            btnSomeOverduedColor.BackColor = Settings.Default.ColorSomeOverdued;
+            btnSelectedColor.BackColor = Settings.Default.ColorSelected;
+
             pb.MouseDown += pb_MouseDown;
             pb.MouseUp += pb_MouseUp;
             pb.Paint += pb_Paint;
@@ -298,10 +308,10 @@ namespace Gui
             float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
             float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;            
 
-            Pen noOverduedPen = new Pen(Brushes.Green);
-            Pen allOverduedPen = new Pen(Brushes.Red);
-            Pen someOverduedPen = new Pen(Brushes.Orange);
-            Pen selectedPen = new Pen(Brushes.Gray);
+            Pen penNoOverdued = new Pen(brushNoOverdued);
+            Pen penAllOverdued = new Pen(brushAllOverdued);
+            Pen penSomeOverdued = new Pen(brushSomeOverdued);
+            Pen penSelected = new Pen(brushSelected);
 
             Pen axisPen = new Pen(Brushes.Gray, 1.0f);
 
@@ -320,7 +330,7 @@ namespace Gui
             if (maxFiltered != -1)
             {
                 float fKmWidth = pbWidth / countFiltered;
-                allOverduedPen.Width = noOverduedPen.Width = someOverduedPen.Width = selectedPen.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
+                penAllOverdued.Width = penNoOverdued.Width = penSomeOverdued.Width = penSelected.Width = Math.Min(fKmWidth * strokePart, maxStrokeWidth);
                 drawChart(filteredRecs,
                     pbWidth / countFiltered,
                     fChartHeight,
@@ -332,7 +342,7 @@ namespace Gui
             if (maxUnfiltered != -1)
             {
                 float unfKmWidth = pbWidth / countUnfiltered;
-                allOverduedPen.Width = noOverduedPen.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
+                penAllOverdued.Width = penNoOverdued.Width = Math.Min(unfKmWidth * strokePart, maxStrokeWidth);
                 drawChart(unfilteredRecs,
                     pbWidth / countUnfiltered,
                     e.ClipRectangle.Height - xAxisHeight,
@@ -342,10 +352,10 @@ namespace Gui
             }
 
             axisPen.Dispose();
-            noOverduedPen.Dispose();
-            allOverduedPen.Dispose();
-            selectedPen.Dispose();
-            someOverduedPen.Dispose();
+            penNoOverdued.Dispose();
+            penAllOverdued.Dispose();
+            penSelected.Dispose();
+            penSomeOverdued.Dispose();
             kmFont.Dispose();
             kmBrush.Dispose();
             kmFormat.Dispose();
@@ -372,19 +382,19 @@ namespace Gui
                     {
                         if (km.POptions.Selected)
                         {
-                            currentPen = selectedPen;
+                            currentPen = penSelected;
                         }
                         else if (km.POptions.Overdued == 1)
                         {
-                            currentPen = allOverduedPen;
+                            currentPen = penAllOverdued;
                         }
                         else if (km.POptions.Overdued == 0)
                         {
-                            currentPen = someOverduedPen;
+                            currentPen = penSomeOverdued;
                         }
                         else
                         {
-                            currentPen = noOverduedPen;
+                            currentPen = penNoOverdued;
                         }
                         
                         km.POptions.Y1 = chartY0 - km.KmDanger * scale;

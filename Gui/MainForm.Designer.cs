@@ -52,6 +52,11 @@
             this.tabChart = new System.Windows.Forms.TabPage();
             this.pb = new System.Windows.Forms.PictureBox();
             this.tabOptions = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSelectedColor = new System.Windows.Forms.Button();
+            this.btnAllOverduedColor = new System.Windows.Forms.Button();
+            this.btnSomeOverduedColor = new System.Windows.Forms.Button();
+            this.btnNoOverduedColor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbExportCsv = new System.Windows.Forms.RadioButton();
             this.rbExportXlsx = new System.Windows.Forms.RadioButton();
@@ -78,6 +83,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -92,6 +98,7 @@
             this.tabChart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb)).BeginInit();
             this.tabOptions.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDangerParameters)).BeginInit();
@@ -387,6 +394,7 @@
             // 
             // tabOptions
             // 
+            this.tabOptions.Controls.Add(this.groupBox3);
             this.tabOptions.Controls.Add(this.groupBox2);
             this.tabOptions.Controls.Add(this.groupBox1);
             this.tabOptions.Controls.Add(this.btnChangeHelpDb);
@@ -402,6 +410,71 @@
             this.tabOptions.TabIndex = 1;
             this.tabOptions.Text = "Nustatymai";
             this.tabOptions.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSelectedColor);
+            this.groupBox3.Controls.Add(this.btnAllOverduedColor);
+            this.groupBox3.Controls.Add(this.btnSomeOverduedColor);
+            this.groupBox3.Controls.Add(this.btnNoOverduedColor);
+            this.groupBox3.Location = new System.Drawing.Point(229, 227);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(175, 145);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Spalvos";
+            // 
+            // btnSelectedColor
+            // 
+            this.btnSelectedColor.FlatAppearance.BorderSize = 0;
+            this.btnSelectedColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectedColor.Location = new System.Drawing.Point(6, 107);
+            this.btnSelectedColor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSelectedColor.Name = "btnSelectedColor";
+            this.btnSelectedColor.Size = new System.Drawing.Size(163, 23);
+            this.btnSelectedColor.TabIndex = 3;
+            this.btnSelectedColor.Text = "Pažymėti eksportui";
+            this.btnSelectedColor.UseVisualStyleBackColor = true;
+            this.btnSelectedColor.Click += new System.EventHandler(this.btnSelectedColor_Click);
+            // 
+            // btnAllOverduedColor
+            // 
+            this.btnAllOverduedColor.FlatAppearance.BorderSize = 0;
+            this.btnAllOverduedColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAllOverduedColor.Location = new System.Drawing.Point(6, 78);
+            this.btnAllOverduedColor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAllOverduedColor.Name = "btnAllOverduedColor";
+            this.btnAllOverduedColor.Size = new System.Drawing.Size(163, 23);
+            this.btnAllOverduedColor.TabIndex = 2;
+            this.btnAllOverduedColor.Text = "Visi pradelsti";
+            this.btnAllOverduedColor.UseVisualStyleBackColor = true;
+            this.btnAllOverduedColor.Click += new System.EventHandler(this.btnAllOverduedColor_Click);
+            // 
+            // btnSomeOverduedColor
+            // 
+            this.btnSomeOverduedColor.FlatAppearance.BorderSize = 0;
+            this.btnSomeOverduedColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSomeOverduedColor.Location = new System.Drawing.Point(6, 49);
+            this.btnSomeOverduedColor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSomeOverduedColor.Name = "btnSomeOverduedColor";
+            this.btnSomeOverduedColor.Size = new System.Drawing.Size(163, 23);
+            this.btnSomeOverduedColor.TabIndex = 1;
+            this.btnSomeOverduedColor.Text = "Dalis pradelstų";
+            this.btnSomeOverduedColor.UseVisualStyleBackColor = true;
+            this.btnSomeOverduedColor.Click += new System.EventHandler(this.btnSomeOverduedColor_Click);
+            // 
+            // btnNoOverduedColor
+            // 
+            this.btnNoOverduedColor.FlatAppearance.BorderSize = 0;
+            this.btnNoOverduedColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNoOverduedColor.Location = new System.Drawing.Point(6, 20);
+            this.btnNoOverduedColor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNoOverduedColor.Name = "btnNoOverduedColor";
+            this.btnNoOverduedColor.Size = new System.Drawing.Size(163, 23);
+            this.btnNoOverduedColor.TabIndex = 0;
+            this.btnNoOverduedColor.Text = "Nėra pradelstų";
+            this.btnNoOverduedColor.UseVisualStyleBackColor = true;
+            this.btnNoOverduedColor.Click += new System.EventHandler(this.btnNoOverduedColor_Click);
             // 
             // groupBox2
             // 
@@ -698,6 +771,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb)).EndInit();
             this.tabOptions.ResumeLayout(false);
             this.tabOptions.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -767,6 +841,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbExportCsv;
         private System.Windows.Forms.RadioButton rbExportXlsx;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSelectedColor;
+        private System.Windows.Forms.Button btnAllOverduedColor;
+        private System.Windows.Forms.Button btnSomeOverduedColor;
+        private System.Windows.Forms.Button btnNoOverduedColor;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

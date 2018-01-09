@@ -382,5 +382,53 @@ namespace Gui.Properties {
                 this["ExportFormat"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
+        public global::System.Drawing.Color ColorAllOverdued {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorAllOverdued"]));
+            }
+            set {
+                this["ColorAllOverdued"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 128, 0")]
+        public global::System.Drawing.Color ColorSomeOverdued {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorSomeOverdued"]));
+            }
+            set {
+                this["ColorSomeOverdued"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 192, 0")]
+        public global::System.Drawing.Color ColorNoOverdued {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorNoOverdued"]));
+            }
+            set {
+                this["ColorNoOverdued"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Silver")]
+        public global::System.Drawing.Color ColorSelected {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorSelected"]));
+            }
+            set {
+                this["ColorSelected"] = value;
+            }
+        }
     }
 }
