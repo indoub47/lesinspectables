@@ -1,0 +1,8 @@
+D:\dev\csh\lesinspectables\InspectedOnes\bin\Release\InspectedOnes.dll.config
+D:\dev\csh\lesinspectables\InspectedOnes\bin\Release\InspectedOnes.dll
+D:\dev\csh\lesinspectables\InspectedOnes\bin\Release\InspectedOnes.pdb
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.csprojResolveAssemblyReference.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.csproj.ResolveComReference.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.csproj.CoreCompileInputs.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.dll
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.pdb

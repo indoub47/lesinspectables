@@ -170,7 +170,7 @@ namespace Gui
                     outputter = new XlsxWriter(Settings.Default.XlsxTemplate);
                     break;
                 default:
-                    outputter = new CsvWriter();
+                    outputter = new Kzs.OutputClasses.CsvWriter();
                     break;
             }
 

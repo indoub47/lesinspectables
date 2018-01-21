@@ -91,6 +91,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.Inspected.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.MainTabUserInteractions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +115,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="output_templates\inspectable_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="output_templates\inspected_template.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -127,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InspectedOnes\InspectedOnes.csproj">
+      <Project>{46b4e08f-e971-4345-96f6-33e2f4848d73}</Project>
+      <Name>InspectedOnes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kzs\Controller.csproj">
       <Project>{85cd546e-1521-4d5e-9521-828ee37b0fd5}</Project>
       <Name>Controller</Name>
@@ -143,6 +156,14 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB IF-4.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lesinspectables.accdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

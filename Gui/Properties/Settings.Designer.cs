@@ -85,7 +85,7 @@ namespace Gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("les_inspectables_{0:yyyyMMddHHmmss}.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("inspectables {0:yyyyMMddHHmmss}.csv")]
         public string OutputExelFName {
             get {
                 return ((string)(this["OutputExelFName"]));
@@ -97,7 +97,7 @@ namespace Gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("output_template.xlsx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("output_templates/inspectable_template.xlsx")]
         public string ExcelTemplateFile {
             get {
                 return ((string)(this["ExcelTemplateFile"]));
@@ -364,7 +364,7 @@ namespace Gui.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("OutputClasses/template.xlsx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("templates/inspectable_template.xlsx")]
         public string XlsxTemplate {
             get {
                 return ((string)(this["XlsxTemplate"]));
@@ -428,6 +428,36 @@ namespace Gui.Properties {
             }
             set {
                 this["ColorSelected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InspectedOutputDir {
+            get {
+                return ((string)(this["InspectedOutputDir"]));
+            }
+            set {
+                this["InspectedOutputDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("inspected {0:yyyyMMdd}-{1:yyyyMMdd}.xlsx")]
+        public string InspectedXlsxFNFormat {
+            get {
+                return ((string)(this["InspectedXlsxFNFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("output_templates/inspected_template.xlsx")]
+        public string InspectedXlsxTemplate {
+            get {
+                return ((string)(this["InspectedXlsxTemplate"]));
             }
         }
     }

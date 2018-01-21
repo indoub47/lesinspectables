@@ -80,10 +80,17 @@
             this.btnChangeMainDb = new System.Windows.Forms.Button();
             this.txbMainDbPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnGenerateInspected = new System.Windows.Forms.Button();
+            this.dtpInspectedTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpInspectedFrom = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -108,7 +115,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX0)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblKoefOverdue
@@ -361,6 +370,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabChart);
             this.tabControl1.Controls.Add(this.tabOptions);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -720,6 +730,61 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Pagrindinė DB";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.groupBox4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(847, 588);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Kita";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 13);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Iki";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Nuo";
+            // 
+            // btnGenerateInspected
+            // 
+            this.btnGenerateInspected.Location = new System.Drawing.Point(179, 40);
+            this.btnGenerateInspected.Name = "btnGenerateInspected";
+            this.btnGenerateInspected.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerateInspected.TabIndex = 4;
+            this.btnGenerateInspected.Text = "Generuoti";
+            this.btnGenerateInspected.UseVisualStyleBackColor = true;
+            this.btnGenerateInspected.Click += new System.EventHandler(this.btnGenerateInspected_Click);
+            // 
+            // dtpInspectedTo
+            // 
+            this.dtpInspectedTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInspectedTo.Location = new System.Drawing.Point(47, 55);
+            this.dtpInspectedTo.Name = "dtpInspectedTo";
+            this.dtpInspectedTo.Size = new System.Drawing.Size(108, 20);
+            this.dtpInspectedTo.TabIndex = 1;
+            // 
+            // dtpInspectedFrom
+            // 
+            this.dtpInspectedFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInspectedFrom.Location = new System.Drawing.Point(48, 29);
+            this.dtpInspectedFrom.Name = "dtpInspectedFrom";
+            this.dtpInspectedFrom.Size = new System.Drawing.Size(108, 20);
+            this.dtpInspectedFrom.TabIndex = 0;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -739,6 +804,20 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.dtpInspectedTo);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.dtpInspectedFrom);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.btnGenerateInspected);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(272, 94);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Exportuoti per periodą patikrintus suvirinimus";
             // 
             // MainForm
             // 
@@ -783,8 +862,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX0)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -847,6 +929,13 @@
         private System.Windows.Forms.Button btnSomeOverduedColor;
         private System.Windows.Forms.Button btnNoOverduedColor;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGenerateInspected;
+        private System.Windows.Forms.DateTimePicker dtpInspectedTo;
+        private System.Windows.Forms.DateTimePicker dtpInspectedFrom;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 

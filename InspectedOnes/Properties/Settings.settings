@@ -1,0 +1,113 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InspectedOnes.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Cols" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">12</Value>
+    </Setting>
+    <Setting Name="Sql" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS pdata, I_pat_aparat AS aparat, I_pat_operator AS operat, 1 AS kelintas
+FROM ssd 
+WHERE (I_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x")
+
+UNION
+
+SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS pdata, II_pat_aparat AS aparat, II_pat_operator AS operat, 2 AS kelintas
+FROM ssd 
+WHERE (II_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x")
+
+UNION
+
+SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, III_pat_data AS pdata, III_pat_aparat AS aparat, III_pat_operaqtor AS operat, 3 AS kelintas
+FROM ssd 
+WHERE (III_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x")
+
+UNION
+
+SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, IV_pat_data AS pdata, IV_pat_aparat AS aparat, IV_pat_operator AS operat, 4 AS kelintas
+FROM ssd 
+WHERE (IV_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x")
+
+ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;</Value>
+    </Setting>
+    <Setting Name="MappingDb" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;id&lt;/string&gt;
+  &lt;string&gt;linija&lt;/string&gt;
+  &lt;string&gt;kel&lt;/string&gt;
+  &lt;string&gt;km&lt;/string&gt;
+  &lt;string&gt;pk&lt;/string&gt;
+  &lt;string&gt;m&lt;/string&gt;
+  &lt;string&gt;siule&lt;/string&gt;
+  &lt;string&gt;skodas&lt;/string&gt;
+  &lt;string&gt;pdata&lt;/string&gt;
+  &lt;string&gt;aparat&lt;/string&gt;
+  &lt;string&gt;operat&lt;/string&gt;
+  &lt;string&gt;kelintas&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TopLeftCell" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">A8</Value>
+    </Setting>
+    <Setting Name="OperatorIDCell" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D5</Value>
+    </Setting>
+    <Setting Name="OperatorNameCell" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">I5</Value>
+    </Setting>
+    <Setting Name="MappingTemplate" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;id&lt;/string&gt;
+  &lt;string&gt;linija&lt;/string&gt;
+  &lt;string&gt;kel&lt;/string&gt;
+  &lt;string&gt;km&lt;/string&gt;
+  &lt;string&gt;pk&lt;/string&gt;
+  &lt;string&gt;m&lt;/string&gt;
+  &lt;string&gt;siule&lt;/string&gt;
+  &lt;string&gt;skodas&lt;/string&gt;
+  &lt;string&gt;kelintas&lt;/string&gt;
+  &lt;string&gt;aparat&lt;/string&gt;
+  &lt;string&gt;pdata&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="TemplateSheetName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">template</Value>
+    </Setting>
+    <Setting Name="SqlGetOperators" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT * FROM operatoriai</Value>
+    </Setting>
+    <Setting Name="OperatorFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Patikrino operatorius - {0} (kodas {1})</Value>
+    </Setting>
+    <Setting Name="OperatorRange" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">A5</Value>
+    </Setting>
+    <Setting Name="CsvDelimiter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">;</Value>
+    </Setting>
+    <Setting Name="CsvColumnTitles" Type="System.String[]" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ID&lt;/string&gt;
+  &lt;string&gt;Linija&lt;/string&gt;
+  &lt;string&gt;Kelias&lt;/string&gt;
+  &lt;string&gt;Km&lt;/string&gt;
+  &lt;string&gt;Pk&lt;/string&gt;
+  &lt;string&gt;M&lt;/string&gt;
+  &lt;string&gt;Siule&lt;/string&gt;
+  &lt;string&gt;Salyg_kodas&lt;/string&gt;
+  &lt;string&gt;Kelintas&lt;/string&gt;
+  &lt;string&gt;Defektoskopas&lt;/string&gt;
+  &lt;string&gt;Patikr_data&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DefaultXlsxFNFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">patikrinti_{0:yyyyMMdd}-{1:yyyyMMdd}.xlsx</Value>
+    </Setting>
+    <Setting Name="DefaultCsvFNFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">patikrinti_{0:yyyyMMdd}-{1:yyyyMMdd}.csv</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
