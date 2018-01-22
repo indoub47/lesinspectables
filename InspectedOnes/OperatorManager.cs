@@ -19,7 +19,7 @@ namespace InspectedOnes
         public Dictionary<string, string> GetOperators()
         {
             OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = Properties.Settings.Default.SqlGetOperators;
+            cmd.CommandText = Properties.Settings.Default.GetOperatorsSql;
             Dictionary<string, string> operators = new Dictionary<string, string>();
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {

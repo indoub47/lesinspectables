@@ -14,6 +14,41 @@ namespace Gui
     {
         private void btnGenerateInspected_Click(object sender, EventArgs e)
         {
+            DateTime dateFrom = dtpInspectedFrom.Value;
+            DateTime dateTo = dtpInspectedTo.Value;
+
+            IBadRecordFinder badRecordFinder;
+            badRecordFinder = new MSAccessBadRecordFinder(
+                string.Format(
+                        Settings.Default.ConnectionString,
+                        Settings.Default.MainDbFileName)
+                );
+            List<ulong> badIds;
+
+            // ieško nepilnų įrašų - kur nurodyta pakeitimo data, bet nenurodytas 
+            // aparatas arba operatorius
+            try
+            {
+                badIds = badRecordFinder.FindBadRecords(dateFrom, dateTo);
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace,
+                    "Klaida",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            // jeigu randa blogų - informuoja ir išeina
+            if (badIds.Count > 0)
+            {
+                string badRecordIds = string.Join(", ", badIds.Select(x => x.ToString()));
+                MessageBox.Show("Nepilni įrašai DB: " + badRecordIds);
+                return;
+            }
+
+            // jeigu blogų nerado, tada dirba toliau
             IInspectedOutputter outputter;
             string outputformat = Settings.Default.ExportFormat;
             OperatorManager opManager = new OperatorManager(
@@ -25,15 +60,13 @@ namespace Gui
             {
                 case "xlsx":
                     outputter = new InspectedOnes.OutputClasses.XlsxWriter(
-                        Settings.Default.InspectedXlsxTemplate,
+                        Settings.Default.XlsxTemplateInspected,
                         opManager.GetOperators());
                     break;
                 default:
                     outputter = new InspectedOnes.OutputClasses.CsvWriter();
                     break;
             }
-            DateTime dateFrom = dtpInspectedFrom.Value;
-            DateTime dateTo = dtpInspectedTo.Value;
             string fileName = string.Format(outputter.GetDefaultFNFormat(), dateFrom, dateTo);
             string fullFileName = getFileNameFromSFD(outputter.GetExtensionFilter(), fileName);
 

@@ -167,7 +167,7 @@ namespace Gui
             switch (outputformat)
             {
                 case "xlsx":
-                    outputter = new XlsxWriter(Settings.Default.XlsxTemplate);
+                    outputter = new XlsxWriter(Settings.Default.XlsxTemplateInspectables);
                     break;
                 default:
                     outputter = new Kzs.OutputClasses.CsvWriter();

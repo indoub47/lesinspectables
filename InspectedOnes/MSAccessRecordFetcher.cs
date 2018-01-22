@@ -17,8 +17,8 @@ namespace InspectedOnes
         public MSAccessRecordFetcher(string connectionString)
         {
             this.connectionString = connectionString;
-            sql = Settings.Default.Sql;
-            cols = Settings.Default.Cols;
+            sql = Settings.Default.FetcherSql;
+            cols = Settings.Default.FetcherSqlColumnCount;
         }
 
         public List<object[]> Fetch(DateTime fromDate, DateTime toDate)

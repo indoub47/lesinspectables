@@ -2,10 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InspectedOnes.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Cols" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">12</Value>
-    </Setting>
-    <Setting Name="Sql" Type="System.String" Scope="Application">
+    <Setting Name="FetcherSql" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS pdata, I_pat_aparat AS aparat, I_pat_operator AS operat, 1 AS kelintas
 FROM ssd 
 WHERE (I_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x")
@@ -50,12 +47,6 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;</Value>
     <Setting Name="TopLeftCell" Type="System.String" Scope="Application">
       <Value Profile="(Default)">A8</Value>
     </Setting>
-    <Setting Name="OperatorIDCell" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">D5</Value>
-    </Setting>
-    <Setting Name="OperatorNameCell" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">I5</Value>
-    </Setting>
     <Setting Name="MappingTemplate" Type="System.String[]" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -75,7 +66,7 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;</Value>
     <Setting Name="TemplateSheetName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">template</Value>
     </Setting>
-    <Setting Name="SqlGetOperators" Type="System.String" Scope="Application">
+    <Setting Name="GetOperatorsSql" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT * FROM operatoriai</Value>
     </Setting>
     <Setting Name="OperatorFormat" Type="System.String" Scope="Application">
@@ -108,6 +99,34 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;</Value>
     </Setting>
     <Setting Name="DefaultCsvFNFormat" Type="System.String" Scope="Application">
       <Value Profile="(Default)">patikrinti_{0:yyyyMMdd}-{1:yyyyMMdd}.csv</Value>
+    </Setting>
+    <Setting Name="BadDataSql" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT number AS id
+FROM ssd 
+WHERE (I_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x") AND (I_pat_aparat IS NULL OR I_pat_operator IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (II_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x") AND (II_pat_aparat IS NULL OR II_pat_operator IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (III_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x") AND (III_pat_aparat IS NULL OR III_pat_operaqtor IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (IV_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) &lt;&gt; "x") AND (IV_pat_aparat IS NULL OR IV_pat_operator IS NULL)
+
+ORDER BY id;</Value>
+    </Setting>
+    <Setting Name="FetcherSqlColumnCount" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">12</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBadRecordFinder.cs" />
+    <Compile Include="MSAccessBadRecordFinder.cs" />
     <Compile Include="MSAccessRecordFetcher.cs" />
     <Compile Include="IRecordFetcher.cs" />
     <Compile Include="OperatorManager.cs" />

@@ -364,10 +364,10 @@ namespace Gui.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("templates/inspectable_template.xlsx")]
-        public string XlsxTemplate {
+        [global::System.Configuration.DefaultSettingValueAttribute("output_templates/inspectable_template.xlsx")]
+        public string XlsxTemplateInspectables {
             get {
-                return ((string)(this["XlsxTemplate"]));
+                return ((string)(this["XlsxTemplateInspectables"]));
             }
         }
         
@@ -455,9 +455,9 @@ namespace Gui.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("output_templates/inspected_template.xlsx")]
-        public string InspectedXlsxTemplate {
+        public string XlsxTemplateInspected {
             get {
-                return ((string)(this["InspectedXlsxTemplate"]));
+                return ((string)(this["XlsxTemplateInspected"]));
             }
         }
     }

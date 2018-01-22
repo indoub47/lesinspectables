@@ -25,15 +25,6 @@ namespace InspectedOnes.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
-        public int Cols {
-            get {
-                return ((int)(this["Cols"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS pdata, I_pat_aparat AS aparat, I_pat_operator AS operat, 1 AS kelintas
 FROM ssd 
 WHERE (I_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"")
@@ -57,9 +48,9 @@ FROM ssd
 WHERE (IV_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"")
 
 ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
-        public string Sql {
+        public string FetcherSql {
             get {
-                return ((string)(this["Sql"]));
+                return ((string)(this["FetcherSql"]));
             }
         }
         
@@ -97,24 +88,6 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D5")]
-        public string OperatorIDCell {
-            get {
-                return ((string)(this["OperatorIDCell"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("I5")]
-        public string OperatorNameCell {
-            get {
-                return ((string)(this["OperatorNameCell"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <string>id</string>
@@ -147,9 +120,9 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM operatoriai")]
-        public string SqlGetOperators {
+        public string GetOperatorsSql {
             get {
-                return ((string)(this["SqlGetOperators"]));
+                return ((string)(this["GetOperatorsSql"]));
             }
         }
         
@@ -217,6 +190,46 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
         public string DefaultCsvFNFormat {
             get {
                 return ((string)(this["DefaultCsvFNFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id
+FROM ssd 
+WHERE (I_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"") AND (I_pat_aparat IS NULL OR I_pat_operator IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (II_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"") AND (II_pat_aparat IS NULL OR II_pat_operator IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (III_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"") AND (III_pat_aparat IS NULL OR III_pat_operaqtor IS NULL)
+
+UNION
+
+SELECT number AS id
+FROM ssd 
+WHERE (IV_pat_data BETWEEN #{0:yyyy-MM-dd}# AND #{1:yyyy-MM-dd}#) AND (LEFT([saliginis kodas], 1) <> ""x"") AND (IV_pat_aparat IS NULL OR IV_pat_operator IS NULL)
+
+ORDER BY id;")]
+        public string BadDataSql {
+            get {
+                return ((string)(this["BadDataSql"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public int FetcherSqlColumnCount {
+            get {
+                return ((int)(this["FetcherSqlColumnCount"]));
             }
         }
     }
