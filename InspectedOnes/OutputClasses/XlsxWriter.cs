@@ -17,6 +17,7 @@ namespace InspectedOnes.OutputClasses
         string[] mappingDb, mappingTemplate;
         int templateColumnCount;
         Dictionary<string, string> operators;
+        string defaultOperatorName;
 
         public XlsxWriter(string template, Dictionary<string, string> operators)
         {
@@ -26,6 +27,7 @@ namespace InspectedOnes.OutputClasses
             mappingTemplate = Settings.Default.MappingTemplate;
             templateColumnCount = mappingTemplate.Length;
             this.operators = operators;
+            defaultOperatorName = Settings.Default.defaultOperatorName;
         }
 
         public string GetDefaultFNFormat()
@@ -46,9 +48,31 @@ namespace InspectedOnes.OutputClasses
             InteropExcel.Worksheet sheet = null;
             InteropExcel.Range range = null;
 
-            int indxOperator = Array.IndexOf(mappingDb, "operat");
+            int indxOperat = Array.IndexOf(mappingDb, "operat");
+            int indxPDate = Array.IndexOf(mappingDb, "pdata");
+            int indxSKodas = Array.IndexOf(mappingDb, "skodas");
+            int indxLinija = Array.IndexOf(mappingDb, "linija");
+            int indxKel = Array.IndexOf(mappingDb, "kel");
+            int indxKm = Array.IndexOf(mappingDb, "km");
+            int indxPk = Array.IndexOf(mappingDb, "pk");
+            int indxM = Array.IndexOf(mappingDb, "m");
+            int indxSiule = Array.IndexOf(mappingDb, "siule");
+            int indxKelintas = Array.IndexOf(mappingDb, "kelintas");
+            int indxAparat = Array.IndexOf(mappingDb, "aparat");
 
-            var grouped = records.GroupBy(x => x[indxOperator], (key, group) => new
+            var grouped = records
+                .OrderBy(x => x[indxOperat])
+                .ThenBy(x => x[indxPDate])
+                .ThenBy(x => x[indxSKodas])
+                .ThenBy(x => x[indxLinija])
+                .ThenBy(x => x[indxKel])
+                .ThenBy(x => x[indxKm])
+                .ThenBy(x => x[indxPk])
+                .ThenBy(x => x[indxM])
+                .ThenBy(x => x[indxSiule])
+                .ThenBy(x => x[indxKelintas])
+                .ThenBy(x => x[indxAparat])
+                .GroupBy(x => x[indxOperat], (key, group) => new
             {
                 Operator = key.ToString(),
                 Inspected = group
@@ -72,7 +96,16 @@ namespace InspectedOnes.OutputClasses
                     }
                     // įrašomas operatoriaus id ir vardas
                     string operatorId = group.Operator.ToString();
-                    sheet.Range[operRange].Value = string.Format(operatorFormat, operators[operatorId], operatorId);
+                    string operatorName;
+                    if (operators.ContainsKey(operatorId))
+                    {
+                        operatorName = operators[operatorId];
+                    }
+                    else
+                    {
+                        operatorName = defaultOperatorName;
+                    }
+                    sheet.Range[operRange].Value = string.Format(operatorFormat, operatorName, operatorId);
                     // inspected paverčiami string array [,]
                     string[,] valueArray = recsToStringArray(group.Inspected);
                     // konstruojamas range objektas iš sheet eilučių ir stulpelių

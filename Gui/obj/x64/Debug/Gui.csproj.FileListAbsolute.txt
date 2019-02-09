@@ -80,14 +80,12 @@ C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\De
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
-C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\OptionsDb.accdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Gui.exe.config
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Gui.exe
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Gui.pdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Controller.dll
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Controller.pdb
 C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\Controller.dll.config
-C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csprojResolveAssemblyReference.cache
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.MainForm.resources
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.Properties.Resources.resources
 C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.GenerateResource.Cache
@@ -107,7 +105,6 @@ D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.GenerateResource.Cache
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CoreCompileInputs.cache
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.exe
 D:\dev\csh\lesinspectables\Gui\obj\x64\Debug\Gui.pdb
-C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\DBx IF-4.mdb
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Gui\obj\x64\Debug\Gui.csprojResolveAssemblyReference.cache
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Gui\obj\x64\Debug\Gui.MainForm.resources
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Gui\obj\x64\Debug\Gui.Properties.Resources.resources
@@ -131,3 +128,14 @@ D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\InspectedOnes.pdb
 D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\InspectedOnes.dll.config
 D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\output_templates\inspectable_template.xlsx
 D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\output_templates\inspected_template.xlsx
+D:\dev\csh\lesinspectables\Gui\bin\x64\Debug\output_templates\K40_template.xlsx
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\lesinspectables.accdb
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\output_templates\inspectable_template.xlsx
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\output_templates\K40_template.xlsx
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\output_templates\inspected_template.xlsx
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\DB IF-4.mdb
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\InspectedOnes.dll
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\InspectedOnes.pdb
+C:\Users\root\source\repos\lesinspectables\Gui\bin\x64\Debug\InspectedOnes.dll.config
+C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csprojAssemblyReference.cache
+C:\Users\root\source\repos\lesinspectables\Gui\obj\x64\Debug\Gui.csproj.CopyComplete

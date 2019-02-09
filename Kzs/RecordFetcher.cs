@@ -26,6 +26,11 @@ namespace Kzs
         {
             this.connectionString = connectionString;
             cols = Settings.Default.Cols;
+            dateCalc = new DateCalculator();
+        }
+
+        public List<object[]> Fetch(DateTime forDate)
+        {
             sqls = new List<string>
             {
                 Settings.Default.Stm1,
@@ -33,11 +38,7 @@ namespace Kzs
                 Settings.Default.Stm3,
                 Settings.Default.Stm4,
             };
-            dateCalc = new DateCalculator();
-        }
 
-        public List<object[]> Fetch(DateTime forDate)
-        {
             sqls[0] = String.Format(sqls[0], dateCalc.DateMinusMinI(forDate));
             sqls[1] = String.Format(sqls[1], dateCalc.DateMinusMinII(forDate));
             sqls[2] = String.Format(sqls[2], dateCalc.DateMinusMinIII(forDate));

@@ -52,7 +52,6 @@ C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\De
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 C:\Users\pc\Documents\Visual Studio 2017\Projects\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
-C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\OptionsDb.accdb
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\Controller.dll.config
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\Controller.dll
 C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\Controller.pdb
@@ -67,7 +66,6 @@ D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReferen
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs.cache
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
-C:\Users\root\source\repos\lesinspectables\Kzs\bin\x64\Debug\DBx IF-4.mdb
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojResolveAssemblyReference.cache
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojResolveAssemblyReference.cache
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.ResolveComReference.cache
@@ -80,3 +78,4 @@ C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\bin\x64\Debug\le
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\bin\x64\Debug\Controller.dll.config
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\bin\x64\Debug\Controller.dll
 C:\Users\root\source\repos\lesinspectables1\lesinspectables\Kzs\bin\x64\Debug\Controller.pdb
+C:\Users\root\source\repos\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojAssemblyReference.cache

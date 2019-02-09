@@ -81,16 +81,17 @@
             this.txbMainDbPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dtpInspectedTo = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
+            this.dtpInspectedFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGenerateInspected = new System.Windows.Forms.Button();
-            this.dtpInspectedTo = new System.Windows.Forms.DateTimePicker();
-            this.dtpInspectedFrom = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateK40 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -116,8 +117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudY0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX0)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblKoefOverdue
@@ -741,6 +742,29 @@
             this.tabPage1.Text = "Kita";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnGenerateK40);
+            this.groupBox4.Controls.Add(this.dtpInspectedTo);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.dtpInspectedFrom);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.btnGenerateInspected);
+            this.groupBox4.Location = new System.Drawing.Point(6, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(443, 94);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Exportuoti per periodą patikrintus suvirinimus";
+            // 
+            // dtpInspectedTo
+            // 
+            this.dtpInspectedTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInspectedTo.Location = new System.Drawing.Point(47, 55);
+            this.dtpInspectedTo.Name = "dtpInspectedTo";
+            this.dtpInspectedTo.Size = new System.Drawing.Size(108, 20);
+            this.dtpInspectedTo.TabIndex = 1;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -749,6 +773,14 @@
             this.label10.Size = new System.Drawing.Size(18, 13);
             this.label10.TabIndex = 6;
             this.label10.Text = "Iki";
+            // 
+            // dtpInspectedFrom
+            // 
+            this.dtpInspectedFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInspectedFrom.Location = new System.Drawing.Point(48, 29);
+            this.dtpInspectedFrom.Name = "dtpInspectedFrom";
+            this.dtpInspectedFrom.Size = new System.Drawing.Size(108, 20);
+            this.dtpInspectedFrom.TabIndex = 0;
             // 
             // label3
             // 
@@ -768,22 +800,6 @@
             this.btnGenerateInspected.Text = "Generuoti";
             this.btnGenerateInspected.UseVisualStyleBackColor = true;
             this.btnGenerateInspected.Click += new System.EventHandler(this.btnGenerateInspected_Click);
-            // 
-            // dtpInspectedTo
-            // 
-            this.dtpInspectedTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInspectedTo.Location = new System.Drawing.Point(47, 55);
-            this.dtpInspectedTo.Name = "dtpInspectedTo";
-            this.dtpInspectedTo.Size = new System.Drawing.Size(108, 20);
-            this.dtpInspectedTo.TabIndex = 1;
-            // 
-            // dtpInspectedFrom
-            // 
-            this.dtpInspectedFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInspectedFrom.Location = new System.Drawing.Point(48, 29);
-            this.dtpInspectedFrom.Name = "dtpInspectedFrom";
-            this.dtpInspectedFrom.Size = new System.Drawing.Size(108, 20);
-            this.dtpInspectedFrom.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -805,19 +821,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog";
             // 
-            // groupBox4
+            // btnGenerateK40
             // 
-            this.groupBox4.Controls.Add(this.dtpInspectedTo);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.dtpInspectedFrom);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.btnGenerateInspected);
-            this.groupBox4.Location = new System.Drawing.Point(6, 6);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(272, 94);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Exportuoti per periodą patikrintus suvirinimus";
+            this.btnGenerateK40.Location = new System.Drawing.Point(269, 40);
+            this.btnGenerateK40.Name = "btnGenerateK40";
+            this.btnGenerateK40.Size = new System.Drawing.Size(109, 23);
+            this.btnGenerateK40.TabIndex = 7;
+            this.btnGenerateK40.Text = "Generuoti K-40";
+            this.btnGenerateK40.UseVisualStyleBackColor = true;
+            this.btnGenerateK40.Click += new System.EventHandler(this.btnGenerateK40_Click);
             // 
             // MainForm
             // 
@@ -863,10 +875,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudY0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX0)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -936,6 +948,7 @@
         private System.Windows.Forms.DateTimePicker dtpInspectedTo;
         private System.Windows.Forms.DateTimePicker dtpInspectedFrom;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnGenerateK40;
     }
 }
 

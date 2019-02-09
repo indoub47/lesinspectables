@@ -232,5 +232,63 @@ ORDER BY id;")]
                 return ((int)(this["FetcherSqlColumnCount"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>id</string>
+  <string>pdata</string>
+  <string>linija</string>
+  <string>kel</string>
+  <string>km</string>
+  <string>pk</string>
+  <string>m</string>
+  <string>siule</string>
+  <string>skodas</string>
+  <string>kelintas</string>
+  <string>operat</string>
+</ArrayOfString>")]
+        public string[] MappingK40Template {
+            get {
+                return ((string[])(this["MappingK40Template"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A2")]
+        public string TopLeftCellK40 {
+            get {
+                return ((string)(this["TopLeftCellK40"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("K40_{0:yyyyMMdd}-{1:yyyyMMdd}.xlsx")]
+        public string DefaultXlsxK40FNFormat {
+            get {
+                return ((string)(this["DefaultXlsxK40FNFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("K40_{0:yyyyMMdd}-{1:yyyyMMdd}.csv")]
+        public string DefaultCsvK40FNFormat {
+            get {
+                return ((string)(this["DefaultCsvK40FNFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nežinomas vardas")]
+        public string defaultOperatorName {
+            get {
+                return ((string)(this["defaultOperatorName"]));
+            }
+        }
     }
 }

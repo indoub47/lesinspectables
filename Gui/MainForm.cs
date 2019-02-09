@@ -283,6 +283,7 @@ namespace Gui
         {
             insps.Clear();
             List<object[]> rawRecords = recordFetcher.Fetch(date);
+            StringBuilder sbErrors = new StringBuilder();
             // check if records != null
             foreach (var obj in rawRecords)
             {
@@ -295,9 +296,13 @@ namespace Gui
                 catch (Exception ex)
                 {
                     // inform somehow and skip
-                    Console.WriteLine(ex.Message);
+                    sbErrors.AppendLine(ex.Message);
                     continue;
                 }
+            }
+            if (sbErrors.Length > 0)
+            {
+                MessageBox.Show(sbErrors.ToString());
             }
         }
 

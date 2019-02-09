@@ -6,3 +6,11 @@ D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.ResolveC
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.CoreCompileInputs.cache
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.dll
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.pdb
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.dll.config
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.dll
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.pdb
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csprojAssemblyReference.cache
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.ResolveComReference.cache
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.CoreCompileInputs.cache
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.dll
+C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.pdb

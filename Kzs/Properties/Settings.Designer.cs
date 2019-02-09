@@ -187,12 +187,15 @@ namespace Kzs.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("01;231;377;;17;53;148;;22;1;15;;23;1;86;;24;1;11")]
+        [global::System.Configuration.DefaultSettingValueAttribute("01;254;377;;17;53;148;;22;1;15;;23;1;86;;24;1;11")]
         public string LineKms {
             get {
                 return ((string)(this["LineKms"]));
+            }
+            set {
+                this["LineKms"] = value;
             }
         }
         

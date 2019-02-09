@@ -460,5 +460,17 @@ namespace Gui.Properties {
                 return ((string)(this["XlsxTemplateInspected"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("output_templates/K40_template.xlsx")]
+        public string XlsxK40TemplateInspected {
+            get {
+                return ((string)(this["XlsxK40TemplateInspected"]));
+            }
+            set {
+                this["XlsxK40TemplateInspected"] = value;
+            }
+        }
     }
 }

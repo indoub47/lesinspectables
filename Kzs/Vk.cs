@@ -25,20 +25,26 @@ namespace Kzs
 
         public Vk(long id, string linija, int kelias, int km, int pk, int m, int? siule)
         {
-            if (kelias == 8 && (pk != 0 || m < 1 || siule != null))
+            /*
+             * šitie iškomentuoti, nes IF3 rašo iešmų kodą su siūle
+            if (kelias == 8 && siule != null)
             {
-                throw new Exception($"Blogas vietos kodas: linija {linija}, kelias {kelias}, km {km}, pk {pk}, m {m}, siūlė {siule}");
+                throw new Exception($"Įtartinas vietos kodas id {id} nebus įtrauktas: {linija}.{kelias}{km:000}.{pk:#00}.{m:#00}.{siule} - neturėtų būti siūlės");
             }
 
-            if (kelias == 9 && (pk < 1 || m < 1 || siule != null))
+            if (kelias == 9 && siule != null)
             {
-                throw new Exception($"Blogas vietos kodas: linija {linija}, kelias {kelias}, km {km}, pk {pk}, m {m}, siūlė {siule}");
+                throw new Exception($"Įtartinas vietos kodas id {id} nebus įtrauktas: {linija}.{kelias}{km:000}.{pk:#00}.{m:#00}.{siule} - neturėtų būti siūlės");
             }
+            */
 
-            if (kelias != 9 && kelias != 8 && (pk < 1 || m < 0 || siule == null))
+            /*
+             * šitą iškomentavau, nes tokiu atveju reikėtų tikrinti viską, ne vien siūlės nebuvimą.
+            if (kelias != 9 && kelias != 8 && siule == null)
             {
-                throw new Exception($"Blogas vietos kodas: linija {linija}, kelias {kelias}, km {km}, pk {pk}, m {m}, siūlė {siule}");
+                throw new Exception($"Blogas vietos kodas id {id} nebus įtrauktas: {linija}.{kelias}{km:000}.{pk:#00}.{m:#00}.{siule} - nėra siūlės");
             }
+            */
 
             Linija = linija;
             Kelias = kelias;
