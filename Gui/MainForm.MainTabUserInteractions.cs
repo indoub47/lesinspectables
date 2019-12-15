@@ -133,32 +133,6 @@ namespace Gui
             btnExportCollected.Enabled = collected.Count != 0;
         }
 
-        private string selectFileName(string extensionFilter)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.Title = "Išsaugoti failą";
-            if (Settings.Default.OutputDir == null || !File.Exists(Settings.Default.OutputDir))
-            {
-                sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else
-            {
-                sfd.InitialDirectory = Path.GetDirectoryName(Settings.Default.OutputDir);
-            }
-            sfd.Filter = extensionFilter;
-            sfd.FilterIndex = 1;
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                return sfd.FileName;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         private void btnExportCollected_Click(object sender, EventArgs e)
         {
             pb.Paint -= pb_Paint;
@@ -169,19 +143,25 @@ namespace Gui
                 case "xlsx":
                     outputter = new XlsxWriter(Settings.Default.XlsxTemplateInspectables);
                     break;
+                case "json":
+                    outputter = new JSONWriter();
+                    break;
+                case "csv":
+                    outputter = new CsvWriter();
+                    break;
                 default:
-                    outputter = new Kzs.OutputClasses.CsvWriter();
+                    outputter = new CsvWriter();
                     break;
             }
 
             try
             {
-                string fileName = selectFileName(outputter.GetExtensionFilter());
+                string fileName = getFileNameFromDialog(outputter.GetExtensionFilter(), "OutputDirToInspect");
                 if (fileName == null)
                 {
                     return;
                 }
-                Settings.Default.OutputDir = Path.GetDirectoryName(fileName);
+                Settings.Default.OutputDirToInspect = Path.GetDirectoryName(fileName);
                 Settings.Default.Save();
                 outputter.Output(collected, date, fileName);
                 MessageBox.Show($"Išsaugota {fileName}");
@@ -210,17 +190,38 @@ namespace Gui
         
         private void btnRepaint_Click(object sender, EventArgs e)
         {
+            repaint();
+        }
+
+        private void repaint()
+        {
             // Čia reikėtų padaryti atskirą metodą, paduoti jam backgroundworker
             // ir nukelti viską į bgWorker
             // Bet dabar tingiu, ir kol duomenų bazė lokali, užteks wait coursor
 
             Application.UseWaitCursor = true;
             splitContainer1.Panel1.Enabled = false;
+            bool refetchInspectables = false;
+
+            if (regularityString != (string)cmbRegularities.SelectedItem)
+            {
+                regularityString = (string)cmbRegularities.SelectedItem;
+                setRegularity(regularityString);
+                recordFetcher.SetRegularity(this.regularity);
+                inspFactory.SetRegularity(this.regularity);
+                refetchInspectables = true;
+            }
 
             if (dtpDatai.Value.Date != date.Date)
             {
                 date = dtpDatai.Value;
                 inspFactory.ChangeDate(date);
+                refetchInspectables = true;
+            }
+
+            if (refetchInspectables)
+            {
+                refetchInspectables = false;
                 getInspectables(date);
                 recalculateDanger = true;
             }
@@ -230,7 +231,7 @@ namespace Gui
                 dangerCalculator.SetParams(
                     (int)nudX0.Value, (int)nudY0.Value,
                     (int)nudX1.Value, (int)nudY1.Value,
-                    (int)nudX2.Value, (int)nudY2.Value, 
+                    (int)nudX2.Value, (int)nudY2.Value,
                     (int)nudKoefMain.Value, (int)nudKoefOverdue.Value, (int)nudKoef064.Value);
                 dangerCalculator.BatchCalculate(insps);
                 recalculateDanger = false;
@@ -246,7 +247,14 @@ namespace Gui
 
             pb.Invalidate();
         }
-                
+
+
+        private void cmbRegularities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
         private void nudKoef064_ValueChanged(object sender, EventArgs e)
         {
             recalculateDanger = true;

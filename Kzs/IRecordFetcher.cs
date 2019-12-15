@@ -9,5 +9,6 @@ namespace Kzs
     public interface IRecordFetcher
     {
         List<object[]> Fetch(DateTime forDate);
+        void SetRegularity(IRegularity regularity);
     }
 }

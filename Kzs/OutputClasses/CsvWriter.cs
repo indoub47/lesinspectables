@@ -8,52 +8,53 @@ using System.IO;
 
 namespace Kzs.OutputClasses
 {
-    public class CsvWriter : IInspectableOutputter
+    public class CsvWriter : CommonWriter
     {
-        public string GetExtensionFilter()
+        override public string GetExtensionFilter()
         {
             return "Comma Separated Values (*.csv)|*.csv";
         }
 
-        public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string fileName)
+        override public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string fileName)
         {
 
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Id").Append(";");
-            sb.Append("Linija").Append(";");
-            sb.Append("Kelias").Append(";");
-            sb.Append("Km").Append(";");
-            sb.Append("Pk").Append(";");
-            sb.Append("M").Append(";");
-            sb.Append("Siule").Append(";");
-            sb.Append("Salyg. kodas").Append(";");
-            sb.Append("Patikrinti iki").Append(";");
-            sb.Append("Kelintas tikrinimas").AppendLine();
-
-            foreach (var insp in insps)
-            {
-                sb.AppendFormat("{0};\"{1}\";{2};{3};{4};{5};{6};\"{7}\";\"{8}\";{9}",
-                    insp.Id,
-                    insp.Vkodas.Linija,
-                    insp.Vkodas.Kelias,
-                    insp.Vkodas.Km,
-                    insp.Vkodas.Pk,
-                    insp.Vkodas.M,
-                    insp.Vkodas.Siule == null ? "" : insp.Vkodas.Siule.ToString(),
-                    insp.Skodas,
-                    forDate.AddDays(insp.Liko).ToShortDateString(),
-                    (int)insp.Ktas);
-                sb.AppendLine();
-            }
+            List<Inspectable> orderedInsps = PreprocessRecords(insps);
+            StringBuilder csvSB = inspsToCsv(orderedInsps);
 
             try
             {
-                File.WriteAllText(fileName, sb.ToString());
+                File.WriteAllText(fileName, csvSB.ToString());
             }
             catch (Exception ex)
             {
                 throw ex;
-            }            
+            }
+        }
+
+        private StringBuilder inspsToCsv(List<Inspectable> insps)
+        {
+            StringBuilder sb = new StringBuilder();
+            string delim = Properties.Settings.Default.CsvDelimiter;
+
+            for (int i = 0; i < insps.Count(); i++)
+            {
+                Inspectable insp = insps[i];
+                sb
+                    .Append(insp.Id).Append(delim)
+                    .Append(insp.Vkodas.Linija).Append(delim)
+                    .Append(insp.Vkodas.Kelias).Append(delim)
+                    .Append(insp.Vkodas.Km).Append(delim)
+                    .Append(insp.Vkodas.Pk).Append(delim)
+                    .Append(insp.Vkodas.M).Append(delim)
+                    .Append(insp.Vkodas.Siule == null ? "" : insp.Vkodas.Siule.ToString()).Append(delim)
+                    .Append(insp.Skodas).Append(delim)
+                    .Append((int)insp.Ktas).Append(delim)
+                    .Append(insp.DataNuo.ToShortDateString()).Append(delim)
+                    .Append(insp.DataIki.ToShortDateString()).Append(delim)
+                    .Append(insp.Koord).Append(delim)
+                    .Append(insp.WeeksAway).AppendLine();
+            }
+            return sb;
         }
     }
 }

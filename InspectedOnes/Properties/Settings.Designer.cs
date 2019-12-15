@@ -12,7 +12,7 @@ namespace InspectedOnes.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -79,17 +79,13 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("A8")]
-        public string TopLeftCell {
-            get {
-                return ((string)(this["TopLeftCell"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>aparat</string>
+  <string>pdata</string>
+  <string>skodas</string>
+  <string>kelintas</string>
+  <string>operat</string>
   <string>id</string>
   <string>linija</string>
   <string>kel</string>
@@ -97,50 +93,19 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
   <string>pk</string>
   <string>m</string>
   <string>siule</string>
-  <string>skodas</string>
-  <string>kelintas</string>
-  <string>aparat</string>
-  <string>pdata</string>
 </ArrayOfString>")]
-        public string[] MappingTemplate {
+        public string[] MappingK40Template {
             get {
-                return ((string[])(this["MappingTemplate"]));
+                return ((string[])(this["MappingK40Template"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("template")]
-        public string TemplateSheetName {
+        [global::System.Configuration.DefaultSettingValueAttribute("K40")]
+        public string SheetName {
             get {
-                return ((string)(this["TemplateSheetName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT * FROM operatoriai")]
-        public string GetOperatorsSql {
-            get {
-                return ((string)(this["GetOperatorsSql"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Patikrino operatorius - {0} (kodas {1})")]
-        public string OperatorFormat {
-            get {
-                return ((string)(this["OperatorFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("A5")]
-        public string OperatorRange {
-            get {
-                return ((string)(this["OperatorRange"]));
+                return ((string)(this["SheetName"]));
             }
         }
         
@@ -172,24 +137,6 @@ ORDER BY operat, pdata, skodas, linija, kel, km, pk, m, siule;")]
         public string[] CsvColumnTitles {
             get {
                 return ((string[])(this["CsvColumnTitles"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("patikrinti_{0:yyyyMMdd}-{1:yyyyMMdd}.xlsx")]
-        public string DefaultXlsxFNFormat {
-            get {
-                return ((string)(this["DefaultXlsxFNFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("patikrinti_{0:yyyyMMdd}-{1:yyyyMMdd}.csv")]
-        public string DefaultCsvFNFormat {
-            get {
-                return ((string)(this["DefaultCsvFNFormat"]));
             }
         }
         
@@ -235,28 +182,6 @@ ORDER BY id;")]
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>id</string>
-  <string>pdata</string>
-  <string>linija</string>
-  <string>kel</string>
-  <string>km</string>
-  <string>pk</string>
-  <string>m</string>
-  <string>siule</string>
-  <string>skodas</string>
-  <string>kelintas</string>
-  <string>operat</string>
-</ArrayOfString>")]
-        public string[] MappingK40Template {
-            get {
-                return ((string[])(this["MappingK40Template"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("A2")]
         public string TopLeftCellK40 {
             get {
@@ -266,28 +191,21 @@ ORDER BY id;")]
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("K40_{0:yyyyMMdd}-{1:yyyyMMdd}.xlsx")]
-        public string DefaultXlsxK40FNFormat {
+        [global::System.Configuration.DefaultSettingValueAttribute("K40_{0:yyyyMMdd}-{1:yyyyMMdd}")]
+        public string DefaultK40FNFormat {
             get {
-                return ((string)(this["DefaultXlsxK40FNFormat"]));
+                return ((string)(this["DefaultK40FNFormat"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("K40_{0:yyyyMMdd}-{1:yyyyMMdd}.csv")]
-        public string DefaultCsvK40FNFormat {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>pdata</string>\r\n</ArrayOfString>")]
+        public string[] DateColumnNames {
             get {
-                return ((string)(this["DefaultCsvK40FNFormat"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("nežinomas vardas")]
-        public string defaultOperatorName {
-            get {
-                return ((string)(this["defaultOperatorName"]));
+                return ((string[])(this["DateColumnNames"]));
             }
         }
     }

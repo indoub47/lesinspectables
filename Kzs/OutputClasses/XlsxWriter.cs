@@ -9,12 +9,12 @@ using System.IO;
 
 namespace Kzs.OutputClasses
 {
-    public class XlsxWriter: IInspectableOutputter
+    public class XlsxWriter: CommonWriter
     {
-        string templateFileName;
-        const int COLUMN_COUNT = 10;
-        string worksheetName;
-        string topLeftCell;
+        readonly string templateFileName;
+        readonly string worksheetName;
+        readonly string topLeftCell;
+        const int oUTPUT_COLUMN_COUNT = 13;
 
         public XlsxWriter(string template)
         {
@@ -23,32 +23,40 @@ namespace Kzs.OutputClasses
             topLeftCell = Properties.Settings.Default.TopLeftCell;
         }
 
-        public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string destFileName)
+        override public void Output(IEnumerable<Inspectable> insps, DateTime forDate, string destFileName)
         {
-            InteropExcel.Application app = new InteropExcel.Application();
-            app.Visible = false;
+            InteropExcel.Application app = null;
             InteropExcel.Workbook workbook = null;
             InteropExcel.Worksheet sheet = null;
             InteropExcel.Range range = null;
 
+            List<Inspectable> orderedInsps = PreprocessRecords(insps);
+            string[,] valueArray = inspsToStringArray(orderedInsps);
+
             try
             {
+                app = new InteropExcel.Application
+                {
+                    Visible = false,
+                    DisplayAlerts = false
+                };
                 File.Copy(templateFileName, destFileName, true);
                 workbook = app.Workbooks.Open(destFileName);
-                string[,] valueArray = inspsToStringArray(insps, forDate);
                 sheet = (InteropExcel.Worksheet)workbook.Sheets[worksheetName];
-                range = sheet.Range[topLeftCell].Resize[insps.Count(), COLUMN_COUNT];
+                range = sheet.Range[topLeftCell].Resize[orderedInsps.Count(), oUTPUT_COLUMN_COUNT];
                 range.Value = valueArray;
                 workbook.Save();
             }
             catch (Exception ex)
             {
+                Console.WriteLine("MS Excel output exception:");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Data);
                 if (File.Exists(destFileName))
                 {
                     try
                     {
                         File.Delete(destFileName);
-                        throw new Exception ("Gaminant failą, įvyko klaida. Failas ištrintas.", ex);
                     }
                     catch
                     {
@@ -60,43 +68,61 @@ namespace Kzs.OutputClasses
             }
             finally
             {
-                Marshal.ReleaseComObject(range);
-                Marshal.ReleaseComObject(sheet);
+                if (range != null)
+                {
+                    Marshal.ReleaseComObject(range);
+                }
+
+                if (sheet != null)
+                {
+                    Marshal.ReleaseComObject(sheet);
+                }
+
                 if (workbook != null)
                 {
                     workbook.Close();
                     Marshal.ReleaseComObject(workbook);
                 }
+
+                if (app != null)
+                {
+                    app.Quit();
+                    Marshal.ReleaseComObject(app);
+                }
             }
-            app.Quit();
-            Marshal.ReleaseComObject(app);
         }
 
 
 
-        private string[,] inspsToStringArray(IEnumerable<Inspectable> insps, DateTime forDate)
+        private string[,] inspsToStringArray(IEnumerable<Inspectable> insps)
         {
-            string[,] sarr = new string[insps.Count(), COLUMN_COUNT];
+            string[,] sarr = new string[insps.Count(), oUTPUT_COLUMN_COUNT];
 
             List<Inspectable> inspList = insps.ToList();
 
-            for(int i = 0; i<insps.Count(); i++)
+            for (int i = 0; i < insps.Count(); i++)
             {
-                sarr[i, 0] = inspList[i].Id.ToString();
-                sarr[i, 1] = inspList[i].Vkodas.Linija;
-                sarr[i, 2] = inspList[i].Vkodas.Kelias.ToString();
-                sarr[i, 3] = inspList[i].Vkodas.Km.ToString();
-                sarr[i, 4] = inspList[i].Vkodas.Pk.ToString();
-                sarr[i, 5] = inspList[i].Vkodas.M.ToString();
-                sarr[i, 6] = inspList[i].Vkodas.Siule == null ? "" : inspList[i].Vkodas.Siule.ToString();
-                sarr[i, 7] = inspList[i].Skodas;
-                sarr[i, 8] = forDate.AddDays(inspList[i].Liko).ToShortDateString();
-                sarr[i, 9] = ((int)inspList[i].Ktas).ToString();
+                Inspectable current = inspList[i];
+                sarr[i, 0] = current.Id.ToString();
+                sarr[i, 1] = current.Vkodas.Linija;
+                sarr[i, 2] = current.Vkodas.Kelias.ToString();
+                sarr[i, 3] = current.Vkodas.Km.ToString();
+                sarr[i, 4] = current.Vkodas.Pk.ToString();
+                sarr[i, 5] = current.Vkodas.M.ToString();
+                sarr[i, 6] = current.Vkodas.Siule == null ? "" : current.Vkodas.Siule.ToString();
+                sarr[i, 7] = current.Skodas;
+                sarr[i, 8] = ((int)current.Ktas).ToString();
+                sarr[i, 9] = current.DataNuo.ToShortDateString();
+                sarr[i, 10] = current.DataIki.ToShortDateString();
+                sarr[i, 11] = current.Koord.ToString();
+                sarr[i, 12] = current.WeeksAway.ToString();
             }
             return sarr;
         }
 
-        public string GetExtensionFilter()
+
+
+        override public string GetExtensionFilter()
         {
             return "MS Excel (*.xlsx)|*.xlsx";
         }

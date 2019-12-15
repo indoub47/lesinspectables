@@ -1,0 +1,10 @@
+D:\dev\csh\lesinspectables\InspectedOnes\bin\x64\Debug\InspectedOnes.dll.config
+D:\dev\csh\lesinspectables\InspectedOnes\bin\x64\Debug\InspectedOnes.dll
+D:\dev\csh\lesinspectables\InspectedOnes\bin\x64\Debug\InspectedOnes.pdb
+D:\dev\csh\lesinspectables\InspectedOnes\bin\x64\Debug\Newtonsoft.Json.dll
+D:\dev\csh\lesinspectables\InspectedOnes\bin\x64\Debug\Newtonsoft.Json.xml
+D:\dev\csh\lesinspectables\InspectedOnes\obj\x64\Debug\InspectedOnes.csproj.ResolveComReference.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\x64\Debug\InspectedOnes.csproj.CoreCompileInputs.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\x64\Debug\InspectedOnes.csproj.CopyComplete
+D:\dev\csh\lesinspectables\InspectedOnes\obj\x64\Debug\InspectedOnes.dll
+D:\dev\csh\lesinspectables\InspectedOnes\obj\x64\Debug\InspectedOnes.pdb

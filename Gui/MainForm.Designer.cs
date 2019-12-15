@@ -43,6 +43,8 @@
             this.nudLiko = new System.Windows.Forms.NumericUpDown();
             this.chlbSkodai = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbRegularities = new System.Windows.Forms.ComboBox();
             this.btnExportCollected = new System.Windows.Forms.Button();
             this.btnRepaint = new System.Windows.Forms.Button();
             this.grbFiltrai = new System.Windows.Forms.GroupBox();
@@ -58,6 +60,7 @@
             this.btnSomeOverduedColor = new System.Windows.Forms.Button();
             this.btnNoOverduedColor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbExportJson = new System.Windows.Forms.RadioButton();
             this.rbExportCsv = new System.Windows.Forms.RadioButton();
             this.rbExportXlsx = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -82,16 +85,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateK40 = new System.Windows.Forms.Button();
             this.dtpInspectedTo = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.dtpInspectedFrom = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnGenerateInspected = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.slblCollected = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnGenerateK40 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefOverdue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoefMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudKoef064)).BeginInit();
@@ -214,7 +216,7 @@
             // lblDatai
             // 
             this.lblDatai.AutoSize = true;
-            this.lblDatai.Location = new System.Drawing.Point(3, 51);
+            this.lblDatai.Location = new System.Drawing.Point(3, 98);
             this.lblDatai.Name = "lblDatai";
             this.lblDatai.Size = new System.Drawing.Size(32, 13);
             this.lblDatai.TabIndex = 6;
@@ -223,7 +225,7 @@
             // dtpDatai
             // 
             this.dtpDatai.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatai.Location = new System.Drawing.Point(8, 67);
+            this.dtpDatai.Location = new System.Drawing.Point(8, 114);
             this.dtpDatai.Name = "dtpDatai";
             this.dtpDatai.Size = new System.Drawing.Size(109, 20);
             this.dtpDatai.TabIndex = 5;
@@ -287,6 +289,8 @@
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.Controls.Add(this.label11);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbRegularities);
             this.splitContainer1.Panel1.Controls.Add(this.btnExportCollected);
             this.splitContainer1.Panel1.Controls.Add(this.btnRepaint);
             this.splitContainer1.Panel1.Controls.Add(this.grbFiltrai);
@@ -303,10 +307,31 @@
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.TabIndex = 2;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 52);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "Periodiškumas";
+            // 
+            // cmbRegularities
+            // 
+            this.cmbRegularities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRegularities.FormattingEnabled = true;
+            this.cmbRegularities.Items.AddRange(new object[] {
+            "nuo 2019",
+            "iki 2019"});
+            this.cmbRegularities.Location = new System.Drawing.Point(5, 68);
+            this.cmbRegularities.Name = "cmbRegularities";
+            this.cmbRegularities.Size = new System.Drawing.Size(111, 21);
+            this.cmbRegularities.TabIndex = 23;
+            // 
             // btnExportCollected
             // 
             this.btnExportCollected.Enabled = false;
-            this.btnExportCollected.Location = new System.Drawing.Point(6, 531);
+            this.btnExportCollected.Location = new System.Drawing.Point(6, 578);
             this.btnExportCollected.Name = "btnExportCollected";
             this.btnExportCollected.Size = new System.Drawing.Size(111, 23);
             this.btnExportCollected.TabIndex = 22;
@@ -334,7 +359,7 @@
             this.grbFiltrai.Controls.Add(this.lblSkodai);
             this.grbFiltrai.Controls.Add(this.lblLiko);
             this.grbFiltrai.Controls.Add(this.chlbLinijos);
-            this.grbFiltrai.Location = new System.Drawing.Point(6, 97);
+            this.grbFiltrai.Location = new System.Drawing.Point(6, 144);
             this.grbFiltrai.Name = "grbFiltrai";
             this.grbFiltrai.Size = new System.Drawing.Size(111, 272);
             this.grbFiltrai.TabIndex = 20;
@@ -360,7 +385,7 @@
             this.grbKoeficientai.Controls.Add(this.lblKoefOverdue);
             this.grbKoeficientai.Controls.Add(this.lblKoefMain);
             this.grbKoeficientai.Controls.Add(this.lblKoef064);
-            this.grbKoeficientai.Location = new System.Drawing.Point(6, 381);
+            this.grbKoeficientai.Location = new System.Drawing.Point(6, 428);
             this.grbKoeficientai.Name = "grbKoeficientai";
             this.grbKoeficientai.Size = new System.Drawing.Size(111, 144);
             this.grbKoeficientai.TabIndex = 19;
@@ -489,14 +514,27 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rbExportJson);
             this.groupBox2.Controls.Add(this.rbExportCsv);
             this.groupBox2.Controls.Add(this.rbExportXlsx);
             this.groupBox2.Location = new System.Drawing.Point(23, 227);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 80);
+            this.groupBox2.Size = new System.Drawing.Size(200, 101);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Eksportas";
+            // 
+            // rbExportJson
+            // 
+            this.rbExportJson.AutoSize = true;
+            this.rbExportJson.Location = new System.Drawing.Point(7, 74);
+            this.rbExportJson.Name = "rbExportJson";
+            this.rbExportJson.Size = new System.Drawing.Size(44, 17);
+            this.rbExportJson.TabIndex = 2;
+            this.rbExportJson.TabStop = true;
+            this.rbExportJson.Text = "json";
+            this.rbExportJson.UseVisualStyleBackColor = true;
+            this.rbExportJson.CheckedChanged += new System.EventHandler(this.rbExportJson_CheckedChanged);
             // 
             // rbExportCsv
             // 
@@ -749,13 +787,22 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.dtpInspectedFrom);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.btnGenerateInspected);
             this.groupBox4.Location = new System.Drawing.Point(6, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(443, 94);
+            this.groupBox4.Size = new System.Drawing.Size(307, 94);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Exportuoti per periodą patikrintus suvirinimus";
+            // 
+            // btnGenerateK40
+            // 
+            this.btnGenerateK40.Location = new System.Drawing.Point(175, 40);
+            this.btnGenerateK40.Name = "btnGenerateK40";
+            this.btnGenerateK40.Size = new System.Drawing.Size(109, 23);
+            this.btnGenerateK40.TabIndex = 7;
+            this.btnGenerateK40.Text = "Generuoti K-40";
+            this.btnGenerateK40.UseVisualStyleBackColor = true;
+            this.btnGenerateK40.Click += new System.EventHandler(this.btnGenerateK40_Click);
             // 
             // dtpInspectedTo
             // 
@@ -791,16 +838,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Nuo";
             // 
-            // btnGenerateInspected
-            // 
-            this.btnGenerateInspected.Location = new System.Drawing.Point(179, 40);
-            this.btnGenerateInspected.Name = "btnGenerateInspected";
-            this.btnGenerateInspected.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerateInspected.TabIndex = 4;
-            this.btnGenerateInspected.Text = "Generuoti";
-            this.btnGenerateInspected.UseVisualStyleBackColor = true;
-            this.btnGenerateInspected.Click += new System.EventHandler(this.btnGenerateInspected_Click);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -820,16 +857,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog";
-            // 
-            // btnGenerateK40
-            // 
-            this.btnGenerateK40.Location = new System.Drawing.Point(269, 40);
-            this.btnGenerateK40.Name = "btnGenerateK40";
-            this.btnGenerateK40.Size = new System.Drawing.Size(109, 23);
-            this.btnGenerateK40.TabIndex = 7;
-            this.btnGenerateK40.Text = "Generuoti K-40";
-            this.btnGenerateK40.UseVisualStyleBackColor = true;
-            this.btnGenerateK40.Click += new System.EventHandler(this.btnGenerateK40_Click);
             // 
             // MainForm
             // 
@@ -944,11 +971,13 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnGenerateInspected;
         private System.Windows.Forms.DateTimePicker dtpInspectedTo;
         private System.Windows.Forms.DateTimePicker dtpInspectedFrom;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnGenerateK40;
+        private System.Windows.Forms.RadioButton rbExportJson;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbRegularities;
     }
 }
 

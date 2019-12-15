@@ -12,7 +12,7 @@ namespace Kzs.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,42 +20,6 @@ namespace Kzs.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("40")]
-        public int DaysTo2 {
-            get {
-                return ((int)(this["DaysTo2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("426")]
-        public int DaysTo3 {
-            get {
-                return ((int)(this["DaysTo3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("912")]
-        public int DaysTo4 {
-            get {
-                return ((int)(this["DaysTo4"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DaysTo1 {
-            get {
-                return ((int)(this["DaysTo1"]));
             }
         }
         
@@ -79,45 +43,7 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public int DaysFrom2 {
-            get {
-                return ((int)(this["DaysFrom2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DaysFrom1 {
-            get {
-                return ((int)(this["DaysFrom1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("243")]
-        public int DaysFrom3 {
-            get {
-                return ((int)(this["DaysFrom3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("730")]
-        public int DaysFrom4 {
-            get {
-                return ((int)(this["DaysFrom4"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT number, Linia, Kel, kilomrtras, piket, metras, siule, [saliginis kodas], P" +
-            "ak_suv_data, 1 AS Kelintas FROM ssd WHERE ([saliginis kodas] IN (\"06.3\", \"06.4\")" +
-            ") AND (I_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, Pak_suv_data AS atskaitosData, 1 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (I_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
         public string Stm1 {
             get {
                 return ((string)(this["Stm1"]));
@@ -126,7 +52,7 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number, Linia, Kel, kilomrtras, piket, metras, siule, [saliginis kodas], Pak_suv_data, 2 AS Kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS atskaitosData, 2 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
         public string Stm2 {
             get {
                 return ((string)(this["Stm2"]));
@@ -135,7 +61,7 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number, Linia, Kel, kilomrtras, piket, metras, siule, [saliginis kodas], Pak_suv_data, 3 AS Kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 3 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)")]
         public string Stm3 {
             get {
                 return ((string)(this["Stm3"]));
@@ -144,7 +70,7 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number, Linia, Kel, kilomrtras, piket, metras, siule, [saliginis kodas], Pak_suv_data, 4 AS Kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)")]
         public string Stm4 {
             get {
                 return ((string)(this["Stm4"]));
@@ -211,15 +137,12 @@ namespace Kzs.Properties {
   <string>m</string>
   <string>siule</string>
   <string>skodas</string>
-  <string>suvdata</string>
-  <string>data1</string>
-  <string>data2</string>
-  <string>data3</string>
-  <string>data4</string>
+  <string>atskaitosData</string>
+  <string>kelintas</string>
 </ArrayOfString>")]
-        public string[] Mapping {
+        public string[] DbMapping {
             get {
-                return ((string[])(this["Mapping"]));
+                return ((string[])(this["DbMapping"]));
             }
         }
         
@@ -234,10 +157,32 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("A5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("A2")]
         public string TopLeftCell {
             get {
                 return ((string)(this["TopLeftCell"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(";")]
+        public string CsvDelimiter {
+            get {
+                return ((string)(this["CsvDelimiter"]));
+            }
+            set {
+                this["CsvDelimiter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, " +
+            "metras AS m, siule AS siule, [saliginis kodas] AS skodas")]
+        public string FetchInspSqlHead {
+            get {
+                return ((string)(this["FetchInspSqlHead"]));
             }
         }
     }

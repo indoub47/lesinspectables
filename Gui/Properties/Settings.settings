@@ -14,7 +14,7 @@
     <Setting Name="CoefMain" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="OutputDir" Type="System.String" Scope="User">
+    <Setting Name="OutputDirToInspect" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:/Users/root/Desktop</Value>
     </Setting>
     <Setting Name="OutputExelFName" Type="System.String" Scope="User">
@@ -73,11 +73,8 @@
   &lt;string&gt;m&lt;/string&gt;
   &lt;string&gt;siule&lt;/string&gt;
   &lt;string&gt;skodas&lt;/string&gt;
-  &lt;string&gt;suvdata&lt;/string&gt;
-  &lt;string&gt;data1&lt;/string&gt;
-  &lt;string&gt;data2&lt;/string&gt;
-  &lt;string&gt;data3&lt;/string&gt;
-  &lt;string&gt;data4&lt;/string&gt;
+  &lt;string&gt;atskaitosData&lt;/string&gt;
+  &lt;string&gt;kelintas&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Linijos" Type="System.String[]" Scope="Application">
@@ -142,11 +139,14 @@
     <Setting Name="InspectedXlsxFNFormat" Type="System.String" Scope="Application">
       <Value Profile="(Default)">inspected {0:yyyyMMdd}-{1:yyyyMMdd}.xlsx</Value>
     </Setting>
-    <Setting Name="XlsxTemplateInspected" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">output_templates/inspected_template.xlsx</Value>
-    </Setting>
     <Setting Name="XlsxK40TemplateInspected" Type="System.String" Scope="User">
       <Value Profile="(Default)">output_templates/K40_template.xlsx</Value>
+    </Setting>
+    <Setting Name="OutputDirK40" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:/Users/root/Desktop</Value>
+    </Setting>
+    <Setting Name="DefaultRegularity" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nuo 2019</Value>
     </Setting>
   </Settings>
 </SettingsFile>

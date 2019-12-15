@@ -10,6 +10,6 @@ namespace InspectedOnes
     {
         void Output(List<Object[]> records, string destFileName);
         string GetExtensionFilter();
-        string GetDefaultFNFormat();
+        string CreateFileName(DateTime from, DateTime to);
     }
 }

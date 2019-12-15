@@ -1,7 +1,6 @@
 D:\dev\csh\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.dll.config
 D:\dev\csh\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.dll
 D:\dev\csh\lesinspectables\InspectedOnes\bin\Debug\InspectedOnes.pdb
-D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csprojResolveAssemblyReference.cache
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.ResolveComReference.cache
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.CoreCompileInputs.cache
 D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.dll
@@ -14,3 +13,7 @@ C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.CoreCompileInputs.cache
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.dll
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.pdb
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csprojAssemblyReference.cache
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Debug\InspectedOnes.csproj.CopyComplete
+D:\dev\csh\lesinspectables\InspectedOnes\bin\Debug\Newtonsoft.Json.dll
+D:\dev\csh\lesinspectables\InspectedOnes\bin\Debug\Newtonsoft.Json.xml

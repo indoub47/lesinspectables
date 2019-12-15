@@ -9,7 +9,7 @@ namespace InspectedOnes
 {
     public class MSAccessBadRecordFinder : IBadRecordFinder
     {
-        string connectionString;
+        readonly string connectionString;
         public MSAccessBadRecordFinder(string connectionString)
         {
             this.connectionString = connectionString;
@@ -17,8 +17,10 @@ namespace InspectedOnes
 
         public List<ulong> FindBadRecords(DateTime dateFrom, DateTime dateTo)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = string.Format(Properties.Settings.Default.BadDataSql, dateFrom, dateTo);
+            OleDbCommand cmd = new OleDbCommand
+            {
+                CommandText = string.Format(Properties.Settings.Default.BadDataSql, dateFrom, dateTo)
+            };
 
             List<ulong> result = new List<ulong>();
 

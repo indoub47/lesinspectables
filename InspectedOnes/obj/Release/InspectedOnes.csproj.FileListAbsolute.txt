@@ -14,3 +14,4 @@ C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Release\InspectedOn
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.csproj.CoreCompileInputs.cache
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.dll
 C:\Users\root\source\repos\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.pdb
+D:\dev\csh\lesinspectables\InspectedOnes\obj\Release\InspectedOnes.csprojAssemblyReference.cache

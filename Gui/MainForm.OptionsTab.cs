@@ -92,9 +92,13 @@ namespace Gui
         
         private void setFile(string pathSetting, TextBox txb, string title, string filter)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Title = title,
+                Filter = filter,
+                FilterIndex = 1
+            };
 
-            ofd.Title = title;
             if (Settings.Default[pathSetting] == null || !File.Exists((string)(Settings.Default[pathSetting])))
             {
                 ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -103,8 +107,6 @@ namespace Gui
             {
                 ofd.InitialDirectory = Path.GetDirectoryName((string)(Settings.Default[pathSetting]));
             }
-            ofd.Filter = filter;
-            ofd.FilterIndex = 1;
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -126,15 +128,28 @@ namespace Gui
             exportFormatChanged();
         }
 
+        private void rbExportJson_CheckedChanged(object sender, EventArgs e)
+        {
+            exportFormatChanged();
+        }
+
         private void exportFormatChanged()
         {
             if (rbExportXlsx.Checked)
             {
                 Settings.Default.ExportFormat = "xlsx";
             }
-            // other formats go here: else if {...}
+            else if (rbExportCsv.Checked)
+            {
+                Settings.Default.ExportFormat = "csv";
+            }
+            else if (rbExportJson.Checked)
+            {
+                Settings.Default.ExportFormat = "json";
+            }
             else
             {
+                // default
                 Settings.Default.ExportFormat = "csv";
             }
             Settings.Default.Save();

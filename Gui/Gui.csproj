@@ -100,6 +100,9 @@
     <Compile Include="MainForm.OptionsTab.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MainForm.Shared.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PicturePainter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,9 +122,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="output_templates\K40_template.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="output_templates\inspected_template.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">

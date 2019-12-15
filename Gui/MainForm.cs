@@ -31,11 +31,13 @@ namespace Gui
 
         bool recalculateDanger;
         DateTime date;
+        string regularityString;
         string[] mapping;
 
         IRecordFetcher recordFetcher;
         InspectableFactory inspFactory;
         IDangerCalculator dangerCalculator;
+        IRegularity regularity;
         Grouper grouper;
         //IInspectableOutputter outputter;
         PicturePainter paramPainter;
@@ -85,9 +87,17 @@ namespace Gui
             {
                 rbExportXlsx.Checked = true;
             }
-            // other formats go here: else if (Settings.Default.ExportFormat == "other") {rbExportOther.Checked = true;}
+            else if (Settings.Default.ExportFormat == "csv")
+            {
+                rbExportCsv.Checked = true;
+            }
+            else if (Settings.Default.ExportFormat == "json")
+            {
+                rbExportJson.Checked = true;
+            }
             else
             {
+                // default
                 rbExportCsv.Checked = true;
             }
 
@@ -114,10 +124,16 @@ namespace Gui
             // setup Inspectables Factory
             mapping = Settings.Default.Mapping;
 
+            string defaultRegularity = Settings.Default.DefaultRegularity;
+            setRegularity(defaultRegularity);
+            regularityString = defaultRegularity;
+            cmbRegularities.SelectedItem = defaultRegularity;
+
             recordFetcher = new RecordFetcher(
                 string.Format(
                     Settings.Default.ConnectionString,
-                    Settings.Default.MainDbFileName));
+                    Settings.Default.MainDbFileName),
+                regularity);
 
             dangerCalculator = new DangerCalculator();
             dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
@@ -132,7 +148,7 @@ namespace Gui
 
             grouper = new Grouper();
 
-            inspFactory = new InspectableFactory(date, vkodasFactory, koordCalculator, mapping);
+            inspFactory = new InspectableFactory(date, vkodasFactory, koordCalculator, mapping, regularity);
             // end of Setup Inspectable Factory
 
             // Create other components
@@ -210,11 +226,14 @@ namespace Gui
 
             rbExportCsv.CheckedChanged += new EventHandler(rbExportCsv_CheckedChanged);
             rbExportXlsx.CheckedChanged += new EventHandler(rbExportXlsx_CheckedChanged);
+            rbExportJson.CheckedChanged += new EventHandler(rbExportJson_CheckedChanged);
 
             btnAllOverduedColor.BackColor = Settings.Default.ColorAllOverdued;
             btnNoOverduedColor.BackColor = Settings.Default.ColorNoOverdued;
             btnSomeOverduedColor.BackColor = Settings.Default.ColorSomeOverdued;
             btnSelectedColor.BackColor = Settings.Default.ColorSelected;
+
+            cmbRegularities.SelectedIndexChanged += new EventHandler(cmbRegularities_SelectedIndexChanged);
 
             pb.MouseDown += pb_MouseDown;
             pb.MouseUp += pb_MouseUp;
@@ -322,16 +341,20 @@ namespace Gui
 
             Font kmFont = new Font("Calibri", 9);
             SolidBrush kmBrush = new SolidBrush(Color.Black);
-            StringFormat kmFormat = new StringFormat();
-            kmFormat.LineAlignment = StringAlignment.Near;
-            kmFormat.Alignment = StringAlignment.Center;
+            StringFormat kmFormat = new StringFormat
+            {
+                LineAlignment = StringAlignment.Near,
+                Alignment = StringAlignment.Center
+            };
 
             Font linijaFont = new Font("Verdana", 14);
             SolidBrush linijaBrush = new SolidBrush(Color.DimGray);
-            StringFormat linijaFormat = new StringFormat();
-            linijaFormat.LineAlignment = StringAlignment.Near;
-            linijaFormat.Alignment = StringAlignment.Near;
-            
+            StringFormat linijaFormat = new StringFormat
+            {
+                LineAlignment = StringAlignment.Near,
+                Alignment = StringAlignment.Near
+            };
+
             if (maxFiltered != -1)
             {
                 float fKmWidth = pbWidth / countFiltered;
@@ -500,6 +523,22 @@ namespace Gui
                 }
 
                 e.Graphics.DrawRectangle(pen, x, y, rectWidth, rectHeight);
+            }
+        }
+
+        private void setRegularity(string regularityName)
+        {
+            switch(regularityName)
+            {
+                case "nuo 2019":
+                    this.regularity = new Regularity2019();
+                    break;
+                case "iki 2019":
+                    this.regularity = new RegularityBefore2019();
+                    break;
+                default:
+                    this.regularity = new Regularity2019();
+                    break;
             }
         }
     }

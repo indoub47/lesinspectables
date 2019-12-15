@@ -8,20 +8,25 @@ namespace Kzs
 {
     public class InspectableFactory
     {
-        private string[] mapping;
+        private readonly string[] mapping;
         private IVkodasFactory vkodasFactory;
         private IKoordCalculator koordCalculator;
         private DateTime toDate;
-        private DateCalculator dateCalc;
+        private IRegularity regularity;
 
-        public InspectableFactory(DateTime toDate, IVkodasFactory vkodasFactory, IKoordCalculator koordCalculator, string[] mapping)
+        public InspectableFactory(DateTime toDate, IVkodasFactory vkodasFactory, IKoordCalculator koordCalculator, string[] mapping, IRegularity regularity)
         {
             this.mapping = mapping;
             this.vkodasFactory = vkodasFactory;
             this.koordCalculator = koordCalculator;
-            this.dateCalc = new DateCalculator();
+            this.regularity = regularity;
 
             this.toDate = toDate;
+        }
+
+        public void SetRegularity(IRegularity regularity)
+        {
+            this.regularity = regularity;
         }
 
         public Inspectable Make(object[] rec)
@@ -34,33 +39,19 @@ namespace Kzs
                 return null;
             }
             string skodas = Convert.ToString(rec[Array.IndexOf(mapping, "skodas")]);
-            DateTime suvirData = Convert.ToDateTime(rec[Array.IndexOf(mapping, "suvdata")]);
-            Kelintas kelintasNeatliktas = (Kelintas)rec[9];
-            int likoDienu = getLikoDienu(suvirData, kelintasNeatliktas);
-            Inspectable insp = new Inspectable(id, linKoord.Item1, vk, linKoord.Item2, skodas, kelintasNeatliktas, likoDienu);
+            DateTime baseDate = Convert.ToDateTime(rec[Array.IndexOf(mapping, "atskaitosData")]);
+            Kelintas whichToPerform = (Kelintas)rec[Array.IndexOf(mapping, "kelintas")];
+            int likoDienu = regularity.GetDaysLeft(baseDate, whichToPerform, toDate);
+            DateTime dataNuo = regularity.GetDateFrom(baseDate, whichToPerform);
+            DateTime dataIki = regularity.GetDateTo(baseDate, whichToPerform);
+            int weeksAway = WeekCalculator.GetWeeksAwayCount(toDate, dataIki);
+            Inspectable insp = new Inspectable(id, linKoord.Item1, vk, linKoord.Item2, skodas, whichToPerform, likoDienu, dataNuo, dataIki, weeksAway);
             return insp;
         }
 
         public void ChangeDate(DateTime date)
         {
             toDate = date;
-        }
-
-        private int getLikoDienu(DateTime suvirData, Kelintas neatliktas)
-        {
-            switch(neatliktas)
-            {
-                case Kelintas.II:
-                    return (dateCalc.LastDateII(suvirData) - toDate).Days;
-                case Kelintas.III:
-                    return (dateCalc.LastDateIII(suvirData) - toDate).Days;
-                case Kelintas.IV:
-                    return (dateCalc.LastDateIV(suvirData) - toDate).Days;
-                case Kelintas.I:
-                    return (dateCalc.LastDateI(suvirData) - toDate).Days;
-                default:
-                    return 0;
-            }
         }
     }
 }

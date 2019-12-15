@@ -11,38 +11,34 @@ namespace Kzs
 {
     public class RecordFetcher: IRecordFetcher
     {
-        // turi partempti Inpsectables:
-        // 1. įrašai, kurių skodas yra 06.3 arba 06.4
-        // 2. įrašai, kuriems neatliktas tikrinimas
-        // 3. įrašai, kuriuos galima tikrinti
+        private readonly string connectionString;
+        private readonly int cols;
+        private IRegularity regularity;
 
-
-        private string connectionString;
-        private List<string> sqls;
-        private int cols;
-        private DateCalculator dateCalc;
-
-        public RecordFetcher(string connectionString)
+        public RecordFetcher(string connectionString, IRegularity regularity)
         {
             this.connectionString = connectionString;
             cols = Settings.Default.Cols;
-            dateCalc = new DateCalculator();
+            this.regularity = regularity;
+        }
+
+        public void SetRegularity(IRegularity regularity)
+        {
+            this.regularity = regularity;
         }
 
         public List<object[]> Fetch(DateTime forDate)
         {
-            sqls = new List<string>
-            {
-                Settings.Default.Stm1,
-                Settings.Default.Stm2,
-                Settings.Default.Stm3,
-                Settings.Default.Stm4,
-            };
+            string[] sqlTails = regularity.GetSQLTails();
+            string sqlHead = Settings.Default.FetchInspSqlHead;
 
-            sqls[0] = String.Format(sqls[0], dateCalc.DateMinusMinI(forDate));
-            sqls[1] = String.Format(sqls[1], dateCalc.DateMinusMinII(forDate));
-            sqls[2] = String.Format(sqls[2], dateCalc.DateMinusMinIII(forDate));
-            sqls[3] = String.Format(sqls[3], dateCalc.DateMinusMinIV(forDate));
+            string[] sqls = new string[]
+            {
+                String.Format(sqlHead + sqlTails[0], regularity.GetDateX(forDate, Kelintas.I)),
+                String.Format(sqlHead + sqlTails[1], regularity.GetDateX(forDate, Kelintas.II)),
+                String.Format(sqlHead + sqlTails[2], regularity.GetDateX(forDate, Kelintas.III)),
+                String.Format(sqlHead + sqlTails[3], regularity.GetDateX(forDate, Kelintas.IV))
+            };
 
             List<object[]> recAccum = new List<object[]>();
             OleDbCommand cmd = new OleDbCommand();

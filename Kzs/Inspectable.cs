@@ -16,9 +16,13 @@ namespace Kzs
         public string Skodas { get; }
         public Kelintas Ktas { get; }
         public int Liko { get; }
+        public DateTime DataNuo { get; }
+        public DateTime DataIki { get; }
+        public int WeeksAway { get; }
         public int Danger { get; internal set; }
 
-        public Inspectable(ulong id, string linija, Vk vkodas, long koord, string skodas, Kelintas ktas, int liko)
+
+        public Inspectable(ulong id, string linija, Vk vkodas, long koord, string skodas, Kelintas ktas, int liko, DateTime dataNuo, DateTime dataIki, int weeksAway)
         {
             Id = id;
             Linija = linija;
@@ -27,6 +31,9 @@ namespace Kzs
             Skodas = skodas;
             Ktas = ktas;
             Liko = liko;
+            DataNuo = dataNuo;
+            DataIki = dataIki;
+            WeeksAway = weeksAway;
             Danger = -1;
         }
     }

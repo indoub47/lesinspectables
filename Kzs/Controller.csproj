@@ -60,8 +60,13 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,16 +78,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DangerCalculator.cs" />
-    <Compile Include="DateCalculator.cs" />
     <Compile Include="IDangerCalculator.cs" />
     <Compile Include="Grouper.cs" />
     <Compile Include="IKoordCalculator.cs" />
     <Compile Include="Inspectable.cs" />
     <Compile Include="InspectableFactory.cs" />
     <Compile Include="IRecordFetcher.cs" />
+    <Compile Include="IRegularity.cs" />
     <Compile Include="IVkodasFactory.cs" />
     <Compile Include="Kelintas.cs" />
     <Compile Include="AccessDbKoordCalculator.cs" />
+    <Compile Include="OutputClasses\CommonWriter.cs" />
+    <Compile Include="OutputClasses\JsonWriter.cs" />
     <Compile Include="OutputClasses\CsvWriter.cs" />
     <Compile Include="OutputClasses\IInspectableOutputter.cs" />
     <Compile Include="OutputClasses\XlsxWriter.cs" />
@@ -93,8 +100,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RecordFetcher.cs" />
+    <Compile Include="RegularityBefore2019.cs" />
+    <Compile Include="Regularity2019.cs" />
     <Compile Include="Vk.cs" />
     <Compile Include="VkodasFactory.cs" />
+    <Compile Include="WeekCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -124,9 +134,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

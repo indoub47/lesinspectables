@@ -1,112 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace InspectedOnes.OutputClasses
 {
-    public class CsvK40Writer : IInspectedOutputter
+    public class CsvK40Writer : CommonK40Writer
     {
-        string[] dbMapping;
-        string[] templateMapping;
-        string delim;
-        string[] columnTitles;
-        int templateColCount;
-        int indxDate;
+        private readonly string[] dbMapping;
+        private readonly string[] templateMapping;
+        private readonly string[] dates;
+        private readonly string delim;
 
         public CsvK40Writer()
         {
             dbMapping = Properties.Settings.Default.MappingDb;
-            templateMapping = Properties.Settings.Default.MappingTemplate;
+            templateMapping = Properties.Settings.Default.MappingK40Template;
             delim = Properties.Settings.Default.CsvDelimiter;
-            columnTitles = Properties.Settings.Default.CsvColumnTitles;
-            templateColCount = templateMapping.Length;
-            indxDate = Array.IndexOf(dbMapping, "pdata");
+            dates = Properties.Settings.Default.DateColumnNames;
         }
 
-        string IInspectedOutputter.GetExtensionFilter()
+        override public string GetExtensionFilter()
         {
             return "Comma Separated Values (*.csv)|*.csv";
         }
 
-        public string GetDefaultFNFormat()
+        override public void Output(List<object[]> rawRecords, string destFileName)
         {
-            return Properties.Settings.Default.DefaultCsvFNFormat;
-        }
 
-        void IInspectedOutputter.Output(List<object[]> records, string destFileName)
-        {
-         
-            int indxOperator = Array.IndexOf(dbMapping, "operat");
+            List<object[]> records = PreprocessRecords(rawRecords, dbMapping);
+            StringBuilder csvSB = recordsToCsv(records, dbMapping, templateMapping, dates);
 
-            var grouped = records.GroupBy(x => x[indxOperator], (key, group) => new
+            try
             {
-                Operator = key.ToString(),
-                Inspected = group
-            });
-            
-            string header = String.Join(delim, columnTitles);
-
-            foreach (var group in grouped)
-            {
-                StringBuilder sb = new StringBuilder(header).AppendLine();
-                foreach (object[] line in records)
-                {
-                    sb.AppendLine(constructLine(line));
-                }
-
-                string fileName = constructFileName(destFileName, group.Operator);
-
-                try
-                {
-                    File.WriteAllText(fileName, sb.ToString());
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }            
-        }
-
-        private string constructLine(object[] row)
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int c = 0; c < templateColCount; c++)
-            {
-                string colName = templateMapping[c];
-                int cellIndex = Array.IndexOf(dbMapping, colName);
-                object value = row[cellIndex];
-
-                if (value == null)
-                {
-                    // do nothing
-                }
-                else if (cellIndex == indxDate)
-                {
-                    sb.Append(Convert.ToDateTime(value).ToShortDateString());
-                }
-                else
-                {
-                    sb.Append(value.ToString());
-                }
-
-                if (c + 1 < templateColCount)
-                {
-                    sb.Append(delim);
-                }
+                File.WriteAllText(destFileName, csvSB.ToString());
             }
-            return sb.ToString();
+            catch (Exception ex)
+            {
+                throw ex;
+            }     
         }
 
-        private string constructFileName(string fileName, string operatorId)
-        {
-            string directory = Path.GetDirectoryName(fileName);
-            string file = Path.GetFileNameWithoutExtension(fileName) + " " + operatorId;
-            string extension = Path.GetExtension(fileName);
 
-            return Path.Combine(directory, file + extension);
+        private StringBuilder recordsToCsv(List<object[]> records, string[] dbMap, string[] templateMap, string[] dates)
+        { 
+            int recordCount = records.Count();
+            int lastRecIndx = recordCount - 1;
+            int columnCount = templateMap.Length;
+            int lastColIndx = columnCount - 1;
+            StringBuilder sb = new StringBuilder();
+
+            for(int r = 0; r < recordCount; r++)
+            {
+                for (int c = 0; c < columnCount; c++)
+                {
+                    string colName = templateMap[c];
+                    int cellIndex = Array.IndexOf(dbMap, colName);
+                    object value = records[r][cellIndex];
+                    if (value == null)
+                    { /* do nothing */ }
+                    else if (dates.Any(colName.Equals))
+                    {
+                        sb.Append(Convert.ToDateTime(value).ToShortDateString());
+                    }
+                    else
+                    {
+                        sb.Append(value);
+                    }
+                    if (c < lastColIndx) sb.Append(delim);
+                }
+                if (r < lastRecIndx) sb.AppendLine();
+            }
+            return sb;
         }
     }
+
+   
 }
