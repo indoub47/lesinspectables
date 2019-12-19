@@ -44,22 +44,22 @@
     <Setting Name="AxisHeight" Type="System.Single" Scope="Application">
       <Value Profile="(Default)">30</Value>
     </Setting>
-    <Setting Name="koefX0" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">-183</Value>
+    <Setting Name="KoefX0" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-365</Value>
     </Setting>
-    <Setting Name="koefY0" Type="System.Int32" Scope="User">
+    <Setting Name="KoefY0" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="koefX1" Type="System.Int32" Scope="User">
+    <Setting Name="KoefX1" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">-14</Value>
     </Setting>
-    <Setting Name="koefY1" Type="System.Int32" Scope="User">
+    <Setting Name="KoefY1" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">3</Value>
     </Setting>
-    <Setting Name="koefX2" Type="System.Int32" Scope="User">
+    <Setting Name="KoefX2" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="koefY2" Type="System.Int32" Scope="User">
+    <Setting Name="KoefY2" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">6</Value>
     </Setting>
     <Setting Name="Mapping" Type="System.String[]" Scope="Application">

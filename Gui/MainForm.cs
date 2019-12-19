@@ -24,6 +24,7 @@ namespace Gui
         int koefX0, koefY0, koefX1, koefY1, koefX2, koefY2;
         int koefMain, koefOverdue, koef064;
 
+        Brush brushGhost = new SolidBrush(Color.LightGray);
         Brush brushNoOverdued = new SolidBrush(Properties.Settings.Default.ColorNoOverdued);
         Brush brushSomeOverdued = new SolidBrush(Properties.Settings.Default.ColorSomeOverdued);
         Brush brushAllOverdued = new SolidBrush(Properties.Settings.Default.ColorAllOverdued);
@@ -73,15 +74,19 @@ namespace Gui
             txbHelperDbPath.Text = Settings.Default.OptionsDbFileName;
             txbMainDbPath.Text = Settings.Default.MainDbFileName;
 
-            nudX0.Value = koefX0 = Settings.Default.koefX0;
-            nudY0.Value = koefY0 = Settings.Default.koefY0;
-            nudX1.Value = koefX1 = Settings.Default.koefX1;
-            nudY1.Value = koefY1 = Settings.Default.koefY1;
-            nudX2.Value = koefX2 = Settings.Default.koefX2;
-            nudY2.Value = koefY2 = Settings.Default.koefY2;
+            cmbRegularities.SelectedItem = regularityString = Settings.Default.DefaultRegularity;
+            setRegularity(regularityString);
+            
+            nudX0.Value = nudX0.Minimum = koefX0 = -regularity.GetMaxTerm();
+            nudY0.Value = koefY0 = Settings.Default.KoefY0;
+            nudX1.Value = koefX1 = Settings.Default.KoefX1;
+            nudY1.Value = koefY1 = Settings.Default.KoefY1;
+            nudX2.Value = koefX2 = Settings.Default.KoefX2;
+            nudY2.Value = koefY2 = Settings.Default.KoefY2;
             nudKoefMain.Value = koefMain = Settings.Default.CoefMain;
             nudKoefOverdue.Value = koefOverdue = Settings.Default.CoefOverdued;
             nudKoef064.Value = koef064 = Settings.Default.CoefThermit;
+            nudLiko.Value = nudLiko.Maximum = regularity.GetMaxTerm();
 
             if (Settings.Default.ExportFormat == "xlsx")
             {
@@ -118,16 +123,12 @@ namespace Gui
 
             chbNepagr.Checked = true;
 
-            nudLiko.Value = nudLiko.Maximum;
             // end of Settings to controls
 
             // setup Inspectables Factory
             mapping = Settings.Default.Mapping;
 
-            string defaultRegularity = Settings.Default.DefaultRegularity;
-            setRegularity(defaultRegularity);
-            regularityString = defaultRegularity;
-            cmbRegularities.SelectedItem = defaultRegularity;
+            
 
             recordFetcher = new RecordFetcher(
                 string.Format(
@@ -136,6 +137,7 @@ namespace Gui
                 regularity);
 
             dangerCalculator = new DangerCalculator();
+
             dangerCalculator.SetParams(koefX0, koefY0, koefX1, koefY1, koefX2, koefY2, koefMain, koefOverdue, koef064);
 
             IVkodasFactory vkodasFactory = new VkodasFactory(mapping);
@@ -214,9 +216,9 @@ namespace Gui
                 MessageBox.Show(ex.Message, "Data processing error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-            setFilters(); //Thread.Sleep(1000);
-            filteredRecs = grouper.Group(insps);// Thread.Sleep(1000);
-            findMaxCount();// Thread.Sleep(1000);
+            setFilters();
+            filteredRecs = grouper.Group(insps);
+            findMaxCount();
             // end of Load data
 
             nudY0.ValueChanged += new EventHandler(nudY0_ValueChanged);
@@ -233,12 +235,10 @@ namespace Gui
             btnSomeOverduedColor.BackColor = Settings.Default.ColorSomeOverdued;
             btnSelectedColor.BackColor = Settings.Default.ColorSelected;
 
-            cmbRegularities.SelectedIndexChanged += new EventHandler(cmbRegularities_SelectedIndexChanged);
-
             pb.MouseDown += pb_MouseDown;
             pb.MouseUp += pb_MouseUp;
             pb.Paint += pb_Paint;
-            pbxDangerParameters.Paint += paramPainter.picBox_Paint;
+            pbxDangerParameters.Paint += paramPainter.PicBox_Paint;
             pb.Invalidate();
 
             splitContainer1.Panel1.Enabled = true;
@@ -277,7 +277,7 @@ namespace Gui
             {
                 if (!chlbLinijos.CheckedIndices.Contains(i))
                 {
-                    grouper.addFilterMethod(grouper.discardByLinija(linijosFilters[i]));
+                    grouper.AddFilterMethod(grouper.DiscardByLinija(linijosFilters[i]));
                 }
             }
 
@@ -285,17 +285,17 @@ namespace Gui
             {
                 if (!chlbSkodai.CheckedIndices.Contains(i))
                 {
-                    grouper.addFilterMethod(grouper.discardBySkodas(skodaiFilters[i]));
+                    grouper.AddFilterMethod(grouper.DiscardBySkodas(skodaiFilters[i]));
                 }
             }
 
             if (!chbNepagr.Checked)
             {
-                grouper.addFilterMethod(grouper.discardNepagr());
+                grouper.AddFilterMethod(grouper.DiscardNepagr());
             }
 
             int dienu = Convert.ToInt32(nudLiko.Value);
-            grouper.addFilterMethod(grouper.filterByLikoMaziau(dienu));
+            grouper.AddFilterMethod(grouper.FilterByLikoMaziau(dienu));
         }
 
         private void getInspectables(DateTime date)
@@ -330,8 +330,9 @@ namespace Gui
             base.OnPaint(e);
             float pbWidth = pb.Width;
             float fChartHeight = e.ClipRectangle.Height * filteredChartPart - xAxisHeight;
-            float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;            
+            float unfChartHeight = e.ClipRectangle.Height * unfilteredChartPart - xAxisHeight;
 
+            Pen penGhost = new Pen(brushGhost);
             Pen penNoOverdued = new Pen(brushNoOverdued);
             Pen penAllOverdued = new Pen(brushAllOverdued);
             Pen penSomeOverdued = new Pen(brushSomeOverdued);
@@ -426,10 +427,18 @@ namespace Gui
                         }
                         
                         km.POptions.Y1 = chartY0 - km.KmDanger * scale;
+                        // Console.WriteLine($"linija-{lin.Linija} km-{km.Km} y1-{km.POptions.Y1} count-{km.Insps.Count()} danger-{km.KmDanger}");
                         km.POptions.X = x;
                         km.POptions.Y0 = chartY0;
 
-                        e.Graphics.DrawLine(currentPen, x, km.POptions.Y0, x, km.POptions.Y1);
+                        if (km.Insps.Count() > 0 && km.KmDanger == 0)
+                        {
+                            // nupaišo brūkšniuką, rodantį, kad toje vietoje yra suvirinimų
+                            e.Graphics.DrawLine(penGhost, x, km.POptions.Y0, x, km.POptions.Y0 - smallTickLength);
+                        } else
+                        {
+                            e.Graphics.DrawLine(currentPen, x, km.POptions.Y0, x, km.POptions.Y1);
+                        }                        
 
                         if (km.Km % 10 == 0)
                         {

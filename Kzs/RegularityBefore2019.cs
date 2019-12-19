@@ -170,5 +170,10 @@ namespace Kzs
                 ", I_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN(\"06.3\", \"06.4\")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (I_pat_data <= #{0:yyyy-MM-dd}#)"
             };
         }
+
+        public int GetMaxTerm()
+        {
+            return 183;
+        }
     }
 }

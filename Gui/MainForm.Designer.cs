@@ -254,7 +254,7 @@
             // 
             this.nudLiko.Location = new System.Drawing.Point(11, 244);
             this.nudLiko.Maximum = new decimal(new int[] {
-            183,
+            365,
             0,
             0,
             0});
@@ -703,7 +703,7 @@
             // 
             this.nudX0.Location = new System.Drawing.Point(47, 19);
             this.nudX0.Minimum = new decimal(new int[] {
-            183,
+            365,
             0,
             0,
             -2147483648});
@@ -712,7 +712,7 @@
             this.nudX0.Size = new System.Drawing.Size(51, 20);
             this.nudX0.TabIndex = 2;
             this.nudX0.Value = new decimal(new int[] {
-            183,
+            365,
             0,
             0,
             -2147483648});

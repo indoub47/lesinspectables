@@ -9,7 +9,7 @@ namespace Kzs
         private int x0, x1, x2;
         private float a0, b0, a1, b1;
 
-        private const int DEFAULT_X0 = -183;
+        private const int DEFAULT_X0 = -365;
         private const int DEFAULT_X1 = -14;
         private const int DEFAULT_X2 = 0;
 

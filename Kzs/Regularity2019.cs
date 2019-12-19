@@ -39,29 +39,6 @@ namespace Kzs
             return date.AddMonths(-monthsFrom4);
         }
 
-        private DateTime lastDateI(DateTime suvirDate)
-        {
-            // suvirDate -  suvirinimo arba eismo atidarymo data
-            return suvirDate.AddMonths(monthsTo1);
-        }
-
-        private DateTime lastDateII(DateTime startDate)
-        {
-            // startDate - arba suvirinimo data,
-            // arba eismo atidarymo data(gamykloje suvirintiems ek)
-            return startDate.AddMonths(monthsTo2);
-        }
-
-        private DateTime lastDateIII(DateTime date2)
-        {
-            return date2.AddMonths(monthsTo3);
-        }
-
-        private DateTime lastDateIV(DateTime date2)
-        {
-            return date2.AddMonths(monthsTo4);
-        }
-
         private DateTime firstDateI(DateTime suvirDate)
         {
             // suvirDate -  suvirinimo arba eismo atidarymo data
@@ -83,6 +60,29 @@ namespace Kzs
         private DateTime firstDateIV(DateTime date2)
         {
             return date2.AddMonths(monthsFrom4);
+        }
+
+        private DateTime lastDateI(DateTime suvirDate)
+        {
+            // suvirDate -  suvirinimo arba eismo atidarymo data
+            return suvirDate.AddMonths(monthsTo1);
+        }
+
+        private DateTime lastDateII(DateTime startDate)
+        {
+            // startDate - arba suvirinimo data,
+            // arba eismo atidarymo data(gamykloje suvirintiems ek)
+            return startDate.AddMonths(monthsTo2);
+        }
+
+        private DateTime lastDateIII(DateTime date2)
+        {
+            return date2.AddMonths(monthsTo3);
+        }
+
+        private DateTime lastDateIV(DateTime date2)
+        {
+            return date2.AddMonths(monthsTo4);
         }
 
 
@@ -158,10 +158,15 @@ namespace Kzs
         {
             return new string[] {
                 ", Pak_suv_data AS atskaitosData, 1 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (\"06.3\", \"06.4\")) AND (I_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)",
-                ", I_pat_data AS atskaitosData, 2 AS kelintas FROM ssd WHERE ([saliginis kodas] IN(\"06.3\", \"06.4\")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)",
-                ", II_pat_data AS atskaitosData, 3 AS kelintas FROM ssd WHERE ([saliginis kodas] IN(\"06.3\", \"06.4\")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)",
-                ", II_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN(\"06.3\", \"06.4\")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)"
+                ", I_pat_data AS atskaitosData, 2 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (\"06.3\", \"06.4\")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)",
+                ", II_pat_data AS atskaitosData, 3 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (\"06.3\", \"06.4\")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)",
+                ", II_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (\"06.3\", \"06.4\")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)"
             };
+        }
+
+        public int GetMaxTerm()
+        {
+            return 365;
         }
     }
 }

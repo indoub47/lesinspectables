@@ -38,7 +38,7 @@ namespace Gui
             initialize();
         }
 
-        public void picBox_Paint(object sender, PaintEventArgs e)
+        public void PicBox_Paint(object sender, PaintEventArgs e)
         {
             //base.OnPaint(e);
             float xScale = e.ClipRectangle.Size.Width / (points.Last().X - minX);

@@ -81,3 +81,4 @@ D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CoreCompileInputs
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csproj.CopyComplete
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.dll
 D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.pdb
+D:\dev\csh\lesinspectables\Kzs\obj\x64\Debug\Controller.csprojAssemblyReference.cache

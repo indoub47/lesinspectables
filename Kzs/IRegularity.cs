@@ -37,5 +37,10 @@ namespace Kzs
          * 3. įrašai, kuriuos galima tikrinti
          */
         string[] GetSQLTails();
+
+        /*
+         * grąžina ilgiausią galimą terminą tarp patikrinimų (mėnesiais)
+         */
+        int GetMaxTerm();
     }
 }

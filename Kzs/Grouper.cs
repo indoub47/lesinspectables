@@ -27,7 +27,7 @@ namespace Kzs
                 public PaintOptions POptions { get; set; }
 
                 // grąžina tuščia kilometrą 
-                public static KmInsps getEmpty(int km)
+                public static KmInsps GetEmpty(int km)
                 {
                     return new KmInsps
                     {
@@ -50,7 +50,7 @@ namespace Kzs
                 {
                     if (!kmsList.Any(x => x.Km == km))
                     {
-                        kmsList.Add(KmInsps.getEmpty(km));
+                        kmsList.Add(KmInsps.GetEmpty(km));
                     }
                 }               
                 Kms = kmsList.OrderBy(x => x.Km);
@@ -175,27 +175,27 @@ namespace Kzs
             return true;
         }
 
-        public Predicate<Inspectable> filterByLikoMaziau(int dienu)
+        public Predicate<Inspectable> FilterByLikoMaziau(int dienu)
         {
             return insp => insp.Liko < dienu;
         }
 
-        public Predicate<Inspectable> discardBySkodas(string skodas)
+        public Predicate<Inspectable> DiscardBySkodas(string skodas)
         {
             return insp => insp.Skodas != skodas;
         }
 
-        public Predicate<Inspectable> discardByLinija(string linija)
+        public Predicate<Inspectable> DiscardByLinija(string linija)
         {
             return insp => insp.Linija != linija;
         }
 
-        public Predicate<Inspectable> discardNepagr()
+        public Predicate<Inspectable> DiscardNepagr()
         {
             return insp => insp.Vkodas.Pagrindinis;
         }
 
-        public void addFilterMethod(Predicate<Inspectable> method)
+        public void AddFilterMethod(Predicate<Inspectable> method)
         {
             filterMethods.Add(method);
         }

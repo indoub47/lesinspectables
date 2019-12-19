@@ -207,8 +207,10 @@ namespace Gui
             {
                 regularityString = (string)cmbRegularities.SelectedItem;
                 setRegularity(regularityString);
-                recordFetcher.SetRegularity(this.regularity);
-                inspFactory.SetRegularity(this.regularity);
+                recordFetcher.SetRegularity(regularity);
+                inspFactory.SetRegularity(regularity);
+                nudLiko.Value = nudLiko.Maximum = regularity.GetMaxTerm();
+                nudX0.Value = nudX0.Minimum = -regularity.GetMaxTerm();
                 refetchInspectables = true;
             }
 
@@ -235,6 +237,9 @@ namespace Gui
                     (int)nudKoefMain.Value, (int)nudKoefOverdue.Value, (int)nudKoef064.Value);
                 dangerCalculator.BatchCalculate(insps);
                 recalculateDanger = false;
+
+                // pasikeičia ir nefiltruotų vaizdas
+                grouper.ClearFilterMethods();
                 unfilteredRecs = grouper.Group(insps).ToList();
             }
 
@@ -246,12 +251,6 @@ namespace Gui
             splitContainer1.Panel1.Enabled = true;
 
             pb.Invalidate();
-        }
-
-
-        private void cmbRegularities_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
 

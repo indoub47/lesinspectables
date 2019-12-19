@@ -53,7 +53,7 @@ namespace Kzs
                     foreach (var sql in sqls)
                     {
                         cmd.CommandText = sql;
-                        //Console.WriteLine(sql);
+                        // Console.WriteLine(sql);
                         using (OleDbDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())

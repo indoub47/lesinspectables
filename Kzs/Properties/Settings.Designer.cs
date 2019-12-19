@@ -25,69 +25,6 @@ namespace Kzs.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("([saliginis kodas] IN (\"06.3\", \"06.4\")) AND ({1} IS NULL)")]
-        public string Where {
-            get {
-                return ((string)(this["Where"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("FROM ssd")]
-        public string From {
-            get {
-                return ((string)(this["From"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, Pak_suv_data AS atskaitosData, 1 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (I_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
-        public string Stm1 {
-            get {
-                return ((string)(this["Stm1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS atskaitosData, 2 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data <= #{0:yyyy-MM-dd}#)")]
-        public string Stm2 {
-            get {
-                return ((string)(this["Stm2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 3 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)")]
-        public string Stm3 {
-            get {
-                return ((string)(this["Stm3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN (""06.3"", ""06.4"")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (II_pat_data <= #{0:yyyy-MM-dd}#)")]
-        public string Stm4 {
-            get {
-                return ((string)(this["Stm4"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int Cols {
-            get {
-                return ((int)(this["Cols"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("SELECT id, linija, km, pk, m FROM Insps ORDER BY id")]
         public string StmInsps {
             get {
@@ -164,6 +101,25 @@ namespace Kzs.Properties {
             }
         }
         
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, " +
+            "metras AS m, siule AS siule, [saliginis kodas] AS skodas")]
+        public string FetchInspSqlHead {
+            get {
+                return ((string)(this["FetchInspSqlHead"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int Cols {
+            get {
+                return ((int)(this["Cols"]));
+            }
+        }
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(";")]
@@ -173,16 +129,6 @@ namespace Kzs.Properties {
             }
             set {
                 this["CsvDelimiter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, " +
-            "metras AS m, siule AS siule, [saliginis kodas] AS skodas")]
-        public string FetchInspSqlHead {
-            get {
-                return ((string)(this["FetchInspSqlHead"]));
             }
         }
     }

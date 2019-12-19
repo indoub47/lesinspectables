@@ -178,73 +178,73 @@ namespace Gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-183")]
-        public int koefX0 {
+        [global::System.Configuration.DefaultSettingValueAttribute("-365")]
+        public int KoefX0 {
             get {
-                return ((int)(this["koefX0"]));
+                return ((int)(this["KoefX0"]));
             }
             set {
-                this["koefX0"] = value;
+                this["KoefX0"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int koefY0 {
+        public int KoefY0 {
             get {
-                return ((int)(this["koefY0"]));
+                return ((int)(this["KoefY0"]));
             }
             set {
-                this["koefY0"] = value;
+                this["KoefY0"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("-14")]
-        public int koefX1 {
+        public int KoefX1 {
             get {
-                return ((int)(this["koefX1"]));
+                return ((int)(this["KoefX1"]));
             }
             set {
-                this["koefX1"] = value;
+                this["KoefX1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int koefY1 {
+        public int KoefY1 {
             get {
-                return ((int)(this["koefY1"]));
+                return ((int)(this["KoefY1"]));
             }
             set {
-                this["koefY1"] = value;
+                this["KoefY1"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int koefX2 {
+        public int KoefX2 {
             get {
-                return ((int)(this["koefX2"]));
+                return ((int)(this["KoefX2"]));
             }
             set {
-                this["koefX2"] = value;
+                this["KoefX2"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("6")]
-        public int koefY2 {
+        public int KoefY2 {
             get {
-                return ((int)(this["koefY2"]));
+                return ((int)(this["KoefY2"]));
             }
             set {
-                this["koefY2"] = value;
+                this["KoefY2"] = value;
             }
         }
         

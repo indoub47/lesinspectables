@@ -2,27 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kzs.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Where" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">([saliginis kodas] IN ("06.3", "06.4")) AND ({1} IS NULL)</Value>
-    </Setting>
-    <Setting Name="From" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">FROM ssd</Value>
-    </Setting>
-    <Setting Name="Stm1" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, Pak_suv_data AS atskaitosData, 1 AS kelintas FROM ssd WHERE ([saliginis kodas] IN ("06.3", "06.4")) AND (I_pat_data IS NULL) AND (Pak_suv_data &lt;= #{0:yyyy-MM-dd}#)</Value>
-    </Setting>
-    <Setting Name="Stm2" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, I_pat_data AS atskaitosData, 2 AS kelintas FROM ssd WHERE ([saliginis kodas] IN ("06.3", "06.4")) AND (I_pat_data IS NOT NULL) AND (II_pat_data IS NULL) AND (Pak_suv_data &lt;= #{0:yyyy-MM-dd}#)</Value>
-    </Setting>
-    <Setting Name="Stm3" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 3 AS kelintas FROM ssd WHERE ([saliginis kodas] IN ("06.3", "06.4")) AND (II_pat_data IS NOT NULL) AND (III_pat_data IS NULL) AND (II_pat_data &lt;= #{0:yyyy-MM-dd}#)</Value>
-    </Setting>
-    <Setting Name="Stm4" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas, II_pat_data AS atskaitosData, 4 AS kelintas FROM ssd WHERE ([saliginis kodas] IN ("06.3", "06.4")) AND (III_pat_data IS NOT NULL) AND (IV_pat_data IS NULL) AND (II_pat_data &lt;= #{0:yyyy-MM-dd}#)</Value>
-    </Setting>
-    <Setting Name="Cols" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
     <Setting Name="StmInsps" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT id, linija, km, pk, m FROM Insps ORDER BY id</Value>
     </Setting>
@@ -56,11 +35,14 @@
     <Setting Name="TopLeftCell" Type="System.String" Scope="Application">
       <Value Profile="(Default)">A2</Value>
     </Setting>
-    <Setting Name="CsvDelimiter" Type="System.String" Scope="User">
-      <Value Profile="(Default)">;</Value>
-    </Setting>
     <Setting Name="FetchInspSqlHead" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT number AS id, Linia AS linija, Kel AS kel, kilomrtras AS km, piket AS pk, metras AS m, siule AS siule, [saliginis kodas] AS skodas</Value>
+    </Setting>
+    <Setting Name="Cols" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="CsvDelimiter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
